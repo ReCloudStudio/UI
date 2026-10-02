@@ -4,9 +4,9 @@
 
     <DocExample title="控制台路径" description="传 to 渲染 NuxtLink，末项无 to 即当前页。" :code="rcCode0">
       <BreadcrumbNav :items="[
-        { label: '控制台', to: '/' },
-        { label: '边缘网络', to: '/network' },
-        { label: '集群详情' }
+        { label: '文档首页', to: '/' },
+        { label: '组件总览', to: '/components/button' },
+        { label: '面包屑' }
       ]" />
     </DocExample>
 
@@ -18,9 +18,9 @@
 
 <script setup lang="ts">
 const rcCode0 = `<BreadcrumbNav :items="[
-  { label: '控制台', to: '/' },
-  { label: '边缘网络', to: '/network' },
-  { label: '集群详情' }
+  { label: '文档首页', to: '/' },
+  { label: '组件总览', to: '/components/button' },
+  { label: '面包屑' }
 ]" />`
 
 

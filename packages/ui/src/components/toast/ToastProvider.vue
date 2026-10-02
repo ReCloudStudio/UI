@@ -1,5 +1,10 @@
 <template>
-  <div class="fixed bottom-4 right-4 z-50 flex max-h-screen w-full max-w-sm flex-col gap-2.5 pointer-events-none p-4">
+  <div
+    class="fixed bottom-4 right-4 z-50 flex max-h-screen w-full max-w-sm flex-col gap-2.5 pointer-events-none p-4"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  >
     <transition-group
       enter-active-class="transition duration-200 ease-out transform"
       enter-from-class="translate-y-2 opacity-0 scale-95"
@@ -27,9 +32,10 @@
         <button
           type="button"
           class="shrink-0 rounded-md p-1 opacity-60 hover:opacity-100 transition-opacity"
+          :aria-label="`关闭${item.title ? `：${item.title}` : '通知'}`"
           @click="dismiss(item.id!)"
         >
-          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>

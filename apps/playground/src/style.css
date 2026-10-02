@@ -2,9 +2,9 @@
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/500.css";
 @import "tailwindcss";
+@import "../../../packages/ui/src/theme.css";
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 @source "../../../packages/ui/src";
-@import "../../../packages/ui/src/theme.css";
 
 /* 字体：西文/代码走自托管 @fontsource（Google Fonts CDN 在本地网络不可达，之前从未加载成功）；中文走本机原生字体 */
 @theme {
