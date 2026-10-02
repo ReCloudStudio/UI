@@ -1,0 +1,186 @@
+:root {
+  /* ReCloud Studio 品牌蓝主调 (50-950) */
+  --color-primary-50: #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #BFDBFE;
+  --color-primary-300: #93C5FD;
+  --color-primary-400: #60A5FA;
+  --color-primary-500: #3B82F6;
+  --color-primary-600: #2563EB;
+  --color-primary-700: #1D4ED8;
+  --color-primary-800: #1E40AF;
+  --color-primary-900: #1E3A8A;
+  --color-primary-950: #172554;
+
+  /* 品牌规范对应档位 */
+  --brand-50: #C8E0FD;
+  --brand-100: #9BC5FE;
+  --brand-200: #70ACFE;
+  --brand-300: #417BDF;
+  --brand-600: #3069C9;
+  --brand-700: #1E63CE;
+
+  /* 垂直单调蓝渐变规范 (严格自顶向下 180deg) */
+  --brand-gradient: linear-gradient(180deg, #C8E0FD 0%, #9BC5FE 25%, #70ACFE 50%, #417BDF 75%, #3069C9 100%);
+  --brand-gradient-compact: linear-gradient(180deg, #C8E0FD 0%, #3069C9 100%);
+  --brand-gradient-card: linear-gradient(180deg, #70ACFE 0%, #3069C9 100%);
+  --brand-gradient-button: linear-gradient(180deg, #417BDF 0%, #1E63CE 100%);
+
+  /* Nuxt UI 语义背景与层级 (浅色模式) */
+  --ui-bg: #FFFFFF;
+  --ui-bg-muted: #F8FAFC;
+  --ui-bg-elevated: #F1F5F9;
+  --ui-bg-accented: #E2E8F0;
+  --ui-bg-inverted: #0F172A;
+
+  /* Nuxt UI 语义文字体系 */
+  --ui-text-highlighted: #0F172A;
+  --ui-text: #334155;
+  --ui-text-muted: #64748B;
+  --ui-text-dimmed: #94A3B8;
+  --ui-text-inverted: #FFFFFF;
+
+  /* Nuxt UI 语义边框与环线 */
+  --ui-border: #E2E8F0;
+  --ui-border-muted: #F1F5F9;
+  --ui-border-accented: #CBD5E1;
+  --ui-border-inverted: #334155;
+
+  /* 焦点外发光环 */
+  --ui-ring: #3069C9;
+
+  /* 语义状态色 */
+  --ui-success: #10B981;
+  --ui-warning: #F59E0B;
+  --ui-error: #EF4444;
+  --ui-info: #3069C9;
+
+  /* 兼容旧别名 */
+  --surface: var(--ui-bg);
+  --surface-soft: var(--ui-bg-muted);
+  --surface-raised: var(--ui-bg-elevated);
+  --ink: var(--ui-text-highlighted);
+  --text: var(--ui-text);
+  --text-muted: var(--ui-text-muted);
+  --border: var(--ui-border);
+  --border-subtle: var(--ui-border-muted);
+  --ring: var(--ui-ring);
+
+  /* 精致内阴影与外阴影 */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Nuxt UI 语义背景与层级 (暗色模式) */
+.dark,
+[data-theme="dark"] {
+  --ui-bg: #090E17;
+  --ui-bg-muted: #0F172A;
+  --ui-bg-elevated: #1E293B;
+  --ui-bg-accented: #334155;
+  --ui-bg-inverted: #FFFFFF;
+
+  --ui-text-highlighted: #F8FAFC;
+  --ui-text: #E2E8F0;
+  --ui-text-muted: #94A3B8;
+  --ui-text-dimmed: #64748B;
+  --ui-text-inverted: #0F172A;
+
+  --ui-border: #1E293B;
+  --ui-border-muted: #141E30;
+  --ui-border-accented: #334155;
+  --ui-border-inverted: #CBD5E1;
+
+  --ui-ring: #70ACFE;
+
+  /* 兼容旧别名 */
+  --surface: var(--ui-bg);
+  --surface-soft: var(--ui-bg-muted);
+  --surface-raised: var(--ui-bg-elevated);
+  --ink: var(--ui-text-highlighted);
+  --text: var(--ui-text);
+  --text-muted: var(--ui-text-muted);
+  --border: var(--ui-border);
+  --border-subtle: var(--ui-border-muted);
+  --ring: var(--ui-ring);
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.6), 0 1px 2px -1px rgb(0 0 0 / 0.6);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.6), 0 2px 4px -2px rgb(0 0 0 / 0.6);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.7), 0 4px 6px -4px rgb(0 0 0 / 0.7);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.8), 0 8px 10px -6px rgb(0 0 0 / 0.8);
+}
+
+@theme {
+  /* ReCloud 品牌字体栈：西文 Plus Jakarta Sans（需应用侧自托管 @fontsource 或等效），中文走原生 CJK 回退，代码 JetBrains Mono */
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Sarasa Gothic CL', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Sarasa Mono CL', 'Maple Mono NF CN', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
+
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+
+  --color-ui-bg: var(--ui-bg);
+  --color-ui-bg-muted: var(--ui-bg-muted);
+  --color-ui-bg-elevated: var(--ui-bg-elevated);
+  --color-ui-bg-accented: var(--ui-bg-accented);
+  --color-ui-bg-inverted: var(--ui-bg-inverted);
+
+  --color-ui-text-highlighted: var(--ui-text-highlighted);
+  --color-ui-text: var(--ui-text);
+  --color-ui-text-muted: var(--ui-text-muted);
+  --color-ui-text-dimmed: var(--ui-text-dimmed);
+  --color-ui-text-inverted: var(--ui-text-inverted);
+
+  --color-ui-border: var(--ui-border);
+  --color-ui-border-muted: var(--ui-border-muted);
+  --color-ui-border-accented: var(--ui-border-accented);
+  --color-ui-border-inverted: var(--ui-border-inverted);
+
+  --color-ui-ring: var(--ui-ring);
+  --color-ui-success: var(--ui-success);
+  --color-ui-warning: var(--ui-warning);
+  --color-ui-error: var(--ui-error);
+  --color-ui-info: var(--ui-info);
+
+  /* 兼容旧 token */
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-ring: var(--ring);
+}
+
+.rc-gradient-vertical {
+  background-image: var(--brand-gradient);
+}
+
+.rc-gradient-compact {
+  background-image: var(--brand-gradient-compact);
+}
+
+.rc-gradient-card {
+  background-image: var(--brand-gradient-card);
+}

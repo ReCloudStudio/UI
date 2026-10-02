@@ -1,0 +1,24 @@
+{
+  "name": "playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@recloud/ui": "workspace:*",
+    "nuxt": "^4.0.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "shiki": "^4.5.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "vue-tsc": "^2.2.8"
+  }
+}

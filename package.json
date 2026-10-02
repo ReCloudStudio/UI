@@ -1,0 +1,20 @@
+{
+  "name": "recloud-ui-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.2.4",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "bunx turbo run build",
+    "dev": "bunx turbo run dev",
+    "typecheck": "bunx turbo run typecheck",
+    "test": "bunx turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "typescript": "^5.7.3"
+  }
+}

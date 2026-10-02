@@ -1,0 +1,92 @@
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+@source "../../../packages/ui/src";
+@import "../../../packages/ui/src/theme.css";
+
+/* 字体：西文/代码走自托管 @fontsource（Google Fonts CDN 在本地网络不可达，之前从未加载成功）；中文走本机原生字体 */
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', 'Segoe UI', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Sarasa Gothic CL', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Sarasa Mono CL', 'Maple Mono NF CN', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background-color: var(--surface-soft);
+  font-size: 15px;
+  line-height: 1.65;
+  font-kerning: normal;
+  font-optical-sizing: auto;
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+  letter-spacing: normal;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  letter-spacing: 0;
+}
+
+/* 点阵网格背景质感 */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(14, 23, 38, 0.07) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(circle, rgba(112, 172, 254, 0.12) 1px, transparent 1px);
+}
+
+::selection {
+  color: #0f172a;
+  background: #bfdbfe;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Shiki 代码高亮：融入预览卡片，双主题变量切换 */
+pre.shiki {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+  background-color: var(--shiki-light-bg, #f8fafc) !important;
+  color: var(--shiki-light) !important;
+  overflow-x: auto;
+}
+pre.shiki code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+}
+pre.shiki .line { min-height: 1.5em; }
+/* 深色代码块：用比页面底更亮的藏青 + 内环线，让代码区“浮起来”而非沉底 */
+.dark pre.shiki {
+  background-color: #1E2940 !important;
+  color: var(--shiki-dark, #e6edf3) !important;
+  box-shadow: inset 0 0 0 1px rgb(112 172 254 / 0.14);
+}
+/* 关键：Shiki 双主题时 token 色以内联 style 输出，深色下必须切到 --shiki-dark，否则是浅色主题色叠深底 */
+.dark pre.shiki span {
+  color: var(--shiki-dark) !important;
+}
