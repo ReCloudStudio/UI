@@ -10,9 +10,18 @@
       "cache": false,
       "persistent": true
     },
+    "generate": {
+      "dependsOn": ["^build"],
+      "outputs": [".output/public/**"]
+    },
     "typecheck": {
       "dependsOn": ["^build"]
     },
-    "test": {}
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    }
   }
 }

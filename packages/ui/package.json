@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "ReCloud Studio official accessible UI design system and component library",
   "type": "module",
-  "license": "AGPL-3.0",
-  "author": "RhenCloud <i@rhen.cloud>",
-  "homepage": "https://docs.worldexecute.me/brand/design/",
+  "license": "AGPL-3.0-only",
+  "author": "ReCloud Studio <contact@worldexecute.me>",
+  "homepage": "https://ui.worldexecute.me",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -32,7 +32,8 @@
     "build": "vite build && bun run copy-css",
     "copy-css": "cp src/theme.css dist/theme.css && cp src/theme.css dist/style.css",
     "dev": "vite build --watch --emptyOutDir false",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "clsx": "^2.1.1",

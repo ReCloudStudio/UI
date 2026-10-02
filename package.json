@@ -11,10 +11,18 @@
     "build": "bunx turbo run build",
     "dev": "bunx turbo run dev",
     "typecheck": "bunx turbo run typecheck",
-    "test": "bunx turbo run test"
+    "test": "bunx turbo run test",
+    "lint": "biome lint apps packages .github .changeset package.json turbo.json biome.json tsconfig.json",
+    "format": "biome format --write apps packages .github .changeset package.json turbo.json biome.json tsconfig.json README.md",
+    "ci": "bun run lint && bun run typecheck && bun run test && bun run build",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@changesets/cli": "3.0.3",
     "turbo": "^2.4.4",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "5.0.3"
   }
 }
