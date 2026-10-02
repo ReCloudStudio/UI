@@ -12,7 +12,7 @@
     },
     "generate": {
       "dependsOn": ["^build"],
-      "outputs": [".output/public/**"]
+      "outputs": [".output/public/**", "dist/**"]
     },
     "typecheck": {
       "dependsOn": ["^build"]
