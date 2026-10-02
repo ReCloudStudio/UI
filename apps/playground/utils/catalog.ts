@@ -37,6 +37,7 @@ export const docGroups: DocGroup[] = [
   {
     label: '表单',
     items: [
+      { name: 'field', title: 'Field / Form 表单布局', description: '统一关联标签、说明、错误信息与表单间距。' },
       { name: 'input', title: 'Input 输入框', description: '带标签、提示与错误态的文本输入。' },
       { name: 'textarea', title: 'Textarea 文本域', description: '多行文本输入。' },
       { name: 'select', title: 'Select 选择器', description: '无障碍下拉选择。' },

@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="NavigationMenu 导航菜单" description="悬停展开的顶部导航面板：Teleport 渲染避免容器裁剪，滚动自动重定位。" />
+    <DocPageHeader title="NavigationMenu 导航菜单" description="基于 Reka UI 的无障碍顶部导航，支持键盘导航、焦点管理和可选内容面板。" />
 
-    <DocExample title="控制台顶部导航" description="悬停展开、点击固定；面板 Teleport 到 body 不被 overflow 裁剪。" :code="rcCode0">
+    <DocExample title="控制台顶部导航" description="带面板的项目会由 Reka UI 管理键盘导航、焦点和展开状态。" :code="rcCode0">
       <NavigationMenu :items="[
         { label: '概览', value: 'overview' },
         { label: '节点管理', value: 'nodes' },

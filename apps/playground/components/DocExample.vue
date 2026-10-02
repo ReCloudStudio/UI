@@ -10,7 +10,7 @@
       {{ props.description }}
     </p>
 
-    <div class="rounded-xl ring-1 ring-inset ring-slate-200/80 dark:ring-slate-800/80 bg-white dark:bg-[#0B1220] overflow-hidden">
+    <div class="rounded-xl ring-1 ring-inset ring-slate-200/80 dark:ring-slate-800/80 bg-white dark:bg-[#0B1220]">
       <div class="p-6 sm:p-8 bg-grid-pattern/40">
         <div class="preview-area">
           <slot />

@@ -1,14 +1,18 @@
 <template>
-  <div class="w-full">
-    <label v-if="label" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-      {{ label }}
-    </label>
+  <Field :id="id" :label="label" :hint="hint" :error="error" :required="required">
+    <template #default="field">
     <SelectRoot
       :model-value="modelValue"
       :disabled="disabled"
       @update:model-value="$emit('update:modelValue', $event)"
     >
-      <SelectTrigger :class="triggerClasses">
+      <SelectTrigger
+        :id="field.id"
+        :aria-describedby="field.describedby"
+        :aria-invalid="field.invalid || undefined"
+        :aria-required="required || undefined"
+        :class="triggerClasses"
+      >
         <SelectValue :placeholder="placeholder" />
         <SelectIcon class="text-slate-400 dark:text-slate-500">
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +46,8 @@
         </SelectContent>
       </SelectPortal>
     </SelectRoot>
-  </div>
+    </template>
+  </Field>
 </template>
 
 <script setup lang="ts">
@@ -60,6 +65,7 @@ import {
   SelectItemIndicator
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
+import Field from '../field/Field.vue'
 
 export interface SelectOption {
   label: string
@@ -71,7 +77,11 @@ export interface SelectProps {
   modelValue?: string
   options: SelectOption[]
   placeholder?: string
+  id?: string
   label?: string
+  hint?: string
+  error?: string
+  required?: boolean
   disabled?: boolean
   class?: string
 }
@@ -79,7 +89,11 @@ export interface SelectProps {
 const props = withDefaults(defineProps<SelectProps>(), {
   modelValue: '',
   placeholder: '请选择...',
+  id: undefined,
   label: '',
+  hint: '',
+  error: '',
+  required: false,
   disabled: false,
   class: ''
 })

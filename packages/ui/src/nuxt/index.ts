@@ -34,7 +34,7 @@ export {}`
 
       if (options.injectTheme) {
         nuxt.options.css = nuxt.options.css || []
-        nuxt.options.css.push(resolver.resolve('../theme.css'))
+        nuxt.options.css.push(resolver.resolve('../style.css'))
       }
 
       addComponentExports({

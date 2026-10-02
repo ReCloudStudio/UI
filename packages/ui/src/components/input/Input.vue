@@ -1,9 +1,6 @@
 <template>
-  <div class="w-full">
-    <label v-if="label" class="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2">
-      {{ label }}
-      <span v-if="required" class="text-red-500">*</span>
-    </label>
+  <Field :id="id" :label="label" :hint="hint" :error="error" :required="required">
+    <template #default="field">
     <div class="relative flex items-center">
       <div v-if="$slots.leading" class="absolute left-3 text-slate-400 dark:text-slate-500 pointer-events-none flex items-center">
         <slot name="leading" />
@@ -14,6 +11,10 @@
         :placeholder="placeholder"
         :disabled="disabled"
         :readonly="readonly"
+        :required="required"
+        :id="field.id"
+        :aria-describedby="field.describedby"
+        :aria-invalid="field.invalid || undefined"
         :class="inputClasses"
         @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         @focus="$emit('focus', $event)"
@@ -23,22 +24,19 @@
         <slot name="trailing" />
       </div>
     </div>
-    <p v-if="error" class="text-sm text-red-600 dark:text-red-400 mt-2">
-      {{ error }}
-    </p>
-    <p v-else-if="hint" class="text-sm text-slate-500 dark:text-slate-400 mt-2">
-      {{ hint }}
-    </p>
-  </div>
+    </template>
+  </Field>
 </template>
 
 <script setup lang="ts">
 import { computed, useSlots } from 'vue'
+import Field from '../field/Field.vue'
 import { cn } from '../../utils/cn'
 
 export interface InputProps {
   modelValue?: string | number
   type?: string
+  id?: string
   placeholder?: string
   label?: string
   hint?: string
@@ -53,6 +51,7 @@ export interface InputProps {
 const props = withDefaults(defineProps<InputProps>(), {
   modelValue: '',
   type: 'text',
+  id: undefined,
   placeholder: '',
   label: '',
   hint: '',

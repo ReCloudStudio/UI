@@ -1,6 +1,8 @@
 <template>
   <AlertDialogRoot :open="props.open" @update:open="$emit('update:open', $event)">
-    <slot name="trigger" />
+    <AlertDialogTrigger as-child>
+      <slot name="trigger" />
+    </AlertDialogTrigger>
     <AlertDialogPortal>
       <AlertDialogOverlay class="fixed inset-0 z-50 bg-slate-950/45 backdrop-blur-xs data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
       <AlertDialogContent
@@ -35,7 +37,7 @@
 import { computed } from 'vue'
 import {
   AlertDialogRoot, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent,
-  AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction
+  AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction, AlertDialogTrigger
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
 
@@ -50,7 +52,6 @@ export interface AlertDialogProps {
 }
 
 const props = withDefaults(defineProps<AlertDialogProps>(), {
-  open: false,
   title: '',
   description: '',
   actionText: '确认',

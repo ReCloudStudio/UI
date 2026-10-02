@@ -1,11 +1,6 @@
 <template>
-  <div class="w-full">
-    <label
-      v-if="props.label"
-      class="mb-1.5 block text-xs font-medium text-slate-700 dark:text-slate-300"
-    >
-      {{ props.label }}
-    </label>
+  <Field :id="id" :label="label" :hint="hint" :error="error" :required="required">
+    <template #default="field">
     <ComboboxRoot
       v-model:open="open"
       :model-value="props.modelValue"
@@ -23,6 +18,10 @@
           class="min-w-0 grow bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400 disabled:cursor-not-allowed dark:text-slate-100"
           :placeholder="placeholder"
           :disabled="disabled"
+          :id="field.id"
+          :required="required"
+          :aria-describedby="field.describedby"
+          :aria-invalid="field.invalid || undefined"
           :display-value="(value: any) => String(value ?? '')"
         />
         <ComboboxCancel
@@ -71,7 +70,8 @@
         </ComboboxContent>
       </ComboboxPortal>
     </ComboboxRoot>
-  </div>
+    </template>
+  </Field>
 </template>
 
 <script setup lang="ts">
@@ -91,6 +91,7 @@ import {
   ComboboxItemIndicator,
   ComboboxEmpty
 } from 'reka-ui'
+import Field from '../field/Field.vue'
 
 export interface ComboboxOption {
   label: string
@@ -104,7 +105,11 @@ export interface ComboboxProps {
   options: ComboboxOption[]
   multiple?: boolean
   placeholder?: string
+  id?: string
   label?: string
+  hint?: string
+  error?: string
+  required?: boolean
   emptyText?: string
   noClear?: boolean
   disabled?: boolean
@@ -115,7 +120,11 @@ const props = withDefaults(defineProps<ComboboxProps>(), {
   modelValue: '',
   multiple: false,
   placeholder: '搜索或选择...',
+  id: undefined,
   label: '',
+  hint: '',
+  error: '',
+  required: false,
   emptyText: '无匹配项',
   noClear: false,
   disabled: false,

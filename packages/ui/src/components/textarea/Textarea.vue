@@ -1,36 +1,34 @@
 <template>
-  <div class="w-full">
-    <label v-if="label" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-      {{ label }}
-      <span v-if="required" class="text-red-500">*</span>
-    </label>
+  <Field :id="id" :label="label" :hint="hint" :error="error" :required="required">
+    <template #default="field">
     <textarea
       :value="modelValue"
       :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
+      :required="required"
+      :id="field.id"
+      :aria-describedby="field.describedby"
+      :aria-invalid="field.invalid || undefined"
       :rows="rows"
       :class="textareaClasses"
       @input="$emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
       @focus="$emit('focus', $event)"
       @blur="$emit('blur', $event)"
     />
-    <p v-if="error" class="text-xs text-red-500 dark:text-red-400 mt-1.5">
-      {{ error }}
-    </p>
-    <p v-else-if="hint" class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">
-      {{ hint }}
-    </p>
-  </div>
+    </template>
+  </Field>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import Field from '../field/Field.vue'
 import { cn } from '../../utils/cn'
 
 export interface TextareaProps {
   modelValue?: string
   placeholder?: string
+  id?: string
   label?: string
   hint?: string
   error?: string
@@ -44,6 +42,7 @@ export interface TextareaProps {
 const props = withDefaults(defineProps<TextareaProps>(), {
   modelValue: '',
   placeholder: '',
+  id: undefined,
   label: '',
   hint: '',
   error: '',

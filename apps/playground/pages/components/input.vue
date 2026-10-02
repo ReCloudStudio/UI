@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Input 输入框" description="带标签、提示文案与错误态的文本输入，40px 标准交互高度与显著焦点环线。" />
+    <DocPageHeader title="Input 输入框" description="带标签、提示文案与错误态的文本输入；标签、说明和错误状态会自动关联至原生控件。" />
 
     <DocExample title="基础用法" description="hint 与 error 互斥，error 时环线转为红色。" :code="rcCode0">
       <div class="grid gap-5 sm:grid-cols-2">
@@ -51,7 +51,8 @@ const rcCode1 = `<div class="grid gap-5 sm:grid-cols-2">
 
 
 const apiRows = [ { name: 'model-value', type: 'string | number', default: '—', description: 'v-model 绑定值。' },
-  { name: 'label / hint / error', type: 'string', default: '—', description: '标签、说明与错误文案。' },
+  { name: 'id', type: 'string', default: '自动生成', description: '原生控件 ID，可用于稳定 SSR 输出。' },
+  { name: 'label / hint / error', type: 'string', default: '—', description: '标签、说明与错误文案，会自动关联至控件。' },
   { name: 'size', type: "'sm' | 'md' | 'lg'", default: 'md', description: '36 / 40 / 44px 高度。' },
   { name: 'type', type: 'string', default: 'text', description: '原生 input 类型。' },
   { name: 'disabled / readonly / required', type: 'boolean', default: 'false', description: '状态控制。' },
