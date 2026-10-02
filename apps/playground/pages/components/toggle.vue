@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { AlignLeft, AlignCenter, AlignRight, Bold, Italic } from '@recloud/ui/icons'
+import { AlignLeft, AlignCenter, AlignRight, Bold, Italic } from '@recloudstudio/ui/icons'
 const left = ref(true)
 const center = ref(false)
 const right = ref(false)

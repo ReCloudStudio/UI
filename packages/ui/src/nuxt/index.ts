@@ -6,7 +6,7 @@ export * from './types'
 
 const module: NuxtModule<ModuleOptions> = defineNuxtModule<ModuleOptions>({
     meta: {
-      name: '@recloud/ui',
+      name: '@recloudstudio/ui',
       configKey: 'recloudUI',
       compatibility: {
         nuxt: '^4.0.0'
@@ -23,10 +23,10 @@ const module: NuxtModule<ModuleOptions> = defineNuxtModule<ModuleOptions>({
         filename: 'types/recloud-ui.d.ts',
         getContents: () => `declare module 'nuxt/schema' {
   interface NuxtConfig {
-    recloudUI?: import('@recloud/ui/nuxt').ModuleOptions
+    recloudUI?: import('@recloudstudio/ui/nuxt').ModuleOptions
   }
   interface NuxtOptions {
-    recloudUI?: import('@recloud/ui/nuxt').ModuleOptions
+    recloudUI?: import('@recloudstudio/ui/nuxt').ModuleOptions
   }
 }
 export {}`
@@ -43,7 +43,7 @@ export {}`
       })
 
       addImportsSources({
-        from: '@recloud/ui',
+        from: '@recloudstudio/ui',
         imports: ['useTheme', 'useToast']
       })
     }

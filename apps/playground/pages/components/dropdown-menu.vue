@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from '@recloud/ui'
+import { useToast } from '@recloudstudio/ui'
 const { toast } = useToast()
 
 const rcCode0 = `<DropdownMenu :items="[

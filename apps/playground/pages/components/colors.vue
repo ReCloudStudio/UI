@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { BrandLogo } from '@recloud/ui/icons'
+import { BrandLogo } from '@recloudstudio/ui/icons'
 
 const swatches = [
   { name: 'brand-50', hex: '#C8E0FD', text: '#0E1726' },

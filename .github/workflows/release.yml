@@ -3,14 +3,17 @@ name: Release
 on:
   push:
     branches: [main]
+    tags: ['v*']
 
 permissions:
   contents: write
   pull-requests: write
   id-token: write
+  packages: write
 
 jobs:
-  release:
+  version:
+    if: github.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +24,36 @@ jobs:
       - uses: changesets/action@v1
         with:
           version: bun run version-packages
-          publish: bun run build && changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish:
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        registry:
+          - name: npm
+            url: https://registry.npmjs.org
+          - name: github
+            url: https://npm.pkg.github.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+      - run: bun install --frozen-lockfile
+      - run: bun --cwd packages/ui run typecheck && bun --cwd packages/ui run build
+      - run: test "v$(node -p \"require('./packages/ui/package.json').version\")" = "$GITHUB_REF_NAME"
+      - if: matrix.registry.name == 'npm'
+        run: npm publish --provenance --access public --registry=${{ matrix.registry.url }}
+        working-directory: packages/ui
+      - if: matrix.registry.name == 'github'
+        run: npm publish --registry=${{ matrix.registry.url }}
+        working-directory: packages/ui
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

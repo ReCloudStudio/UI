@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { BrandLogo } from '@recloud/ui/icons'
+import { BrandLogo } from '@recloudstudio/ui/icons'
 
 const rcCode0 = `<EmptyState title="暂无待处理告警" description="新的网络事件和可用性告警将在这里出现。" class="py-7">
   <template #icon><BrandLogo :size="20" /></template>

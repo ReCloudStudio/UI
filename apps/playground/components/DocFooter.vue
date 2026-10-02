@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { BrandWordmark, BookOpen, Cloud } from '@recloud/ui/icons'
+import { BrandWordmark, BookOpen, Cloud } from '@recloudstudio/ui/icons'
 
 type FooterLink = {
   label: string

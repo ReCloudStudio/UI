@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   // 导致 tsconfig extends 在干净环境（CI/Pages）与本地行为不一致
   buildDir: '.nuxt',
   css: ['~/src/style.css'],
-  modules: [['@recloud/ui/nuxt', { prefix: '', injectTheme: false }]],
+  modules: [['@recloudstudio/ui/nuxt', { prefix: '', injectTheme: false }]],
   app: {
     head: {
       title: 'ReCloud UI · ReCloud Studio 设计系统',

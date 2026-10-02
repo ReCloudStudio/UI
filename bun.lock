@@ -15,7 +15,7 @@
     "apps/playground": {
       "name": "playground",
       "dependencies": {
-        "@recloud/ui": "workspace:*",
+        "@recloudstudio/ui": "workspace:*",
         "nuxt": "^4.0.0",
       },
       "devDependencies": {
@@ -29,7 +29,7 @@
       },
     },
     "packages/ui": {
-      "name": "@recloud/ui",
+      "name": "@recloudstudio/ui",
       "version": "0.1.0",
       "dependencies": {
         "clsx": "^2.1.1",
@@ -345,7 +345,7 @@
 
     "@poppinss/exception": ["@poppinss/exception@1.2.3", "", {}, "sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw=="],
 
-    "@recloud/ui": ["@recloud/ui@workspace:packages/ui"],
+    "@recloudstudio/ui": ["@recloudstudio/ui@workspace:packages/ui"],
 
     "@rolldown/binding-android-arm-eabi": ["@rolldown/binding-android-arm-eabi@1.2.12", "", { "os": "android", "cpu": "arm" }, "sha512-dB/a1214qKfHMXCpgqR4OZT+jS4kTyEXbQGJPqzobt5EwH5rX080pxE37alt3RzvR1bf1Yz/yGqRfrYAxuPw0A=="],
 

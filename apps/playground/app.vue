@@ -83,8 +83,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { BrandWordmark, Sun, Moon } from '@recloud/ui/icons'
-import { useTheme } from '@recloud/ui'
+import { BrandWordmark, Sun, Moon } from '@recloudstudio/ui/icons'
+import { useTheme } from '@recloudstudio/ui'
 import { docGroups, docPath, flatDocs } from '~/utils/catalog'
 
 const route = useRoute()

@@ -5,20 +5,20 @@ ReCloud Studio 的 Vue 3 / Nuxt 4 组件库，基于 Reka UI 与 Tailwind CSS v4
 ## 开始使用
 
 ```bash
-bun add @recloud/ui
+bun add @recloudstudio/ui
 ```
 
 在应用样式入口中引入主题：
 
 ```ts
-import '@recloud/ui/theme.css'
+import '@recloudstudio/ui/style.css'
 ```
 
 Nuxt 4 可注册模块并启用组件自动导入：
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@recloud/ui/nuxt']
+  modules: ['@recloudstudio/ui/nuxt']
 })
 ```
 

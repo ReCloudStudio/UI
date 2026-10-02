@@ -65,25 +65,25 @@
 </template>
 
 <script setup lang="ts">
-import { BrandLogo } from '@recloud/ui/icons'
+import { BrandLogo } from '@recloudstudio/ui/icons'
 import { docGroups, docPath } from '~/utils/catalog'
 
 const installNuxt = `// nuxt.config.ts
 export default defineNuxtConfig({
-  modules: [['@recloud/ui/nuxt', { prefix: '' }]],
-  css: ['@recloud/ui/theme.css']
+  modules: [['@recloudstudio/ui/nuxt', { prefix: '' }]],
+  css: ['@recloudstudio/ui/style.css']
 })
 
 // 任意 .vue 中直接使用，无需 import
 ;<Button variant="solid">部署集群</Button>`
 
 const installVue = `# 安装
-bun add @recloud/ui
+bun add @recloudstudio/ui
 
 // main.ts
-import '@recloud/ui/theme.css'
+import '@recloudstudio/ui/style.css'
 
 // 组件与图标按需导入
-import { Button, useToast } from '@recloud/ui'
-import { Cloud } from '@recloud/ui/icons'`
+import { Button, useToast } from '@recloudstudio/ui'
+import { Cloud } from '@recloudstudio/ui/icons'`
 </script>

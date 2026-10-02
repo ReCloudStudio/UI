@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from '@recloud/ui'
+import { useToast } from '@recloudstudio/ui'
 const { toast } = useToast()
 function fire(title: string, variant: 'info' | 'success' | 'warning' | 'destructive' = 'info') {
   toast({ title, description: `触发于 ${new Date().toLocaleTimeString()}`, variant })

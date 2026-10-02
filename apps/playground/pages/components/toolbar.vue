@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { Bold } from '@recloud/ui/icons'
+import { Bold } from '@recloudstudio/ui/icons'
 
 const rcCode0 = `<div class="flex items-center gap-4">
   <Toolbar>

@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { Cloud, ChevronDown, Settings } from '@recloud/ui/icons'
+import { Cloud, ChevronDown, Settings } from '@recloudstudio/ui/icons'
 
 const variantCode = `<Button variant="solid" color="primary">Solid</Button>
 <Button variant="outline" color="primary">Outline</Button>
