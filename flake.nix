@@ -16,9 +16,9 @@
           name = "recloud-ui-dev";
           buildInputs = with pkgs; [
             bun
-            nodejs_22
+            nodejs
             git
-            nixfmt-rfc-style
+            nixfmt
           ];
 
           shellHook = ''
