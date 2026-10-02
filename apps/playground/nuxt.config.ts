@@ -2,6 +2,9 @@ import { defineNuxtConfig } from 'nuxt/config'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+  // 固定 buildDir：Nuxt 4 生产构建会在 .nuxt 已存在时自动切到 node_modules/.cache，
+  // 导致 tsconfig extends 在干净环境（CI/Pages）与本地行为不一致
+  buildDir: '.nuxt',
   css: ['~/src/style.css'],
   modules: [['@recloud/ui/nuxt', { prefix: '', injectTheme: false }]],
   app: {
