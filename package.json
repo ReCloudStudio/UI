@@ -2,7 +2,7 @@
   "name": "recloud-ui-monorepo",
   "private": true,
   "type": "module",
-  "packageManager": "bun@1.2.4",
+  "packageManager": "bun@1.4.2",
   "workspaces": [
     "packages/*",
     "apps/*"
