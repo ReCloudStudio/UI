@@ -6,6 +6,12 @@
   "license": "AGPL-3.0-only",
   "author": "ReCloud Studio <contact@worldexecute.me>",
   "homepage": "https://ui.worldexecute.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReCloudStudio/UI.git",
+    "directory": "packages/ui"
+  },
+  "bugs": "https://github.com/ReCloudStudio/UI/issues",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

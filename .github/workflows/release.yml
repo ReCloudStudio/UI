@@ -50,10 +50,21 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run --cwd packages/ui typecheck && bun run --cwd packages/ui build
       - run: test "v$(node -p "require('./packages/ui/package.json').version")" = "$GITHUB_REF_NAME"
-      - if: matrix.registry.name == 'npm'
+      # 重新推送同一 tag 时，跳过已发布过该版本的注册表，只补发失败的那一个
+      - id: published
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          if npm view "@recloudstudio/ui@$version" version --registry="$REGISTRY" 2>/dev/null | grep -qx "$version"; then
+            echo "@recloudstudio/ui@$version is already on $REGISTRY; skipping publish."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          REGISTRY: ${{ matrix.registry.url }}
+          NODE_AUTH_TOKEN: ${{ matrix.registry.name == 'github' && secrets.GITHUB_TOKEN || '' }}
+      - if: matrix.registry.name == 'npm' && steps.published.outputs.exists != 'true'
         run: npm publish --provenance --access public --registry=${{ matrix.registry.url }}
         working-directory: packages/ui
-      - if: matrix.registry.name == 'github'
+      - if: matrix.registry.name == 'github' && steps.published.outputs.exists != 'true'
         run: npm publish --registry=${{ matrix.registry.url }}
         working-directory: packages/ui
         env:
