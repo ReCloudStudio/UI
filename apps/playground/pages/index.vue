@@ -34,8 +34,8 @@
       </p>
 
       <div class="grid gap-4 md:grid-cols-2">
-        <DocExample title="Nuxt 4 模块" description="自动导入全部组件、useTheme 与 useToast。" :code="installNuxt" />
-        <DocExample title="Vue 3 显式导入" description="配合 Vite 或任意构建工具使用。" :code="installVue" />
+        <DocExample title="Nuxt 4 模块" description="自动导入全部组件、useTheme 与 useToast。" :code="installNuxt" expanded />
+        <DocExample title="Vue 3 显式导入" description="配合 Vite 或任意构建工具使用。" :code="installVue" expanded />
       </div>
     </section>
 

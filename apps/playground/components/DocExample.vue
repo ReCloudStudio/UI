@@ -10,7 +10,7 @@
       {{ props.description }}
     </p>
 
-    <div class="rounded-xl ring-1 ring-inset ring-slate-200/80 dark:ring-slate-800/80 bg-white dark:bg-[#0B1220]">
+    <div v-if="$slots.default" class="rounded-xl ring-1 ring-inset ring-slate-200/80 dark:ring-slate-800/80 bg-white dark:bg-[#0B1220]">
       <div class="p-6 sm:p-8 bg-grid-pattern/40">
         <div class="preview-area">
           <slot />
@@ -26,6 +26,16 @@
         class="rounded-t-none rounded-b-xl border-x-0 border-b-0 shadow-none"
       />
     </div>
+
+    <!-- Code-only examples skip the empty preview area. -->
+    <CodeBlock
+      v-else-if="props.code"
+      v-model:collapsed="codeCollapsed"
+      collapsible
+      :code="props.code"
+      :language="codeLanguage"
+      class="shadow-none"
+    />
   </section>
 </template>
 
@@ -37,16 +47,19 @@ export interface DocExampleProps {
   description?: string
   code?: string
   badge?: string
+  /** Show the code expanded on first render. */
+  expanded?: boolean
 }
 
 const props = withDefaults(defineProps<DocExampleProps>(), {
   title: '',
   description: '',
   code: '',
-  badge: ''
+  badge: '',
+  expanded: false
 })
 
-const codeCollapsed = ref(true)
+const codeCollapsed = ref(!props.expanded)
 
 /** Infer the snippet language; CodeBlock resolves aliases such as `ts` and `bash`. */
 const codeLanguage = computed(() => {
