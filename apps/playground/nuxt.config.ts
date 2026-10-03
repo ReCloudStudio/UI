@@ -18,7 +18,12 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
-        { rel: 'apple-touch-icon', href: '/icon.svg' }
+        { rel: 'apple-touch-icon', href: '/icon.svg' },
+        // 全站字体：等距更纱黑体 SC（Sarasa Mono SC，OFL-1.1），由 ZeoSeven FontsAPI 按 unicode-range 分包提供。
+        // main 与 sc-bold 同属 "Sarasa Mono SC" 族（400/700）；sc-semi-bold 的 font-family 不同，无法按字重合并，故不引入。
+        { rel: 'preconnect', href: 'https://fontsapi.zeoseven.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fontsapi.zeoseven.com/159/main/result.css' },
+        { rel: 'stylesheet', href: 'https://fontsapi.zeoseven.com/159/sc-bold/result.css' }
       ]
     }
   },

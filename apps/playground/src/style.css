@@ -1,15 +1,12 @@
-@import "@fontsource-variable/plus-jakarta-sans";
-@import "@fontsource/jetbrains-mono/400.css";
-@import "@fontsource/jetbrains-mono/500.css";
 @import "tailwindcss";
 @import "../../../packages/ui/src/theme.css";
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 @source "../../../packages/ui/src";
 
-/* 字体：西文/代码走自托管 @fontsource（Google Fonts CDN 在本地网络不可达，之前从未加载成功）；中文走本机原生字体 */
+/* 字体：全站统一使用等距更纱黑体 SC（Sarasa Mono SC），由 nuxt.config.ts 中的 CDN 样式表加载；其余为加载失败时的回退 */
 @theme {
-  --font-sans: 'Plus Jakarta Sans Variable', 'Segoe UI', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Sarasa Gothic CL', 'Noto Sans CJK SC', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Sarasa Mono CL', 'Maple Mono NF CN', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
+  --font-sans: 'Sarasa Mono SC', 'Sarasa Mono CL', 'Noto Sans Mono CJK SC', ui-monospace, 'PingFang SC', 'Microsoft YaHei', monospace;
+  --font-mono: 'Sarasa Mono SC', 'Sarasa Mono CL', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
 }
 
 html {
