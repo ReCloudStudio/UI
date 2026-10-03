@@ -3,10 +3,10 @@
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 @source "../../../packages/ui/src";
 
-/* 字体：全站统一使用等距更纱黑体 SC（Sarasa Mono SC），由 nuxt.config.ts 中的 CDN 样式表加载；其余为加载失败时的回退 */
+/* 字体：全站统一使用 Maple Mono NF CN，由 nuxt.config.ts 中的 CDN 样式表加载；其余为加载失败时的回退 */
 @theme {
-  --font-sans: 'Sarasa Mono SC', 'Sarasa Mono CL', 'Noto Sans Mono CJK SC', ui-monospace, 'PingFang SC', 'Microsoft YaHei', monospace;
-  --font-mono: 'Sarasa Mono SC', 'Sarasa Mono CL', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
+  --font-sans: 'Maple Mono NF CN', 'Maple Mono CN', 'Noto Sans Mono CJK SC', ui-monospace, 'PingFang SC', 'Microsoft YaHei', monospace;
+  --font-mono: 'Maple Mono NF CN', 'Maple Mono CN', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
 }
 
 html {
