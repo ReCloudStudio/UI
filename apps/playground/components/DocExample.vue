@@ -4,7 +4,7 @@
       <h3 class="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
         <slot name="header">{{ props.title }}</slot>
       </h3>
-      <span v-if="props.badge" class="text-[11px] font-mono text-slate-400 dark:text-slate-500">{{ props.badge }}</span>
+      <span v-if="props.badge" class="text-[11px] font-mono text-slate-500 dark:text-slate-400">{{ props.badge }}</span>
     </div>
     <p v-if="props.description" class="text-sm leading-6 text-slate-600 dark:text-slate-400 -mt-1 max-w-2xl">
       {{ props.description }}

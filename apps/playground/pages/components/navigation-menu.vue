@@ -10,7 +10,7 @@
       ]">
         <template #panel="{ item }">
           <div v-if="item.value === 'nodes'" class="space-y-1">
-            <p class="mb-2 text-xs font-semibold tracking-wide text-slate-400 uppercase">节点管理</p>
+            <p class="mb-2 text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 uppercase">节点管理</p>
             <a v-for="l in ['边缘节点列表', '地域分布', '批量部署']" :key="l" class="block cursor-pointer rounded-md px-2.5 py-1.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">{{ l }}</a>
           </div>
           <p v-else class="px-2.5 py-1.5 text-sm text-slate-500">{{ item.label }} 面板</p>
@@ -32,7 +32,7 @@ const rcCode0 = `<NavigationMenu :items="[
 ]">
   <template #panel="{ item }">
     <div v-if="item.value === 'nodes'" class="space-y-1">
-      <p class="mb-2 text-xs font-semibold tracking-wide text-slate-400 uppercase">节点管理</p>
+      <p class="mb-2 text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 uppercase">节点管理</p>
       <a v-for="l in ['边缘节点列表', '地域分布', '批量部署']" :key="l" class="block cursor-pointer rounded-md px-2.5 py-1.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">{{ l }}</a>
     </div>
     <p v-else class="px-2.5 py-1.5 text-sm text-slate-500">{{ item.label }} 面板</p>

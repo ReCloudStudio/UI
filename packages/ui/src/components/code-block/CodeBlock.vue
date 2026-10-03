@@ -7,10 +7,10 @@
         :class="titleClasses"
         @click="toggleCollapsed"
       >
-        <svg v-if="collapsible" :class="cn('h-3.5 w-3.5 shrink-0 text-slate-500 transition-transform duration-200', !isCollapsed && 'rotate-90')" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+        <svg v-if="collapsible" :class="cn('h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform duration-200', !isCollapsed && 'rotate-90')" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
         <span v-else class="h-2 w-2 shrink-0 rounded-full bg-blue-400 shadow-[0_0_0_3px_rgba(96,165,250,0.12)]" aria-hidden="true" />
         <span v-if="filename" class="truncate font-mono text-xs font-medium text-slate-200">{{ filename }}</span>
-        <span v-if="language" class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">{{ language }}</span>
+        <span v-if="language" class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-400">{{ language }}</span>
         <span v-if="collapsible" class="shrink-0 text-xs font-medium text-slate-400">{{ isCollapsed ? '展开代码' : '收起代码' }}</span>
       </component>
       <button
@@ -133,7 +133,7 @@ const contentClasses = computed(() => {
       ? '[&>pre]:whitespace-pre-wrap [&>pre]:[overflow-wrap:anywhere]'
       : '[&>pre]:min-w-max [&>pre]:whitespace-pre',
     props.showLineNumbers &&
-      '[&>pre]:[counter-reset:line] [&_.line]:before:inline-block [&_.line]:before:w-6 [&_.line]:before:mr-5 [&_.line]:before:text-right [&_.line]:before:text-slate-600 [&_.line]:before:select-none [&_.line]:before:[counter-increment:line] [&_.line]:before:content-[counter(line)]'
+      '[&>pre]:[counter-reset:line] [&_.line]:before:inline-block [&_.line]:before:w-6 [&_.line]:before:mr-5 [&_.line]:before:text-right [&_.line]:before:text-slate-500 [&_.line]:before:select-none [&_.line]:before:[counter-increment:line] [&_.line]:before:content-[counter(line)]'
   )
 })
 

@@ -4,7 +4,7 @@
 
     <DocExample title="分组搜索" description="输入即过滤，分组标题自动聚合。" :code="rcCode0">
       <Combobox v-model="value" :options="options" label="边缘节点" placeholder="搜索节点…" />
-      <p class="mt-3 text-xs text-slate-400">当前值：{{ value }}</p>
+      <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">当前值：{{ value }}</p>
     </DocExample>
 
     <DocApiTable :rows="apiRows" />
@@ -24,7 +24,7 @@ const options = [
 ]
 
 const rcCode0 = `<Combobox v-model="value" :options="options" label="边缘节点" placeholder="搜索节点…" />
-<p class="mt-3 text-xs text-slate-400">当前值：{{ value }}</p>`
+<p class="mt-3 text-xs text-slate-500 dark:text-slate-400">当前值：{{ value }}</p>`
 
 
 const apiRows = [ { name: 'model-value', type: 'string | string[]', default: '—', description: 'v-model；multiple 时为数组。' },

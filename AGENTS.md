@@ -26,5 +26,6 @@ This block is written and re-added by `turbo` before repository-scoped commands 
 
 - Develop on `dev`; merge `dev` into `main` only for a planned release. Do not commit feature work directly to `main`, except an urgent production fix.
 - Every user-facing change on `dev` needs a Changeset (`bun run changeset`). Do not manually change `@recloudstudio/ui`'s version during feature work.
+- Write commit messages and Changeset summaries in English, even when the conversation or UI copy is in another language. Commit subjects use Conventional Commits (`feat: ...`, `fix: ...`, `chore: ...`) in the imperative mood; Changeset summaries are one or two English sentences, because they become the published `CHANGELOG.md`.
 - An urgent fix may be committed directly to `main`; add a patch Changeset so the release workflow creates the required patch-version PR.
 - A push to `main` creates the Changesets version PR. Merge that PR, then create and push `v<packages/ui/package.json version>` to publish to npm and GitHub Packages. The tag must exactly match the manifest version.

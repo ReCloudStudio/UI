@@ -6,7 +6,7 @@
       <div class="flex items-center gap-3">
         <Spinner />
         <VisuallyHidden>正在同步集群配置，请勿刷新页面</VisuallyHidden>
-        <span class="text-xs text-slate-400">（上方文本对屏幕阅读器可见，视觉上隐藏）</span>
+        <span class="text-xs text-slate-500 dark:text-slate-400">（上方文本对屏幕阅读器可见，视觉上隐藏）</span>
       </div>
     </DocExample>
 
@@ -20,7 +20,7 @@
 const rcCode0 = `<div class="flex items-center gap-3">
   <Spinner />
   <VisuallyHidden>正在同步集群配置，请勿刷新页面</VisuallyHidden>
-  <span class="text-xs text-slate-400">（上方文本对屏幕阅读器可见，视觉上隐藏）</span>
+  <span class="text-xs text-slate-500 dark:text-slate-400">（上方文本对屏幕阅读器可见，视觉上隐藏）</span>
 </div>`
 
 

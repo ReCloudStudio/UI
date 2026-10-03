@@ -7,7 +7,7 @@
         <Editable v-model="name" placeholder="点击编辑集群名称" />
         <Badge variant="outline" color="neutral" size="xs">集群别名</Badge>
       </div>
-      <p class="mt-3 text-xs text-slate-400">当前值：{{ name || '（空）' }}</p>
+      <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">当前值：{{ name || '（空）' }}</p>
     </DocExample>
 
     <DocApiTable :rows="apiRows" />
@@ -24,7 +24,7 @@ const rcCode0 = `<div class="flex items-center gap-3">
   <Editable v-model="name" placeholder="点击编辑集群名称" />
   <Badge variant="outline" color="neutral" size="xs">集群别名</Badge>
 </div>
-<p class="mt-3 text-xs text-slate-400">当前值：{{ name || '（空）' }}</p>`
+<p class="mt-3 text-xs text-slate-500 dark:text-slate-400">当前值：{{ name || '（空）' }}</p>`
 
 
 const apiRows = [ { name: 'model-value', type: 'string', default: '—', description: 'v-model 文本。' },

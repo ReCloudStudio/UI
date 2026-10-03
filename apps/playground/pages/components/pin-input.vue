@@ -13,7 +13,7 @@
           <PinInput v-model="masked" :length="4" mask />
         </div>
       </div>
-      <p class="mt-3 text-xs text-slate-400">OTP 值：{{ otp.join('') || '—' }}</p>
+      <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">OTP 值：{{ otp.join('') || '—' }}</p>
     </DocExample>
 
     <DocApiTable :rows="apiRows" />
@@ -37,7 +37,7 @@ const rcCode0 = `<div class="flex flex-wrap items-end gap-8">
     <PinInput v-model="masked" :length="4" mask />
   </div>
 </div>
-<p class="mt-3 text-xs text-slate-400">OTP 值：{{ otp.join('') || '—' }}</p>`
+<p class="mt-3 text-xs text-slate-500 dark:text-slate-400">OTP 值：{{ otp.join('') || '—' }}</p>`
 
 
 const apiRows = [ { name: 'model-value', type: 'string[]', default: '[]', description: 'v-model 分段字符数组。' },

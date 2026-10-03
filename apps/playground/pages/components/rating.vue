@@ -6,11 +6,11 @@
       <div class="flex items-center gap-6">
         <div class="space-y-1">
           <Rating v-model="val" />
-          <p class="text-xs text-slate-400">当前 {{ val }} / 5</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">当前 {{ val }} / 5</p>
         </div>
         <div class="space-y-1">
           <Rating :model-value="4" color="warning" readonly />
-          <p class="text-xs text-slate-400">客户满意度（只读）</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">客户满意度（只读）</p>
         </div>
       </div>
     </DocExample>
@@ -28,11 +28,11 @@ const val = ref(4)
 const rcCode0 = `<div class="flex items-center gap-6">
   <div class="space-y-1">
     <Rating v-model="val" />
-    <p class="text-xs text-slate-400">当前 {{ val }} / 5</p>
+    <p class="text-xs text-slate-500 dark:text-slate-400">当前 {{ val }} / 5</p>
   </div>
   <div class="space-y-1">
     <Rating :model-value="4" color="warning" readonly />
-    <p class="text-xs text-slate-400">客户满意度（只读）</p>
+    <p class="text-xs text-slate-500 dark:text-slate-400">客户满意度（只读）</p>
   </div>
 </div>`
 

@@ -4,7 +4,7 @@
       <span class="text-xs font-bold uppercase tracking-[0.16em] text-[#2563EB] dark:text-[#70ACFE]">{{ props.group }}</span>
       <Badge v-if="props.badge" variant="outline" color="neutral" size="xs">{{ props.badge }}</Badge>
     </div>
-    <h1 class="text-3xl sm:text-4xl font-bold tracking-[-0.04em] text-slate-950 dark:text-white">
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 dark:text-white">
       {{ props.title }}
     </h1>
     <p class="text-base text-slate-600 dark:text-slate-300 leading-7 max-w-2xl">

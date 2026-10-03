@@ -102,7 +102,7 @@ const variantColorClasses = computed(() => {
       return 'bg-slate-100 text-slate-700 hover:bg-slate-200/80 dark:bg-slate-800/80 dark:text-slate-200 dark:hover:bg-slate-700/80'
     }
     if (c === 'error') {
-      return 'bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-950/50 dark:text-red-400 dark:hover:bg-red-900/50'
+      return 'bg-red-50 text-red-700 hover:bg-red-100 dark:bg-red-950/50 dark:text-red-400 dark:hover:bg-red-900/50'
     }
     return 'bg-blue-50 text-[#1E63CE] hover:bg-blue-100/80 dark:bg-blue-950/50 dark:text-[#70ACFE] dark:hover:bg-blue-900/50'
   }

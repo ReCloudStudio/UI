@@ -1,6 +1,6 @@
 <template>
   <ToastProvider />
-  <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-[#090E17] text-slate-700 dark:text-slate-200 transition-colors selection:bg-blue-100 dark:selection:bg-blue-900/40">
+  <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-[#090E17] text-slate-700 dark:text-slate-200 transition-colors">
     <!-- 顶部导航栏 -->
     <header class="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-[#090E17]/90 backdrop-blur-md">
       <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
@@ -42,14 +42,14 @@
       <aside class="hidden lg:block w-60 shrink-0 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-3 pb-8">
         <nav class="space-y-6">
           <div v-for="group in docGroups" :key="group.label" class="space-y-1">
-            <span class="block px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{{ group.label }}</span>
+            <span class="block px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">{{ group.label }}</span>
             <NuxtLink
               v-for="item in group.items"
               :key="item.name"
               :to="docPath(item.name)"
               class="block px-3 py-1.5 text-sm rounded-lg transition-colors"
               :class="isActive(item.name)
-                ? 'font-semibold bg-[#2563EB]/10 dark:bg-[#70ACFE]/15 text-[#2563EB] dark:text-[#70ACFE]'
+                ? 'font-semibold bg-blue-600/10 dark:bg-[#70ACFE]/15 text-blue-700 dark:text-[#70ACFE]'
                 : 'font-medium text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/70'"
             >{{ item.title }}</NuxtLink>
           </div>
@@ -65,7 +65,7 @@
             :to="docPath(item.name)"
             class="shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-colors"
             :class="isActive(item.name)
-              ? 'bg-[#2563EB]/10 dark:bg-[#70ACFE]/15 text-[#2563EB] dark:text-[#70ACFE]'
+              ? 'bg-blue-600/10 dark:bg-[#70ACFE]/15 text-blue-700 dark:text-[#70ACFE]'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/70'"
           >{{ item.title }}</NuxtLink>
         </nav>

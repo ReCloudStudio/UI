@@ -4,7 +4,7 @@
 
     <DocExample title="基础" description="siblingCount 控制当前页两侧暴露页码数。" :code="rcCode0">
       <Pagination v-model="page" :total="128" :page-size="10" />
-      <p class="mt-3 text-xs text-slate-400">第 {{ page }} / 13 页</p>
+      <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">第 {{ page }} / 13 页</p>
     </DocExample>
 
     <DocApiTable :rows="apiRows" />
@@ -18,7 +18,7 @@ import { ref } from 'vue'
 const page = ref(3)
 
 const rcCode0 = `<Pagination v-model="page" :total="128" :page-size="10" />
-<p class="mt-3 text-xs text-slate-400">第 {{ page }} / 13 页</p>`
+<p class="mt-3 text-xs text-slate-500 dark:text-slate-400">第 {{ page }} / 13 页</p>`
 
 
 const apiRows = [ { name: 'model-value', type: 'number', default: '1', description: 'v-model 当前页。' },

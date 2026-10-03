@@ -6,17 +6,17 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
         <div v-for="c in swatches" :key="c.name" class="p-3 rounded-lg ring-1 ring-inset ring-black/5" :style="{ backgroundColor: c.hex, color: c.text }">
           <span class="block text-xs font-mono font-semibold">{{ c.name }}</span>
-          <span class="text-[10px] opacity-80 font-mono">{{ c.hex }}</span>
+          <span class="text-[11px] font-mono">{{ c.hex }}</span>
         </div>
       </div>
     </DocExample>
 
     <DocExample title="垂直渐变" description="规范定义的 180° 渐变，用于品牌区、卡片头与英雄背景。" :code="gradientCode">
       <div class="space-y-3">
-        <div class="p-4 rounded-xl bg-gradient-to-b from-[#C8E0FD] via-[#70ACFE] to-[#3069C9] text-white flex items-center justify-between shadow-xs">
+        <div class="p-4 rounded-xl bg-gradient-to-b from-[#C8E0FD] via-[#70ACFE] to-[#3069C9] text-[#0E1726] flex items-center justify-between shadow-xs">
           <div>
             <span class="font-semibold text-xs tracking-tight block">180° Vertical Brand Spectrum</span>
-            <span class="text-[10px] text-white/80 font-mono">0% #C8E0FD → 25% #9BC5FE → 50% #70ACFE → 75% #417BDF → 100% #3069C9</span>
+            <span class="text-[11px] text-[#0E1726]/80 font-mono">0% #C8E0FD → 25% #9BC5FE → 50% #70ACFE → 75% #417BDF → 100% #3069C9</span>
           </div>
           <div class="p-1 rounded bg-white/20 backdrop-blur-xs">
             <BrandLogo :size="24" />
@@ -40,7 +40,7 @@ import { BrandLogo } from '@recloudstudio/ui/icons'
 const swatches = [
   { name: 'brand-50', hex: '#C8E0FD', text: '#0E1726' },
   { name: 'brand-100', hex: '#9BC5FE', text: '#0E1726' },
-  { name: 'brand-200', hex: '#70ACFE', text: '#FFFFFF' },
+  { name: 'brand-200', hex: '#70ACFE', text: '#0E1726' },
   { name: 'brand-300', hex: '#417BDF', text: '#FFFFFF' },
   { name: 'brand-600', hex: '#3069C9', text: '#FFFFFF' },
   { name: 'brand-700', hex: '#1E63CE', text: '#FFFFFF' }

@@ -26,6 +26,9 @@ body {
   line-height: 1.65;
   font-kerning: normal;
   font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4 {
@@ -56,6 +59,11 @@ code, pre, kbd, samp {
 ::selection {
   color: #0f172a;
   background: #bfdbfe;
+}
+
+:where(.dark, [data-theme="dark"]) ::selection {
+  color: #f8fafc;
+  background: rgb(112 172 254 / 0.35);
 }
 
 .no-scrollbar::-webkit-scrollbar {

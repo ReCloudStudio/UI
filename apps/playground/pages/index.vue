@@ -9,7 +9,7 @@
           <BrandLogo :size="40" />
           <Badge variant="outline" color="neutral" size="xs">Nuxt 4 · Vue 3 · Tailwind v4</Badge>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-slate-950 dark:text-white max-w-xl leading-[1.1]">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-950 dark:text-white max-w-xl leading-[1.1]">
           为 ReCloud Studio 控制台而生的组件库
         </h1>
         <p class="text-base text-slate-600 dark:text-slate-300 leading-7 max-w-xl">
@@ -47,7 +47,7 @@
       </div>
 
       <div v-for="group in docGroups.filter((g) => g.label !== '指南')" :key="group.label" class="space-y-3">
-        <h3 class="text-xs font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{{ group.label }}</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">{{ group.label }}</h3>
         <div class="grid gap-3 sm:grid-cols-2">
           <NuxtLink
             v-for="item in group.items"

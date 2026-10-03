@@ -32,7 +32,7 @@
 
         <div class="grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-3">
           <div v-for="group in groups" :key="group.label" class="space-y-2.5">
-            <span class="block text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">{{ group.label }}</span>
+            <span class="block text-xs font-semibold uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">{{ group.label }}</span>
             <ul class="space-y-2">
               <li v-for="link in group.links" :key="link.label">
                 <NuxtLink
@@ -54,12 +54,12 @@
       </div>
 
       <div class="mt-12 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p class="text-xs text-slate-400 dark:text-slate-500">
+        <p class="text-xs text-slate-500 dark:text-slate-400">
           © 2026 ReCloud Studio · 代码以 AGPL-3.0 协议开源
         </p>
         <div class="flex items-center gap-2">
           <Badge variant="subtle" color="primary" size="xs">v0.1.0-alpha</Badge>
-          <span class="text-xs text-slate-400 dark:text-slate-500">Vue 3 · Nuxt 4 · Reka UI · Tailwind v4</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400">Vue 3 · Nuxt 4 · Reka UI · Tailwind v4</span>
         </div>
       </div>
     </div>
