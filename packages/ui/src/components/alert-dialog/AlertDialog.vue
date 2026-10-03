@@ -1,8 +1,8 @@
 <template>
-  <AlertDialogRoot :open="props.open" @update:open="$emit('update:open', $event)">
-    <AlertDialogTrigger as-child>
+  <AlertDialogRoot v-model:open="open">
+    <span class="contents" @click="open = true">
       <slot name="trigger" />
-    </AlertDialogTrigger>
+    </span>
     <AlertDialogPortal>
       <AlertDialogOverlay class="fixed inset-0 z-50 bg-slate-950/45 backdrop-blur-xs data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
       <AlertDialogContent
@@ -37,12 +37,11 @@
 import { computed } from 'vue'
 import {
   AlertDialogRoot, AlertDialogPortal, AlertDialogOverlay, AlertDialogContent,
-  AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction, AlertDialogTrigger
+  AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
 
 export interface AlertDialogProps {
-  open?: boolean
   title?: string
   description?: string
   actionText?: string
@@ -60,9 +59,7 @@ const props = withDefaults(defineProps<AlertDialogProps>(), {
   class: ''
 })
 
-defineEmits<{
-  (e: 'update:open', value: boolean): void
-}>()
+const open = defineModel<boolean>('open', { default: false })
 
 const actionClasses = computed(() => {
   return cn(
