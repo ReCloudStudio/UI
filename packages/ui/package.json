@@ -39,6 +39,7 @@
     "clsx": "^2.1.1",
     "lucide-vue-next": "^1.0.0",
     "reka-ui": "^2.10.5",
+    "shiki": "^4.5.0",
     "tailwind-merge": "^3.0.2"
   },
   "peerDependencies": {

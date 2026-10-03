@@ -17,40 +17,20 @@
         </div>
       </div>
 
-      <div v-if="props.code" class="border-t border-slate-200/80 dark:border-slate-800/80">
-        <div class="flex items-center justify-between gap-2 px-4 py-2">
-          <button
-            type="button"
-            class="flex items-center gap-2 rounded-md px-2 py-1 text-xs font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
-            :aria-expanded="showCode"
-            @click="showCode = !showCode"
-          >
-            <svg class="h-3.5 w-3.5 transition-transform" :class="showCode ? 'rotate-90' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" /></svg>
-            {{ showCode ? '收起代码' : '查看代码' }}
-          </button>
-          <button
-            type="button"
-            class="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors"
-            :aria-label="copied ? '代码已复制' : '复制代码'"
-            @click="copyCode"
-          >
-            <svg v-if="!copied" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-            <svg v-else class="h-3.5 w-3.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" /></svg>
-            {{ copied ? '已复制' : '复制' }}
-          </button>
-        </div>
-        <div v-if="showCode" class="px-4 pb-4 pt-2 overflow-x-auto text-[13px] leading-[1.7] font-mono">
-          <div v-if="codeHtml" v-html="codeHtml" />
-          <pre v-else class="m-0 text-slate-700 dark:text-slate-300"><code>{{ props.code }}</code></pre>
-        </div>
-      </div>
+      <CodeBlock
+        v-if="props.code"
+        v-model:collapsed="codeCollapsed"
+        collapsible
+        :code="props.code"
+        :language="codeLanguage"
+        class="rounded-t-none rounded-b-xl border-x-0 border-b-0 shadow-none"
+      />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { highlightCode, detectLang } from '~/composables/useHighlight'
+import { computed, ref } from 'vue'
 
 export interface DocExampleProps {
   title?: string
@@ -66,25 +46,18 @@ const props = withDefaults(defineProps<DocExampleProps>(), {
   badge: ''
 })
 
-const showCode = ref(false)
-const copied = ref(false)
-const codeHtml = ref('')
+const codeCollapsed = ref(true)
 
-watch(showCode, async (open) => {
-  if (open && props.code && !codeHtml.value) {
-    codeHtml.value = await highlightCode(props.code, detectLang(props.code))
-  }
+/** Infer the snippet language; CodeBlock resolves aliases such as `ts` and `bash`. */
+const codeLanguage = computed(() => {
+  const code = props.code
+  const first = code.trimStart().slice(0, 40)
+  if (/^(# |npm |bun |pnpm |yarn |npx )/.test(first)) return 'bash'
+  if (/^\/\//.test(first) && /defineNuxtConfig|export default/.test(code)) return 'ts'
+  if (/^[{[]/.test(first)) return 'json'
+  return 'vue'
 })
 
-async function copyCode() {
-  try {
-    await navigator.clipboard.writeText(props.code)
-    copied.value = true
-    setTimeout(() => (copied.value = false), 1600)
-  } catch {
-    copied.value = false
-  }
-}
 </script>
 
 <style scoped>

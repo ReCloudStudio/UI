@@ -31,6 +31,7 @@ export const docGroups: DocGroup[] = [
       { name: 'card', title: 'Card 卡片', description: '内容容器与分割线层级。' },
       { name: 'avatar', title: 'Avatar 头像', description: '图像、降级文本与在线状态。' },
       { name: 'kbd', title: 'Kbd 按键提示', description: '快捷键视觉化展示。' },
+      { name: 'code-block', title: 'CodeBlock 代码块', description: '带复制、行号和文件标识的代码展示。' },
       { name: 'spinner', title: 'Spinner 加载', description: '环形加载指示器。' }
     ]
   },

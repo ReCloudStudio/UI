@@ -26,6 +26,7 @@ export default defineConfig({
         "@nuxt/kit",
         "reka-ui",
         "lucide-vue-next",
+        "shiki",
         "tailwind-merge",
         "clsx",
       ],

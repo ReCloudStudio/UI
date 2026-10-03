@@ -65,28 +65,3 @@ code, pre, kbd, samp {
   scrollbar-width: none;
 }
 
-/* Shiki 代码高亮：融入预览卡片，双主题变量切换 */
-pre.shiki {
-  margin: 0;
-  padding: 0.75rem 1rem;
-  border-radius: 0.625rem;
-  background-color: var(--shiki-light-bg, #f8fafc) !important;
-  color: var(--shiki-light) !important;
-  overflow-x: auto;
-}
-pre.shiki code {
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-}
-pre.shiki .line { min-height: 1.5em; }
-/* 深色代码块：用比页面底更亮的藏青 + 内环线，让代码区“浮起来”而非沉底 */
-.dark pre.shiki {
-  background-color: #1E2940 !important;
-  color: var(--shiki-dark, #e6edf3) !important;
-  box-shadow: inset 0 0 0 1px rgb(112 172 254 / 0.14);
-}
-/* 关键：Shiki 双主题时 token 色以内联 style 输出，深色下必须切到 --shiki-dark，否则是浅色主题色叠深底 */
-.dark pre.shiki span {
-  color: var(--shiki-dark) !important;
-}
