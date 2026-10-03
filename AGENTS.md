@@ -18,8 +18,10 @@ This block is written and re-added by `turbo` before repository-scoped commands 
 
 ## Verification
 
-- For a library-only change, run `bun --cwd packages/ui run typecheck`, `bun --cwd packages/ui run test`, and `bun --cwd packages/ui run build`.
-- For component, export, Nuxt-module, or documentation changes, also run `bun --cwd apps/playground run build`.
+- For a library-only change, run `bun run --cwd packages/ui typecheck`, `bun run --cwd packages/ui test`, and `bun run --cwd packages/ui build`.
+- For component, export, Nuxt-module, or documentation changes, also run `bun run --cwd apps/playground build`.
+- Put `--cwd` after `run`. Bun 1.4.2 treats `bun --cwd <dir> run <script>` as `bun run` with no script: it prints usage and exits 0, so the check silently passes without running anything.
+- The Playground build refuses to run while a Nuxt dev server holds `apps/playground/.nuxt`; stop the dev server first.
 - `bun run ci` is the full workspace gate. Biome intentionally excludes `.vue` files, so do not treat a passing root lint as Vue validation.
 
 ## Releases
