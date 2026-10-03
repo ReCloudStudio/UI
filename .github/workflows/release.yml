@@ -49,7 +49,7 @@ jobs:
           bun-version: "1.4.2"
       - run: bun install --frozen-lockfile
       - run: bun run --cwd packages/ui typecheck && bun run --cwd packages/ui build
-      - run: test "v$(node -p \"require('./packages/ui/package.json').version\")" = "$GITHUB_REF_NAME"
+      - run: test "v$(node -p "require('./packages/ui/package.json').version")" = "$GITHUB_REF_NAME"
       - if: matrix.registry.name == 'npm'
         run: npm publish --provenance --access public --registry=${{ matrix.registry.url }}
         working-directory: packages/ui
