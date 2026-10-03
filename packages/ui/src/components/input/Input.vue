@@ -2,7 +2,7 @@
   <Field :id="id" :label="label" :hint="hint" :error="error" :required="required">
     <template #default="field">
     <div :class="inputClasses">
-      <div v-if="$slots.leading" class="pointer-events-none flex shrink-0 items-center text-slate-400 dark:text-slate-500">
+      <div v-if="$slots.leading" class="pointer-events-none flex shrink-0 items-center font-medium text-slate-500 dark:text-slate-400">
         <slot name="leading" />
       </div>
       <input
@@ -20,7 +20,7 @@
         @focus="$emit('focus', $event)"
         @blur="$emit('blur', $event)"
       />
-      <div v-if="$slots.trailing" class="flex shrink-0 items-center text-slate-400 dark:text-slate-500">
+      <div v-if="$slots.trailing" class="flex shrink-0 items-center font-medium text-slate-500 dark:text-slate-400">
         <slot name="trailing" />
       </div>
     </div>

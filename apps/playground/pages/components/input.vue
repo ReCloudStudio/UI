@@ -9,12 +9,12 @@
       </div>
     </DocExample>
 
-    <DocExample title="尺寸与前后缀" description="leading / trailing 插槽嵌入图标与单位。" :code="rcCode1">
+    <DocExample title="尺寸与前后缀" description="leading / trailing 插槽嵌入更醒目的预设前后缀、图标与单位。" :code="rcCode1">
       <div class="grid gap-5 sm:grid-cols-2">
         <Input v-model="s1" size="sm" placeholder="Small" />
         <Input v-model="s2" size="lg" placeholder="Large" />
         <Input v-model="s3" placeholder="gateway.recloud.studio">
-          <template #leading><span class="text-sm">https://</span></template>
+          <template #leading>https://</template>
         </Input>
         <Input v-model="s4" placeholder="搜索节点…" disabled />
       </div>
@@ -44,7 +44,7 @@ const rcCode1 = `<div class="grid gap-5 sm:grid-cols-2">
   <Input v-model="s1" size="sm" placeholder="Small" />
   <Input v-model="s2" size="lg" placeholder="Large" />
   <Input v-model="s3" placeholder="gateway.recloud.studio">
-    <template #leading><span class="text-sm">https://</span></template>
+    <template #leading>https://</template>
   </Input>
   <Input v-model="s4" placeholder="搜索节点…" disabled />
 </div>`
