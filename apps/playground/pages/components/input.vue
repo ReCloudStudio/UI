@@ -14,7 +14,7 @@
         <Input v-model="s1" size="sm" placeholder="Small" />
         <Input v-model="s2" size="lg" placeholder="Large" />
         <Input v-model="s3" placeholder="gateway.recloud.studio">
-          <template #leading><span class="pl-3 text-slate-400 text-sm">https://</span></template>
+          <template #leading><span class="text-sm">https://</span></template>
         </Input>
         <Input v-model="s4" placeholder="搜索节点…" disabled />
       </div>
@@ -44,7 +44,7 @@ const rcCode1 = `<div class="grid gap-5 sm:grid-cols-2">
   <Input v-model="s1" size="sm" placeholder="Small" />
   <Input v-model="s2" size="lg" placeholder="Large" />
   <Input v-model="s3" placeholder="gateway.recloud.studio">
-    <template #leading><span class="pl-3 text-slate-400 text-sm">https://</span></template>
+    <template #leading><span class="text-sm">https://</span></template>
   </Input>
   <Input v-model="s4" placeholder="搜索节点…" disabled />
 </div>`

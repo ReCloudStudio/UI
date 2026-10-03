@@ -2,7 +2,7 @@
   <div class="space-y-10">
     <DocPageHeader title="Rating 评分" description="星级评分，支持只读展示与语义色。" />
 
-    <DocExample title="交互与只读" description="hover 实时预览，点击锁定。" :code="rcCode0">
+    <DocExample title="交互与只读" description="点击任一星级会连续填充此前所有星标，支持方向键调整。" :code="rcCode0">
       <div class="flex items-center gap-6">
         <div class="space-y-1">
           <Rating v-model="val" />

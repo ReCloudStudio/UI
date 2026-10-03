@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-1.5">
-    <div v-if="label || showValue" class="flex items-center justify-between gap-4 text-sm">
+    <div v-if="label || displayMode" class="flex items-center justify-between gap-4 text-sm">
       <span v-if="label" class="font-medium text-slate-700 dark:text-slate-200">{{ label }}</span>
-      <span v-if="showValue" class="tabular-nums text-slate-500 dark:text-slate-400">{{ normalizedValue }}%</span>
+      <span v-if="displayMode" class="tabular-nums text-slate-500 dark:text-slate-400">{{ valueText }}</span>
     </div>
     <div
       :class="cn('relative overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800', sizeClasses, props.class)"
@@ -26,6 +26,7 @@ export interface ProgressProps {
   max?: number
   label?: string
   showValue?: boolean
+  valueDisplay?: 'percentage' | 'fraction' | 'both'
   color?: 'primary' | 'success' | 'warning' | 'error' | 'neutral'
   size?: 'sm' | 'md' | 'lg'
   class?: string
@@ -36,12 +37,19 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   max: 100,
   label: '',
   showValue: false,
+  valueDisplay: undefined,
   color: 'primary',
   size: 'md',
   class: ''
 })
 
 const normalizedValue = computed(() => Math.round(Math.min(Math.max((props.value / props.max) * 100, 0), 100)))
+const displayMode = computed(() => props.valueDisplay ?? (props.showValue ? 'percentage' : undefined))
+const valueText = computed(() => {
+  if (displayMode.value === 'fraction') return `${props.value}/${props.max}`
+  if (displayMode.value === 'both') return `${normalizedValue.value}% (${props.value}/${props.max})`
+  return `${normalizedValue.value}%`
+})
 
 const sizeClasses = computed(() => ({ sm: 'h-1.5', md: 'h-2', lg: 'h-3' }[props.size]))
 const colorClasses = computed(() => ({

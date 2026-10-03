@@ -2,7 +2,7 @@
   <div class="space-y-10">
     <DocPageHeader title="Avatar 头像" description="图像、降级文本与在线状态四态圆点，覆盖团队成员与操作人头像场景。" />
 
-    <DocExample title="尺寸与状态" description="xs 到 xl 五档，online / busy / away / offline 状态点自动带描边。" :code="rcCode0">
+    <DocExample title="尺寸与状态" description="xs 到 xl 五档，状态点位于右上角，浮出头像边界并带描边。" :code="rcCode0">
       <div class="demo-grid">
         <Avatar fallback="RC" size="xs" />
         <Avatar fallback="RC" size="sm" status="online" />
@@ -55,5 +55,5 @@ const rcCode1 = `<div class="flex items-center justify-between gap-4 max-w-sm">
 const apiRows = [ { name: 'src', type: 'string', default: '—', description: '图像地址，加载失败自动降级。' },
   { name: 'fallback', type: 'string', default: '—', description: '降级显示的首字母文本。' },
   { name: 'size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: 'md', description: '直径 24–56px。' },
-  { name: 'status', type: "'online' | 'offline' | 'busy' | 'away'", default: '—', description: '右下角状态圆点。' } ]
+  { name: 'status', type: "'online' | 'offline' | 'busy' | 'away'", default: '—', description: '右上角状态圆点。' } ]
 </script>

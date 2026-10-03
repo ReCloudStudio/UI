@@ -1,39 +1,41 @@
 <template>
-  <RatingRoot
-    v-slot="{ modelValue: rating }"
-    :model-value="modelValue"
-    :length="length"
-    :readonly="readonly"
+  <div
+    role="radiogroup"
+    aria-label="评分"
     class="inline-flex items-center gap-0.5"
     :class="props.class"
-    @update:model-value="$emit('update:modelValue', $event as number)"
   >
-    <RatingItem
+    <button
       v-for="item in items"
-      :key="item.item"
-      :item="item.item"
-      class="relative"
-      :class="props.readonly ? 'cursor-default' : 'cursor-pointer'"
+      :key="item"
+      type="button"
+      role="radio"
+      :aria-checked="item === value"
+      :aria-label="`${item} / ${length}`"
+      :disabled="readonly"
+      class="relative rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 dark:focus-visible:ring-[#70ACFE] dark:focus-visible:ring-offset-[#0F172A]"
+      :class="readonly ? 'cursor-default' : 'cursor-pointer'"
+      @click="setValue(item)"
+      @keydown="handleKeydown($event, item)"
     >
       <span
         class="block text-slate-200 dark:text-slate-700"
         v-html="starSvg"
       />
-      <RatingItemIndicator
-        :step="item.item"
+      <span
+        v-if="item <= value"
         class="absolute inset-0 block overflow-hidden"
         :class="starColorClass"
-        :style="{ width: `${((rating ?? 0) - (item.item - 1)) * 100}%` }"
+        aria-hidden="true"
       >
         <span v-html="starSvg" />
-      </RatingItemIndicator>
-    </RatingItem>
-  </RatingRoot>
+      </span>
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { RatingRoot, RatingItem, RatingItemIndicator } from 'reka-ui'
+import { computed, ref, watch } from 'vue'
 
 export interface RatingProps {
   modelValue?: number
@@ -45,7 +47,7 @@ export interface RatingProps {
 }
 
 const props = withDefaults(defineProps<RatingProps>(), {
-  modelValue: 0,
+  modelValue: undefined,
   length: 5,
   size: 'md',
   color: 'primary',
@@ -53,13 +55,19 @@ const props = withDefaults(defineProps<RatingProps>(), {
   class: ''
 })
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()
 
-const items = computed(() =>
-  Array.from({ length: props.length }, (_, i) => ({ item: i + 1 }))
-)
+const internalValue = ref(0)
+
+watch(() => props.modelValue, (newValue) => {
+  if (newValue !== undefined)
+    internalValue.value = newValue
+}, { immediate: true })
+
+const value = computed(() => Math.min(Math.max(props.modelValue ?? internalValue.value, 0), props.length))
+const items = computed(() => Array.from({ length: props.length }, (_, i) => i + 1))
 
 const starSize = computed(() => (props.size === 'sm' ? 14 : props.size === 'lg' ? 24 : 18))
 
@@ -73,4 +81,40 @@ const starColorClass = computed(() => {
   if (props.color === 'neutral') return 'text-slate-500 dark:text-slate-400'
   return 'text-[#2563EB] dark:text-[#70ACFE]'
 })
+
+function setValue(nextValue: number) {
+  if (props.readonly)
+    return
+
+  internalValue.value = nextValue
+  emit('update:modelValue', nextValue)
+}
+
+function handleKeydown(event: KeyboardEvent, item: number) {
+  if (props.readonly)
+    return
+
+  if (event.key === 'Home') {
+    event.preventDefault()
+    setValue(1)
+    return
+  }
+
+  if (event.key === 'End') {
+    event.preventDefault()
+    setValue(props.length)
+    return
+  }
+
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
+    event.preventDefault()
+    setValue(Math.max(1, item - 1))
+    return
+  }
+
+  if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
+    event.preventDefault()
+    setValue(Math.min(props.length, item + 1))
+  }
+}
 </script>

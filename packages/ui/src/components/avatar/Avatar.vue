@@ -1,14 +1,16 @@
 <template>
   <span :class="avatarClasses">
-    <img
-      v-if="src && !imageFailed"
-      :src="src"
-      :alt="alt"
-      class="h-full w-full object-cover"
-      @error="imageFailed = true"
-    />
-    <slot v-else>{{ fallback }}</slot>
-    <span v-if="status" :class="statusClasses" />
+    <span :class="contentClasses">
+      <img
+        v-if="src && !imageFailed"
+        :src="src"
+        :alt="alt"
+        class="h-full w-full object-cover"
+        @error="imageFailed = true"
+      />
+      <slot v-else>{{ fallback }}</slot>
+    </span>
+    <span v-if="status" :class="statusClasses" aria-hidden="true" />
   </span>
 </template>
 
@@ -41,7 +43,7 @@ watch(() => props.src, () => {
 })
 
 const avatarClasses = computed(() => cn(
-  'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-slate-100 font-semibold text-slate-600 ring-1 ring-inset ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700',
+  'relative inline-flex shrink-0',
   {
     xs: 'h-5 w-5 text-[9px]',
     sm: 'h-7 w-7 text-[10px]',
@@ -52,8 +54,12 @@ const avatarClasses = computed(() => cn(
   props.class
 ))
 
+const contentClasses = computed(() => cn(
+  'flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-slate-100 font-semibold text-slate-600 ring-1 ring-inset ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700'
+))
+
 const statusClasses = computed(() => cn(
-  'absolute bottom-0 right-0 rounded-full bg-slate-400 ring-2 ring-white dark:ring-[#0F172A]',
+  'pointer-events-none absolute right-0 top-0 z-10 translate-x-1/4 -translate-y-1/4 rounded-full bg-slate-400 ring-2 ring-white dark:ring-[#0F172A]',
   {
     xs: 'h-1.5 w-1.5',
     sm: 'h-2 w-2',

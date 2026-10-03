@@ -1,8 +1,8 @@
 <template>
   <Field :id="id" :label="label" :hint="hint" :error="error" :required="required">
     <template #default="field">
-    <div class="relative flex items-center">
-      <div v-if="$slots.leading" class="absolute left-3 text-slate-400 dark:text-slate-500 pointer-events-none flex items-center">
+    <div :class="inputClasses">
+      <div v-if="$slots.leading" class="pointer-events-none flex shrink-0 items-center text-slate-400 dark:text-slate-500">
         <slot name="leading" />
       </div>
       <input
@@ -15,12 +15,12 @@
         :id="field.id"
         :aria-describedby="field.describedby"
         :aria-invalid="field.invalid || undefined"
-        :class="inputClasses"
+        :class="controlClasses"
         @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         @focus="$emit('focus', $event)"
         @blur="$emit('blur', $event)"
       />
-      <div v-if="$slots.trailing" class="absolute right-3 text-slate-400 dark:text-slate-500 flex items-center">
+      <div v-if="$slots.trailing" class="flex shrink-0 items-center text-slate-400 dark:text-slate-500">
         <slot name="trailing" />
       </div>
     </div>
@@ -72,21 +72,23 @@ defineEmits<{
 const slots = useSlots()
 
 const sizeClasses: Record<NonNullable<InputProps['size']>, string> = {
-  sm: 'h-9 text-sm px-3',
-  md: 'h-10 text-sm px-3.5',
-  lg: 'h-11 text-base px-4'
+  sm: 'h-9 px-3 text-sm',
+  md: 'h-10 px-3.5 text-sm',
+  lg: 'h-11 px-4 text-base'
 }
 
 const inputClasses = computed(() => {
   return cn(
-    'w-full rounded-lg bg-white dark:bg-[#0F172A] text-slate-900 dark:text-slate-100 transition-all duration-150 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900/60 ring-1 ring-inset shadow-xs',
+    'flex w-full items-center gap-2 rounded-lg bg-white text-slate-900 shadow-xs ring-1 ring-inset transition-all duration-150 focus-within:ring-2 dark:bg-[#0F172A] dark:text-slate-100 disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900/60',
     sizeClasses[props.size],
-    slots.leading ? 'pl-9' : '',
-    slots.trailing ? 'pr-9' : '',
     props.error
-      ? 'ring-red-500 focus:ring-2 focus:ring-red-500'
-      : 'ring-slate-300 dark:ring-slate-700 focus:ring-2 focus:ring-[#2563EB] dark:focus:ring-[#70ACFE]',
+      ? 'ring-red-500 focus-within:ring-red-500'
+      : 'ring-slate-300 focus-within:ring-[#2563EB] dark:ring-slate-700 dark:focus-within:ring-[#70ACFE]',
     props.class
   )
 })
+
+const controlClasses = computed(() => cn(
+  'min-w-0 flex-1 bg-transparent outline-none placeholder:text-slate-400 disabled:cursor-not-allowed dark:placeholder:text-slate-500'
+))
 </script>
