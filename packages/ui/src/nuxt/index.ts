@@ -13,7 +13,7 @@ const module: NuxtModule<ModuleOptions> = defineNuxtModule<ModuleOptions>({
       }
     },
     defaults: {
-      prefix: 'Rc',
+      prefix: 'Re',
       injectTheme: true
     },
     setup(options, nuxt) {

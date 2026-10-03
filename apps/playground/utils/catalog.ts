@@ -39,6 +39,7 @@ export const docGroups: DocGroup[] = [
     items: [
       { name: 'field', title: 'Field / Form 表单布局', description: '统一关联标签、说明、错误信息与表单间距。' },
       { name: 'input', title: 'Input 输入框', description: '带标签、提示与错误态的文本输入。' },
+      { name: 'tag-input', title: 'TagInput 标签输入', description: '可添加、删除与粘贴多个标签。' },
       { name: 'textarea', title: 'Textarea 文本域', description: '多行文本输入。' },
       { name: 'select', title: 'Select 选择器', description: '无障碍下拉选择。' },
       { name: 'checkbox', title: 'Checkbox 复选框', description: '布尔开关复选项。' },
