@@ -1,5 +1,5 @@
 ---
-'@recloudstudio/ui': patch
+"@recloudstudio/ui": patch
 ---
 
 Improve Input prefix and suffix contrast.
