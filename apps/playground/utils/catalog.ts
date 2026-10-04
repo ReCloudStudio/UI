@@ -66,7 +66,8 @@ const groups: DocGroup[] = [
       { name: 'skeleton', title: 'Skeleton 骨架屏', description: '加载占位。' },
       { name: 'empty-state', title: 'EmptyState 空状态', description: '空数据页面引导。' },
       { name: 'file-upload', title: 'FileUpload 文件上传', description: '拖放、校验、进度与失败重试。' },
-      { name: 'separator', title: 'Separator 分隔线', description: '水平与垂直分隔。' }
+      { name: 'separator', title: 'Separator 分隔线', description: '水平与垂直分隔。' },
+      { name: 'timeline', title: 'Timeline 时间线', description: '操作日志与变更历史。' }
     ]
   },
   {
