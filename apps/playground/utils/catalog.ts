@@ -9,7 +9,7 @@ export interface DocGroup {
   items: DocItem[]
 }
 
-export const docGroups: DocGroup[] = [
+const groups: DocGroup[] = [
   {
     label: '指南',
     items: [
@@ -111,6 +111,12 @@ export const docGroups: DocGroup[] = [
     ]
   }
 ]
+
+/** Component entries are presented alphabetically within each sidebar group. */
+export const docGroups: DocGroup[] = groups.map((group) => ({
+  ...group,
+  items: [...group.items].sort((a, b) => a.title.localeCompare(b.title, 'en'))
+}))
 
 export const flatDocs = docGroups.flatMap((g) => g.items.map((i) => ({ ...i, group: g.label })))
 
