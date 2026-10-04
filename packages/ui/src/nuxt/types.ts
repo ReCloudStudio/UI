@@ -10,9 +10,17 @@ export interface ModuleOptions {
    * @default true
    */
   injectTheme?: boolean
+
+  /** Storage key shared by the SSR initialization script and `useTheme`. */
+  themeStorageKey?: string
+
+  /** Apply saved theme attributes before Vue hydrates to prevent a color-mode flash. */
+  injectThemeScript?: boolean
 }
 
 export const defaultOptions: ModuleOptions = {
   prefix: 'Re',
-  injectTheme: true
+  injectTheme: true,
+  themeStorageKey: 'recloud-theme',
+  injectThemeScript: true
 }

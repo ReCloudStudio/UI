@@ -1,186 +1,190 @@
+/* ReCloud design tokens: primitives → semantics → component aliases. */
 :root {
-  /* ReCloud Studio 品牌蓝主调 (50-950) */
-  --color-primary-50: #EFF6FF;
-  --color-primary-100: #DBEAFE;
-  --color-primary-200: #BFDBFE;
-  --color-primary-300: #93C5FD;
-  --color-primary-400: #60A5FA;
-  --color-primary-500: #3B82F6;
-  --color-primary-600: #2563EB;
-  --color-primary-700: #1D4ED8;
-  --color-primary-800: #1E40AF;
-  --color-primary-900: #1E3A8A;
-  --color-primary-950: #172554;
+  /* Primitive color scales */
+  --rc-blue-50: #eff6ff;
+  --rc-blue-100: #dbeafe;
+  --rc-blue-200: #bfdbfe;
+  --rc-blue-300: #93c5fd;
+  --rc-blue-400: #60a5fa;
+  --rc-blue-500: #3b82f6;
+  --rc-blue-600: #2563eb;
+  --rc-blue-700: #1d4ed8;
+  --rc-blue-800: #1e40af;
+  --rc-blue-900: #1e3a8a;
+  --rc-blue-950: #172554;
 
-  /* 品牌规范对应档位 */
-  --brand-50: #C8E0FD;
-  --brand-100: #9BC5FE;
-  --brand-200: #70ACFE;
-  --brand-300: #417BDF;
-  --brand-600: #3069C9;
-  --brand-700: #1E63CE;
+  --rc-radius-none: 0;
+  --rc-radius-sm: 0.375rem;
+  --rc-radius-md: 0.5rem;
+  --rc-radius-lg: 0.75rem;
+  --rc-shadow-none: none;
+  --rc-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06), 0 1px 1px rgb(15 23 42 / 0.04);
+  --rc-shadow-md: 0 4px 10px rgb(15 23 42 / 0.10), 0 2px 4px rgb(15 23 42 / 0.05);
+  --rc-shadow-lg: 0 16px 32px rgb(15 23 42 / 0.14), 0 6px 12px rgb(15 23 42 / 0.08);
 
-  /* 垂直单调蓝渐变规范 (严格自顶向下 180deg) */
-  --brand-gradient: linear-gradient(180deg, #C8E0FD 0%, #9BC5FE 25%, #70ACFE 50%, #417BDF 75%, #3069C9 100%);
-  --brand-gradient-compact: linear-gradient(180deg, #C8E0FD 0%, #3069C9 100%);
-  --brand-gradient-card: linear-gradient(180deg, #70ACFE 0%, #3069C9 100%);
-  --brand-gradient-button: linear-gradient(180deg, #417BDF 0%, #1E63CE 100%);
+  /* Semantic tokens */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --surface-muted: #f8fafc;
+  --surface-elevated: #f1f5f9;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --border-muted: #f1f5f9;
+  --primary: var(--rc-blue-600);
+  --primary-hover: var(--rc-blue-700);
+  --primary-foreground: #ffffff;
+  --ring: var(--rc-blue-600);
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --info: var(--rc-blue-600);
 
-  /* Nuxt UI 语义背景与层级 (浅色模式) */
-  --ui-bg: #FFFFFF;
-  --ui-bg-muted: #F8FAFC;
-  --ui-bg-elevated: #F1F5F9;
-  --ui-bg-accented: #E2E8F0;
-  --ui-bg-inverted: #0F172A;
+  --radius-sm: var(--rc-radius-sm);
+  --radius-md: var(--rc-radius-md);
+  --radius-lg: var(--rc-radius-lg);
+  --shadow-xs: var(--rc-shadow-sm);
+  --shadow-sm: var(--rc-shadow-sm);
+  --shadow-md: var(--rc-shadow-md);
+  --shadow-lg: var(--rc-shadow-lg);
+  --shadow-xl: var(--rc-shadow-lg);
 
-  /* Nuxt UI 语义文字体系 */
-  --ui-text-highlighted: #0F172A;
+  /* Brand tokens are emphasis-only: use in primary actions and hero surfaces. */
+  --brand-50: #c8e0fd;
+  --brand-100: #9bc5fe;
+  --brand-200: #70acfe;
+  --brand-300: #417bdf;
+  --brand-600: #3069c9;
+  --brand-700: #1e63ce;
+  --brand-gradient: linear-gradient(180deg, var(--brand-50) 0%, var(--brand-100) 25%, var(--brand-200) 50%, var(--brand-300) 75%, var(--brand-600) 100%);
+  --brand-gradient-compact: linear-gradient(180deg, var(--brand-50), var(--brand-600));
+  --brand-gradient-card: linear-gradient(180deg, var(--brand-200), var(--brand-600));
+
+  /* Legacy aliases */
+  --ui-bg: var(--background);
+  --ui-bg-muted: var(--surface-muted);
+  --ui-bg-elevated: var(--surface-elevated);
+  --ui-bg-accented: #e2e8f0;
+  --ui-bg-inverted: var(--foreground);
+  --ui-text-highlighted: var(--foreground);
   --ui-text: #334155;
-  --ui-text-muted: #64748B;
-  --ui-text-dimmed: #94A3B8;
-  --ui-text-inverted: #FFFFFF;
-
-  /* Nuxt UI 语义边框与环线 */
-  --ui-border: #E2E8F0;
-  --ui-border-muted: #F1F5F9;
-  --ui-border-accented: #CBD5E1;
+  --ui-text-muted: var(--muted-foreground);
+  --ui-text-dimmed: #94a3b8;
+  --ui-text-inverted: var(--primary-foreground);
+  --ui-border: var(--border);
+  --ui-border-muted: var(--border-muted);
+  --ui-border-accented: #cbd5e1;
   --ui-border-inverted: #334155;
-
-  /* 焦点外发光环 */
-  --ui-ring: #3069C9;
-
-  /* 语义状态色 */
-  --ui-success: #10B981;
-  --ui-warning: #F59E0B;
-  --ui-error: #EF4444;
-  --ui-info: #3069C9;
-
-  /* 兼容旧别名 */
-  --surface: var(--ui-bg);
-  --surface-soft: var(--ui-bg-muted);
-  --surface-raised: var(--ui-bg-elevated);
-  --ink: var(--ui-text-highlighted);
+  --ui-ring: var(--ring);
+  --ui-success: var(--success);
+  --ui-warning: var(--warning);
+  --ui-error: var(--destructive);
+  --ui-info: var(--info);
+  --surface: var(--background);
+  --surface-soft: var(--surface-muted);
+  --surface-raised: var(--surface-elevated);
+  --ink: var(--foreground);
   --text: var(--ui-text);
-  --text-muted: var(--ui-text-muted);
-  --border: var(--ui-border);
-  --border-subtle: var(--ui-border-muted);
-  --ring: var(--ui-ring);
-
-  /* 精致内阴影与外阴影 */
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --text-muted: var(--muted-foreground);
+  --border-subtle: var(--border-muted);
 }
 
-/* Nuxt UI 语义背景与层级 (暗色模式) */
-.dark,
-[data-theme="dark"] {
-  --ui-bg: #090E17;
-  --ui-bg-muted: #0F172A;
-  --ui-bg-elevated: #1E293B;
+[data-theme='dark'] {
+  --background: #090e17;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --surface-muted: #0f172a;
+  --surface-elevated: #1e293b;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
+  --border-muted: #141e30;
+  --primary: #70acfe;
+  --primary-hover: #9bc5fe;
+  --primary-foreground: #0f172a;
+  --ring: #70acfe;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --destructive: #f87171;
+  --info: #70acfe;
   --ui-bg-accented: #334155;
-  --ui-bg-inverted: #FFFFFF;
-
-  --ui-text-highlighted: #F8FAFC;
-  --ui-text: #E2E8F0;
-  --ui-text-muted: #94A3B8;
-  --ui-text-dimmed: #64748B;
-  --ui-text-inverted: #0F172A;
-
-  --ui-border: #1E293B;
-  --ui-border-muted: #141E30;
   --ui-border-accented: #334155;
-  --ui-border-inverted: #CBD5E1;
-
-  --ui-ring: #70ACFE;
-
-  /* 兼容旧别名 */
-  --surface: var(--ui-bg);
-  --surface-soft: var(--ui-bg-muted);
-  --surface-raised: var(--ui-bg-elevated);
-  --ink: var(--ui-text-highlighted);
+  --ui-border-inverted: #cbd5e1;
+  --ui-text: #e2e8f0;
+  --ui-text-dimmed: #64748b;
+  --surface: var(--background);
+  --surface-soft: var(--surface-muted);
+  --surface-raised: var(--surface-elevated);
+  --ink: var(--foreground);
   --text: var(--ui-text);
-  --text-muted: var(--ui-text-muted);
-  --border: var(--ui-border);
-  --border-subtle: var(--ui-border-muted);
-  --ring: var(--ui-ring);
-
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.5);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.6), 0 1px 2px -1px rgb(0 0 0 / 0.6);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.6), 0 2px 4px -2px rgb(0 0 0 / 0.6);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.7), 0 4px 6px -4px rgb(0 0 0 / 0.7);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.8), 0 8px 10px -6px rgb(0 0 0 / 0.8);
+  --text-muted: var(--muted-foreground);
+  --border-subtle: var(--border-muted);
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.45);
+  --shadow-sm: 0 2px 5px rgb(0 0 0 / 0.45);
+  --shadow-md: 0 8px 18px rgb(0 0 0 / 0.48);
+  --shadow-lg: 0 20px 38px rgb(0 0 0 / 0.55);
+  --shadow-xl: var(--shadow-lg);
 }
+
+/* Palette values only override semantics; component APIs remain stable. */
+[data-theme-palette='ocean'] { --primary: #0284c7; --primary-hover: #0369a1; --ring: #0284c7; --info: #0284c7; }
+[data-theme-palette='violet'] { --primary: #7c3aed; --primary-hover: #6d28d9; --ring: #7c3aed; --info: #7c3aed; }
+[data-theme-palette='slate'] { --primary: #334155; --primary-hover: #1e293b; --ring: #475569; --info: #475569; }
+[data-theme='dark'][data-theme-palette='ocean'] { --primary: #38bdf8; --primary-hover: #7dd3fc; --ring: #38bdf8; --info: #38bdf8; }
+[data-theme='dark'][data-theme-palette='violet'] { --primary: #a78bfa; --primary-hover: #c4b5fd; --ring: #a78bfa; --info: #a78bfa; }
+[data-theme='dark'][data-theme-palette='slate'] { --primary: #cbd5e1; --primary-hover: #e2e8f0; --ring: #cbd5e1; --info: #cbd5e1; }
+
+[data-theme-density='compact'] { --rc-control-height: 2rem; --rc-space-scale: 0.875; }
+[data-theme-density='comfortable'] { --rc-control-height: 2.5rem; --rc-space-scale: 1; }
+[data-theme-density='spacious'] { --rc-control-height: 2.75rem; --rc-space-scale: 1.125; }
+[data-theme-radius='none'] { --radius-sm: var(--rc-radius-none); --radius-md: var(--rc-radius-none); --radius-lg: var(--rc-radius-none); }
+[data-theme-radius='sm'] { --radius-sm: 0.25rem; --radius-md: var(--rc-radius-sm); --radius-lg: var(--rc-radius-md); }
+[data-theme-radius='lg'] { --radius-sm: var(--rc-radius-md); --radius-md: var(--rc-radius-lg); --radius-lg: 1rem; }
+[data-theme-shadow='none'] { --shadow-xs: none; --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-xl: none; }
+[data-theme-shadow='md'] { --shadow-xs: var(--rc-shadow-md); --shadow-sm: var(--rc-shadow-md); --shadow-md: var(--rc-shadow-md); --shadow-lg: var(--rc-shadow-lg); --shadow-xl: var(--rc-shadow-lg); }
+[data-theme-shadow='lg'] { --shadow-xs: var(--rc-shadow-lg); --shadow-sm: var(--rc-shadow-lg); --shadow-md: var(--rc-shadow-lg); --shadow-lg: var(--rc-shadow-lg); --shadow-xl: var(--rc-shadow-lg); }
 
 @theme {
-  /* ReCloud 品牌字体栈：西文 Plus Jakarta Sans（需应用侧自托管 @fontsource 或等效），中文走原生 CJK 回退，代码 JetBrains Mono */
-  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Sarasa Gothic CL', 'Noto Sans CJK SC', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Sarasa Mono CL', 'Maple Mono NF CN', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
-
-  --color-primary-50: var(--color-primary-50);
-  --color-primary-100: var(--color-primary-100);
-  --color-primary-200: var(--color-primary-200);
-  --color-primary-300: var(--color-primary-300);
-  --color-primary-400: var(--color-primary-400);
-  --color-primary-500: var(--color-primary-500);
-  --color-primary-600: var(--color-primary-600);
-  --color-primary-700: var(--color-primary-700);
-  --color-primary-800: var(--color-primary-800);
-  --color-primary-900: var(--color-primary-900);
-  --color-primary-950: var(--color-primary-950);
-
-  --color-brand-50: var(--brand-50);
-  --color-brand-100: var(--brand-100);
-  --color-brand-200: var(--brand-200);
-  --color-brand-300: var(--brand-300);
-  --color-brand-600: var(--brand-600);
-  --color-brand-700: var(--brand-700);
-
-  --color-ui-bg: var(--ui-bg);
-  --color-ui-bg-muted: var(--ui-bg-muted);
-  --color-ui-bg-elevated: var(--ui-bg-elevated);
-  --color-ui-bg-accented: var(--ui-bg-accented);
-  --color-ui-bg-inverted: var(--ui-bg-inverted);
-
-  --color-ui-text-highlighted: var(--ui-text-highlighted);
-  --color-ui-text: var(--ui-text);
-  --color-ui-text-muted: var(--ui-text-muted);
-  --color-ui-text-dimmed: var(--ui-text-dimmed);
-  --color-ui-text-inverted: var(--ui-text-inverted);
-
-  --color-ui-border: var(--ui-border);
-  --color-ui-border-muted: var(--ui-border-muted);
-  --color-ui-border-accented: var(--ui-border-accented);
-  --color-ui-border-inverted: var(--ui-border-inverted);
-
-  --color-ui-ring: var(--ui-ring);
-  --color-ui-success: var(--ui-success);
-  --color-ui-warning: var(--ui-warning);
-  --color-ui-error: var(--ui-error);
-  --color-ui-info: var(--ui-info);
-
-  /* 兼容旧 token */
-  --color-surface: var(--surface);
-  --color-surface-soft: var(--surface-soft);
-  --color-surface-raised: var(--surface-raised);
-  --color-ink: var(--ink);
-  --color-text: var(--text);
-  --color-text-muted: var(--text-muted);
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Sarasa Mono CL', 'Maple Mono NF CN', 'Noto Sans Mono CJK SC', ui-monospace, monospace;
+  --color-primary-50: var(--rc-blue-50);
+  --color-primary-100: var(--rc-blue-100);
+  --color-primary-200: var(--rc-blue-200);
+  --color-primary-300: var(--rc-blue-300);
+  --color-primary-400: var(--rc-blue-400);
+  --color-primary-500: var(--primary);
+  --color-primary-600: var(--primary);
+  --color-primary-700: var(--primary-hover);
+  --color-ui-bg: var(--background);
+  --color-ui-bg-muted: var(--surface-muted);
+  --color-ui-bg-elevated: var(--surface-elevated);
+  --color-surface: var(--background);
+  --color-surface-soft: var(--surface-muted);
+  --color-surface-raised: var(--surface-elevated);
+  --color-ink: var(--foreground);
+  --color-text: var(--ui-text);
+  --color-text-muted: var(--muted-foreground);
   --color-border: var(--border);
-  --color-border-subtle: var(--border-subtle);
-  --color-ring: var(--ring);
+  --color-border-subtle: var(--border-muted);
+  --color-ui-text-highlighted: var(--foreground);
+  --color-ui-text: var(--ui-text);
+  --color-ui-text-muted: var(--muted-foreground);
+  --color-ui-border: var(--border);
+  --color-ui-ring: var(--ring);
+  --color-ui-success: var(--success);
+  --color-ui-warning: var(--warning);
+  --color-ui-error: var(--destructive);
 }
 
-.rc-gradient-vertical {
-  background-image: var(--brand-gradient);
-}
-
-.rc-gradient-compact {
-  background-image: var(--brand-gradient-compact);
-}
-
-.rc-gradient-card {
-  background-image: var(--brand-gradient-card);
-}
+:where(html) { font-family: var(--font-sans); }
+:where(code, kbd, pre, samp) { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+:where(.rc-tabular-nums, table, [data-numeric]) { font-variant-numeric: tabular-nums; }
+.rc-gradient-vertical { background-image: var(--brand-gradient); }
+.rc-gradient-compact { background-image: var(--brand-gradient-compact); }
+.rc-gradient-card { background-image: var(--brand-gradient-card); }
