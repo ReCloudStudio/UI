@@ -13,6 +13,7 @@ export interface FooterColumn {
 export interface FooterSocial {
   name: string
   href: string
+  /** Built-in icon name: github, discord, twitter, or x. Unknown values render the name text. */
   icon?: string
 }
 

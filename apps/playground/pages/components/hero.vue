@@ -87,6 +87,8 @@ const apiRows = [
   { name: 'slot: description', type: 'slot', default: '—', description: '自定义介绍副标题。' },
   { name: 'slot: badge', type: 'slot', default: '—', description: '自定义顶部徽标。' },
   { name: 'slot: actions', type: 'slot', default: '—', description: '自定义全部 CTA 按钮组。' },
+  { name: 'slot: primary-action', type: 'slot', default: '—', description: '自定义主要 CTA；提供时覆盖默认主要按钮。' },
+  { name: 'slot: secondary-action', type: 'slot', default: '—', description: '自定义次要 CTA；提供时覆盖默认次要按钮。' },
   { name: 'slot: media', type: 'slot', default: '—', description: '产品交互或媒体预览插槽。' }
 ]
 

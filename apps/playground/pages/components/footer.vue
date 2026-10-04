@@ -46,9 +46,9 @@ const sampleColumns = [
 ]
 
 const sampleSocials = [
-  { name: 'GitHub', href: 'https://github.com/ReCloudStudio/UI' },
-  { name: 'Discord', href: '#' },
-  { name: 'X / Twitter', href: '#' }
+  { name: 'GitHub', href: 'https://github.com/ReCloudStudio/UI', icon: 'github' },
+  { name: 'Discord', href: '#', icon: 'discord' },
+  { name: 'X / Twitter', href: '#', icon: 'x' }
 ]
 
 const codeBasic = `<Footer
@@ -62,8 +62,8 @@ const apiRows = [
   { name: 'brandTitle', type: 'string', default: "''", description: '品牌名称。' },
   { name: 'brandDescription', type: 'string', default: "''", description: '品牌描述正文。' },
   { name: 'columns', type: 'FooterColumn[]', default: '[]', description: '导航列配置数组：title、links（label、href?、to?、target?）。' },
-  { name: 'copyright', type: 'string', default: '依当前年份自动生成', description: '底部版权文案。' },
-  { name: 'socials', type: 'FooterSocial[]', default: '[]', description: '社交媒体链接数组：name、href、icon?。' },
+  { name: 'copyright', type: 'string', default: "'© ReCloud Studio. All rights reserved.'", description: '底部版权文案；默认值为固定文本以确保 SSR hydration 一致。' },
+  { name: 'socials', type: 'FooterSocial[]', default: '[]', description: '社交媒体链接数组：name、href、icon?。内置图标支持 github、discord、twitter 与 x（不区分大小写）；未知值回退为名称文本。使用 #socials 可完全自定义。' },
   { name: 'bordered', type: 'boolean', default: 'true', description: '是否展示顶部边框。' },
   { name: 'slot: logo', type: 'slot', default: '—', description: '自定义品牌 Logo。' },
   { name: 'slot: brand', type: 'slot', default: '—', description: '自定义品牌名称。' },

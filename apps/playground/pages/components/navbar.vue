@@ -54,6 +54,7 @@ const apiRows = [
   { name: 'slot: logo', type: 'slot', default: '—', description: '自定义品牌 Logo 图标。' },
   { name: 'slot: brand', type: 'slot', default: '—', description: '自定义品牌标题区域。' },
   { name: 'slot: links', type: 'slot', default: '—', description: '自定义桌面端链接。' },
+  { name: 'slot: mobile-links', type: 'slot', default: '—', description: '自定义移动端抽屉内的导航内容；桌面端 #links 不会自动复用至移动端。' },
   { name: 'slot: actions', type: 'slot', default: '—', description: '右侧 CTA 操作按钮组。' },
   { name: 'slot: extra', type: 'slot', default: '—', description: '右侧辅助组件（如主题切换、搜索）。' }
 ]
