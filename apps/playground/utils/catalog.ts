@@ -53,7 +53,8 @@ export const docGroups: DocGroup[] = [
       { name: 'pin-input', title: 'PinInput 验证码', description: 'OTP 分段输入。' },
       { name: 'editable', title: 'Editable 行内编辑', description: '点击即改的文本。' },
       { name: 'toggle', title: 'Toggle / ToggleGroup', description: '按压态工具按钮与分组。' },
-      { name: 'label', title: 'Label 标签', description: '表单控件关联标签。' }
+      { name: 'label', title: 'Label 标签', description: '表单控件关联标签。' },
+      { name: 'date-picker', title: 'DatePicker 日期选择', description: '单日期与日期范围筛选。' }
     ]
   },
   {
@@ -74,7 +75,10 @@ export const docGroups: DocGroup[] = [
       { name: 'breadcrumb', title: 'Breadcrumb 面包屑', description: '层级路径导航。' },
       { name: 'stepper', title: 'Stepper 步骤条', description: '多步流程进度。' },
       { name: 'navigation-menu', title: 'NavigationMenu 导航菜单', description: '悬停展开的顶部导航。' },
-      { name: 'toolbar', title: 'Toolbar 工具条', description: '编辑器式按钮组。' }
+      { name: 'toolbar', title: 'Toolbar 工具条', description: '编辑器式按钮组。' },
+      { name: 'command-palette', title: 'CommandPalette 命令面板', description: '面向开发者工具的全局命令与导航入口。' },
+      { name: 'app-shell', title: 'AppShell 应用布局', description: '控制台的侧栏、顶栏与主内容骨架。' },
+      { name: 'resizable-panel', title: 'ResizablePanel 可调面板', description: '可拖拽、可键盘调整的工作区分栏。' }
     ]
   },
   {
@@ -94,7 +98,8 @@ export const docGroups: DocGroup[] = [
       { name: 'tooltip', title: 'Tooltip 文字提示', description: '悬停即时提示。' },
       { name: 'popover', title: 'Popover 浮层', description: '轻量内容弹层。' },
       { name: 'hover-card', title: 'HoverCard 悬停卡片', description: '预览用户信息卡。' },
-      { name: 'toast', title: 'Toast 吐司提示', description: '全局操作反馈队列。' }
+      { name: 'toast', title: 'Toast 吐司提示', description: '全局操作反馈队列。' },
+      { name: 'sheet', title: 'Sheet 抽屉面板', description: '资源详情、配置与辅助操作面板。' }
     ]
   },
   {

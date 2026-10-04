@@ -49,6 +49,11 @@ export * from './components/aspect-ratio'
 export * from './components/toolbar'
 export * from './components/visually-hidden'
 export * from './components/navigation-menu'
+export * from './components/command-palette'
+export * from './components/sheet'
+export * from './components/date-picker'
+export * from './components/app-shell'
+export * from './components/resizable-panel'
 
 // Composables & Utilities
 export * from './composables/useTheme'
