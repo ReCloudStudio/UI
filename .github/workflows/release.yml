@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: "1.4.2"
@@ -40,6 +42,8 @@ jobs:
             url: https://npm.pkg.github.com
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -48,7 +52,7 @@ jobs:
         with:
           bun-version: "1.4.2"
       - run: bun install --frozen-lockfile
-      - run: bun run --cwd packages/ui typecheck && bun run --cwd packages/ui build
+      - run: bun run --cwd packages/ui typecheck && bun run --cwd packages/ui test && bun run --cwd packages/ui build
       - run: test "v$(node -p "require('./packages/ui/package.json').version")" = "$GITHUB_REF_NAME"
       # 重新推送同一 tag 时，跳过已发布过该版本的注册表，只补发失败的那一个
       - id: published
@@ -64,6 +68,8 @@ jobs:
       - if: matrix.registry.name == 'npm' && steps.published.outputs.exists != 'true'
         run: npm publish --provenance --access public --registry=${{ matrix.registry.url }}
         working-directory: packages/ui
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - if: matrix.registry.name == 'github' && steps.published.outputs.exists != 'true'
         run: npm publish --registry=${{ matrix.registry.url }}
         working-directory: packages/ui

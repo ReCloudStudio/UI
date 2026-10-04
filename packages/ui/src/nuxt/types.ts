@@ -1,7 +1,7 @@
 export interface ModuleOptions {
   /**
-   * Prefix for components (e.g. 'Rc' -> <RcButton />)
-   * @default 'Rc'
+   * Prefix for components (e.g. 'Re' -> <ReButton />)
+   * @default 'Re'
    */
   prefix?: string
 
@@ -13,6 +13,6 @@ export interface ModuleOptions {
 }
 
 export const defaultOptions: ModuleOptions = {
-  prefix: 'Rc',
+  prefix: 'Re',
   injectTheme: true
 }

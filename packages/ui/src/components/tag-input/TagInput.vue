@@ -165,6 +165,7 @@ function onInput(event: Event) {
 }
 
 function onKeydown(event: KeyboardEvent) {
+  if (event.isComposing || event.keyCode === 229) return
   if (event.key === 'Enter') {
     event.preventDefault()
     commitMany([draft.value])

@@ -30,7 +30,7 @@
         </tr>
       </tbody>
     </table>
-    <div v-if="props.rows.length === 0" class="px-4 py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+    <div v-if="!props.rows || props.rows.length === 0" class="px-4 py-10 text-center text-sm text-slate-500 dark:text-slate-400">
       {{ props.emptyText }}
     </div>
   </div>
@@ -48,8 +48,8 @@ export interface DataTableColumn {
 }
 
 export interface DataTableProps {
-  columns: DataTableColumn[]
-  rows: Record<string, any>[]
+  columns?: DataTableColumn[]
+  rows?: Record<string, any>[]
   hoverable?: boolean
   divide?: boolean
   emptyText?: string
@@ -57,6 +57,8 @@ export interface DataTableProps {
 }
 
 const props = withDefaults(defineProps<DataTableProps>(), {
+  columns: () => [],
+  rows: () => [],
   hoverable: true,
   divide: true,
   emptyText: '暂无数据',

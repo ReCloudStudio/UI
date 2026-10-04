@@ -3,6 +3,7 @@ dist/
 .turbo/
 .nuxt/
 .output/
+.vitest/
 *.log
 .DS_Store
 .direnv/

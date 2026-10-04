@@ -56,6 +56,9 @@
   "peerDependenciesMeta": {
     "@nuxt/kit": {
       "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
     }
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
 <template>
-  <DialogRoot :open="open" @update:open="$emit('update:open', $event)">
-    <slot name="trigger" />
+  <DialogRoot :open="props.open" @update:open="$emit('update:open', $event)">
+    <DialogTrigger as-child v-if="$slots.trigger">
+      <slot name="trigger" />
+    </DialogTrigger>
     <DialogPortal>
       <DialogOverlay class="fixed inset-0 z-50 bg-slate-950/40 backdrop-blur-xs data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
       <DialogContent :class="contentClasses">
@@ -42,7 +44,8 @@ import {
   DialogContent,
   DialogTitle,
   DialogDescription,
-  DialogClose
+  DialogClose,
+  DialogTrigger
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
 
@@ -54,7 +57,7 @@ export interface DialogProps {
 }
 
 const props = withDefaults(defineProps<DialogProps>(), {
-  open: false,
+  open: undefined,
   title: '',
   description: '',
   class: ''
