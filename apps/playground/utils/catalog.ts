@@ -64,6 +64,7 @@ const groups: DocGroup[] = [
       { name: 'progress', title: 'Progress 进度条', description: '任务进度与百分比。' },
       { name: 'skeleton', title: 'Skeleton 骨架屏', description: '加载占位。' },
       { name: 'empty-state', title: 'EmptyState 空状态', description: '空数据页面引导。' },
+      { name: 'file-upload', title: 'FileUpload 文件上传', description: '拖放、校验、进度与失败重试。' },
       { name: 'separator', title: 'Separator 分隔线', description: '水平与垂直分隔。' }
     ]
   },
