@@ -94,6 +94,14 @@ export interface LocaleMessages {
     confirm: string
     cancel: string
   }
+  docs: {
+    toc: string
+    prev: string
+    next: string
+    copyLink: string
+    copiedLink: string
+    searchPlaceholder: string
+  }
 }
 
 export type DeepPartial<T> = {
@@ -199,6 +207,14 @@ export const zhCN: LocaleMessages = {
   alertDialog: {
     confirm: '确认',
     cancel: '取消'
+  },
+  docs: {
+    toc: '本页目录',
+    prev: '上一篇',
+    next: '下一篇',
+    copyLink: '复制链接',
+    copiedLink: '已复制链接',
+    searchPlaceholder: '搜索文档...'
   }
 }
 
@@ -297,5 +313,13 @@ export const enUS: LocaleMessages = {
   alertDialog: {
     confirm: 'Confirm',
     cancel: 'Cancel'
+  },
+  docs: {
+    toc: 'On this page',
+    prev: 'Previous',
+    next: 'Next',
+    copyLink: 'Copy link',
+    copiedLink: 'Link copied',
+    searchPlaceholder: 'Search documentation...'
   }
 }

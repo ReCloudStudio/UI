@@ -107,6 +107,19 @@ const groups: DocGroup[] = [
     ]
   },
   {
+    label: '文档排版',
+    items: [
+      { name: 'callout', title: 'Callout 提示块', description: '注意、提示、警告、危险语义提示块。' },
+      { name: 'inline-code', title: 'InlineCode 行内代码', description: '与 CodeBlock 成套的等宽行内代码标记，可选一键复制。' },
+      { name: 'steps', title: 'Steps 文档步骤', description: '长文指南与安装教程的垂直序列步骤。' },
+      { name: 'anchor-heading', title: 'AnchorHeading 锚点标题', description: '悬停显现锚点符号并支持复制链接的标题。' },
+      { name: 'toc', title: 'Toc 页内目录', description: '多级标题目录导航，支持滚动高亮与平滑跳转。' },
+      { name: 'prev-next', title: 'PrevNext 翻页导航', description: '文章与文档的上一篇/下一篇双向卡片导航。' },
+      { name: 'nav-tree', title: 'NavTree 文档树侧栏', description: '带分组、折叠、徽标与实时过滤的文档树侧栏。' },
+      { name: 'code-group', title: 'CodeGroup 代码分组', description: '多包管理器与多语言代码块选项卡容器。' }
+    ]
+  },
+  {
     label: '工具',
     items: [
       { name: 'locale', title: 'i18n 国际化', description: '组件库内置文案注入、双语包与动态切换。' },
