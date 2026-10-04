@@ -66,6 +66,9 @@ export * from './components/toc'
 export * from './components/prev-next'
 export * from './components/nav-tree'
 export * from './components/code-group'
+export * from './components/navbar'
+export * from './components/footer'
+export * from './components/hero'
 
 // Composables & Utilities
 export * from './composables/useTheme'

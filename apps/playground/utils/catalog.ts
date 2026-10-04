@@ -120,6 +120,14 @@ const groups: DocGroup[] = [
     ]
   },
   {
+    label: '营销与门户',
+    items: [
+      { name: 'navbar', title: 'Navbar 导航顶栏', description: '站点级全局顶栏，集成品牌标识、链接、操作与移动端抽屉。' },
+      { name: 'footer', title: 'Footer 站点页脚', description: '多列分组链接、版权信息与社交链接插槽。' },
+      { name: 'hero', title: 'Hero 首屏横幅', description: '落地页与产品首页主视觉横幅，支持居中、图文左右分栏及极简模式。' }
+    ]
+  },
+  {
     label: '工具',
     items: [
       { name: 'locale', title: 'i18n 国际化', description: '组件库内置文案注入、双语包与动态切换。' },
