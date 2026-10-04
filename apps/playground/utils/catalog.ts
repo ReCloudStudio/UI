@@ -50,6 +50,7 @@ const groups: DocGroup[] = [
       { name: 'rating', title: 'Rating 评分', description: '星级评分组件。' },
       { name: 'combobox', title: 'Combobox 组合框', description: '可搜索的下拉选择。' },
       { name: 'number-field', title: 'NumberField 数字输入', description: '步进增减数字。' },
+      { name: 'multi-select', title: 'MultiSelect 多选', description: '带搜索和标签的多值选择。' },
       { name: 'pin-input', title: 'PinInput 验证码', description: 'OTP 分段输入。' },
       { name: 'editable', title: 'Editable 行内编辑', description: '点击即改的文本。' },
       { name: 'toggle', title: 'Toggle / ToggleGroup', description: '按压态工具按钮与分组。' },

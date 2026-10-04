@@ -55,6 +55,7 @@ export * from './components/date-picker'
 export * from './components/app-shell'
 export * from './components/resizable-panel'
 export * from './components/file-upload'
+export * from './components/multi-select'
 
 // Composables & Utilities
 export * from './composables/useTheme'
