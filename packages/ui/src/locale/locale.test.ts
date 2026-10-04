@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { provideLocale, useComponentLocale, useLocale } from './index'
+import { useLocale } from './index'
 import { zhCN, enUS } from './messages'
 
 describe('i18n locale injection system', () => {

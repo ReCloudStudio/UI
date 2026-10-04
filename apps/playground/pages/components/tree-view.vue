@@ -220,41 +220,46 @@ function onDrop(event: TreeDropEvent) {
 
   function remove(list: TreeNode[]): TreeNode | null {
     for (let i = 0; i < list.length; i++) {
-      if (list[i].id === event.draggedNode.id) {
-        return list.splice(i, 1)[0]
+      const item = list[i]
+      if (!item) continue
+      if (item.id === event.draggedNode.id) {
+        const [deleted] = list.splice(i, 1)
+        return deleted ?? null
       }
-      if (list[i].children) {
-        const found = remove(list[i].children!)
+      if (item.children) {
+        const found = remove(item.children)
         if (found) return found
       }
     }
     return null
   }
 
-  const removed = remove(reorderNodes.value)
-  if (!removed) return
+  const removedNode = remove(reorderNodes.value)
+  if (!removedNode) return
 
-  function insert(list: TreeNode[]): boolean {
+  function insert(list: TreeNode[], toInsert: TreeNode): boolean {
     for (let i = 0; i < list.length; i++) {
-      if (list[i].id === event.targetNode.id) {
+      const item = list[i]
+      if (!item) continue
+      if (item.id === event.targetNode.id) {
         if (event.position === 'before') {
-          list.splice(i, 0, removed)
+          list.splice(i, 0, toInsert)
         } else if (event.position === 'after') {
-          list.splice(i + 1, 0, removed)
+          list.splice(i + 1, 0, toInsert)
         } else {
-          list[i].children = list[i].children || []
-          list[i].children!.push(removed)
+          item.children = item.children || []
+          item.children.push(toInsert)
         }
         return true
       }
-      if (list[i].children && insert(list[i].children!)) {
+      if (item.children && insert(item.children, toInsert)) {
         return true
       }
     }
     return false
   }
 
-  insert(reorderNodes.value)
+  insert(reorderNodes.value, removedNode)
 }
 
 const permissions = [

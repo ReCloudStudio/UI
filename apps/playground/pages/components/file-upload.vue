@@ -9,7 +9,7 @@
 
     <DocExample title="配置文件校验" description="不传 upload 时，组件作为文件选择与校验控件使用；通过 change 获取当前文件项。" :code="rcCode1">
       <FileUpload accept=".json,.yaml,.yml" :multiple="false" :max-size="256 * 1024" @change="configFiles = $event" />
-      <p v-if="configFiles.length" class="text-xs text-slate-500 dark:text-slate-400">已选择 {{ configFiles[0].file.name }}</p>
+      <p v-if="configFiles.length && configFiles[0]" class="text-xs text-slate-500 dark:text-slate-400">已选择 {{ configFiles[0].file.name }}</p>
     </DocExample>
 
     <DocApiTable :rows="apiRows" />
