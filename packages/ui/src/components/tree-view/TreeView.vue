@@ -1,7 +1,7 @@
 <template>
   <ul
     role="tree"
-    :aria-label="props.label"
+    :aria-label="effectiveLabel"
     :aria-multiselectable="props.multiple || undefined"
     :class="cn('space-y-0.5 rounded-xl bg-[var(--card)] p-2 ring-1 ring-[var(--border)]', props.class)"
   >
@@ -37,6 +37,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { cn } from '../../utils/cn'
+import { useComponentLocale } from '../../locale'
 import TreeViewNode from './TreeViewNode.vue'
 import type { TreeDropEvent, TreeHighlightVariant, TreeNode } from './types'
 
@@ -79,7 +80,7 @@ const props = withDefaults(defineProps<TreeViewProps>(), {
   draggable: false,
   highlightVariant: 'subtle',
   loadChildren: undefined,
-  label: '树形目录',
+  label: undefined,
   class: ''
 })
 
@@ -94,6 +95,9 @@ const emit = defineEmits<{
   (event: 'check', payload: { node: TreeNode; checked: boolean }): void
   (event: 'drop', payload: TreeDropEvent): void
 }>()
+
+const loc = useComponentLocale('tree')
+const effectiveLabel = computed(() => props.label ?? loc.value.label)
 
 const internalExpanded = ref<string[]>([...props.defaultExpandedIds])
 const internalSelectedIds = ref<string[]>([])

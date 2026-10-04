@@ -34,7 +34,7 @@
         v-if="isBranch"
         type="button"
         class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
-        :aria-label="expanded ? `收起 ${node.label}` : `展开 ${node.label}`"
+        :aria-label="expanded ? loc.collapseNode(node.label) : loc.expandNode(node.label)"
         @click.stop="emit('toggle', node.id)"
       >
         <svg
@@ -66,7 +66,7 @@
         type="checkbox"
         :checked="checkState === 'checked'"
         :indeterminate="checkState === 'partial'"
-        :aria-label="`选择 ${node.label}`"
+        :aria-label="loc.selectNode(node.label)"
         class="h-4 w-4 shrink-0 rounded accent-[var(--primary)]"
         @click.stop
         @change="emit('check', node)"
@@ -92,7 +92,7 @@
         class="ml-auto inline-flex shrink-0 items-center rounded-full bg-[var(--primary)]/10 px-1.5 py-0.5 text-[10px] font-semibold text-[var(--primary)] ring-1 ring-[var(--primary)]/20"
         aria-hidden="true"
       >
-        已选
+        {{ loc.selectedBadge }}
       </span>
     </div>
 
@@ -141,6 +141,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { cn } from '../../utils/cn'
+import { useComponentLocale } from '../../locale'
 import type { TreeHighlightVariant, TreeNode } from './types'
 
 defineOptions({ name: 'TreeViewNode' })
@@ -166,6 +167,7 @@ const emit = defineEmits<{
   (event: 'node-drop', payload: { targetNode: TreeNode; position: 'before' | 'inside' | 'after' }): void
 }>()
 
+const loc = useComponentLocale('tree')
 const dropPosition = ref<'before' | 'inside' | 'after' | null>(null)
 
 const hasChildren = computed(() => Boolean(props.node.children?.length))

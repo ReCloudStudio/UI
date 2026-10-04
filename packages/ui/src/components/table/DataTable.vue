@@ -18,10 +18,10 @@
         </tbody>
       </table>
     </div>
-    <div v-if="loading" class="space-y-3 p-4" aria-label="加载中" role="status"><div v-for="row in 4" :key="row" class="flex gap-4"><Skeleton v-for="column in visibleColumns.length + Number(selectable)" :key="column" height="1.5rem" /></div></div>
-    <div v-else-if="error" class="p-4"><slot name="error"><EmptyState title="数据加载失败" :description="error"><template #icon><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></template></EmptyState></slot></div>
-    <div v-else-if="!pagedRows.length" class="p-4"><slot name="empty"><EmptyState :title="emptyText" /></slot></div>
-    <div v-if="showPagination" class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-4 py-3 dark:border-slate-800"><span class="text-xs text-slate-500 dark:text-slate-400">第 {{ currentPage }} / {{ pageCount }} 页，共 {{ total }} 条</span><div class="flex gap-1"><button :disabled="currentPage <= 1" class="inline-flex h-8 items-center justify-center rounded-lg px-3 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 disabled:pointer-events-none disabled:opacity-40 dark:text-slate-300 dark:hover:bg-slate-800" @click="setPage(currentPage - 1)">上一页</button><button :disabled="currentPage >= pageCount" class="inline-flex h-8 items-center justify-center rounded-lg px-3 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 disabled:pointer-events-none disabled:opacity-40 dark:text-slate-300 dark:hover:bg-slate-800" @click="setPage(currentPage + 1)">下一页</button></div></div>
+    <div v-if="loading" class="space-y-3 p-4" :aria-label="commonLoc.loading" role="status"><div v-for="row in 4" :key="row" class="flex gap-4"><Skeleton v-for="column in visibleColumns.length + Number(selectable)" :key="column" height="1.5rem" /></div></div>
+    <div v-else-if="error" class="p-4"><slot name="error"><EmptyState :title="emptyLoc.loadFailed" :description="error"><template #icon><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></template></EmptyState></slot></div>
+    <div v-else-if="!pagedRows.length" class="p-4"><slot name="empty"><EmptyState :title="effectiveEmptyText" /></slot></div>
+    <div v-if="showPagination" class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-4 py-3 dark:border-slate-800"><span class="text-xs text-slate-500 dark:text-slate-400">{{ paginationLoc.totalSummary(currentPage, pageCount, total) }}</span><div class="flex gap-1"><button :disabled="currentPage <= 1" class="inline-flex h-8 items-center justify-center rounded-lg px-3 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 disabled:pointer-events-none disabled:opacity-40 dark:text-slate-300 dark:hover:bg-slate-800" @click="setPage(currentPage - 1)">{{ paginationLoc.prev }}</button><button :disabled="currentPage >= pageCount" class="inline-flex h-8 items-center justify-center rounded-lg px-3 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 disabled:pointer-events-none disabled:opacity-40 dark:text-slate-300 dark:hover:bg-slate-800" @click="setPage(currentPage + 1)">{{ paginationLoc.next }}</button></div></div>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ import { computed } from 'vue'
 import EmptyState from '../empty/EmptyState.vue'
 import Skeleton from '../skeleton/Skeleton.vue'
 import { cn } from '../../utils/cn'
+import { useComponentLocale } from '../../locale'
 import type { DataTableColumn, DataTableSort } from './types'
 
 export interface DataTableProps<T extends Record<string, unknown> = Record<string, unknown>> {
@@ -52,8 +53,12 @@ export interface DataTableProps<T extends Record<string, unknown> = Record<strin
   class?: string
 }
 
-const props = withDefaults(defineProps<DataTableProps<T>>(), { columns: () => [], rows: () => [], rowKey: undefined, selected: () => [], visibleColumnKeys: undefined, sortable: undefined, page: 1, pageSize: 0, total: undefined, loading: false, error: '', selectable: false, hoverable: true, divide: true, emptyText: '暂无数据', class: '' })
+const props = withDefaults(defineProps<DataTableProps<T>>(), { columns: () => [], rows: () => [], rowKey: undefined, selected: () => [], visibleColumnKeys: undefined, sortable: undefined, page: 1, pageSize: 0, total: undefined, loading: false, error: '', selectable: false, hoverable: true, divide: true, emptyText: undefined, class: '' })
 const emit = defineEmits<{ (event: 'update:selected', value: Array<string | number>): void; (event: 'update:visibleColumnKeys', value: string[]): void; (event: 'update:sortable', value: DataTableSort | undefined): void; (event: 'update:page', value: number): void }>()
+const emptyLoc = useComponentLocale('empty')
+const paginationLoc = useComponentLocale('pagination')
+const commonLoc = useComponentLocale('common')
+const effectiveEmptyText = computed(() => props.emptyText ?? emptyLoc.value.defaultTitle)
 const visibleColumns = computed(() => props.visibleColumnKeys ? props.columns.filter((column) => props.visibleColumnKeys!.includes(column.key)) : props.columns)
 const showPagination = computed(() => props.pageSize > 0)
 const total = computed(() => props.total ?? props.rows.length)

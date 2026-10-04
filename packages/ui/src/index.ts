@@ -61,6 +61,8 @@ export * from './components/timeline'
 
 // Composables & Utilities
 export * from './composables/useTheme'
+export * from './locale'
+export * from './locale/messages'
 export * from './utils/cn'
 export * from './utils/theme'
 export * from './utils/themeScript'

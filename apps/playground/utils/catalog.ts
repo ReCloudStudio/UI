@@ -109,6 +109,7 @@ const groups: DocGroup[] = [
   {
     label: '工具',
     items: [
+      { name: 'locale', title: 'i18n 国际化', description: '组件库内置文案注入、双语包与动态切换。' },
       { name: 'scroll-area', title: 'ScrollArea 滚动区', description: '自定义滚动条容器。' },
       { name: 'aspect-ratio', title: 'AspectRatio 宽高比', description: '固定比例容器。' },
       { name: 'visually-hidden', title: 'VisuallyHidden 隐藏文本', description: '屏幕阅读器专用。' }

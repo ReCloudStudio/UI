@@ -7,7 +7,7 @@
         :class="props.class"
         @open-auto-focus="focusInput"
       >
-        <DialogTitle class="sr-only">{{ props.label }}</DialogTitle>
+        <DialogTitle class="sr-only">{{ effectiveLabel }}</DialogTitle>
         <div class="flex items-center gap-3 border-b border-slate-200 px-4 dark:border-slate-800">
           <svg class="h-4 w-4 shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path stroke-linecap="round" d="m20 20-3.5-3.5" /></svg>
           <input
@@ -18,7 +18,7 @@
             aria-autocomplete="list"
             aria-controls="command-palette-list"
             :aria-activedescendant="activeItem ? itemDomId(activeItem) : undefined"
-            :placeholder="props.placeholder"
+            :placeholder="effectivePlaceholder"
             class="h-14 min-w-0 grow bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-slate-100"
             @input="setQuery(($event.target as HTMLInputElement).value)"
             @keydown.down.prevent="moveActive(1)"
@@ -29,7 +29,7 @@
           <kbd v-if="props.shortcut" class="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[10px] text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400">{{ displayShortcut }}</kbd>
         </div>
 
-        <div id="command-palette-list" role="listbox" :aria-label="props.label" class="max-h-[min(60vh,30rem)] overflow-y-auto p-2">
+        <div id="command-palette-list" role="listbox" :aria-label="effectiveLabel" class="max-h-[min(60vh,30rem)] overflow-y-auto p-2">
           <template v-for="group in filteredGroups" :key="group.key">
             <div v-if="group.heading" class="px-2 pt-3 pb-1 text-[11px] font-semibold tracking-wider text-slate-400 uppercase dark:text-slate-500">{{ group.heading }}</div>
             <button
@@ -58,7 +58,7 @@
             </button>
           </template>
           <div v-if="!filteredItems.length" class="px-3 py-10 text-center text-sm text-slate-500 dark:text-slate-400">
-            <slot name="empty" :query="query">{{ props.emptyText }}</slot>
+            <slot name="empty" :query="query">{{ effectiveEmptyText }}</slot>
           </div>
         </div>
       </DialogContent>
@@ -70,6 +70,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
 import { filterCommands } from './commandMatcher'
+import { useComponentLocale } from '../../locale'
 import type { CommandFilter, CommandGroup, CommandItem } from './types'
 
 export interface CommandPaletteProps {
@@ -89,9 +90,9 @@ export interface CommandPaletteProps {
 const props = withDefaults(defineProps<CommandPaletteProps>(), {
   open: false,
   query: undefined,
-  placeholder: '搜索命令…',
-  emptyText: '没有找到匹配的命令。',
-  label: '命令面板',
+  placeholder: undefined,
+  emptyText: undefined,
+  label: undefined,
   shortcut: undefined,
   shortcutInEditable: false,
   filter: undefined,
@@ -103,6 +104,11 @@ const emit = defineEmits<{
   (event: 'update:query', value: string): void
   (event: 'select', item: CommandItem): void
 }>()
+
+const loc = useComponentLocale('command')
+const effectiveLabel = computed(() => props.label ?? loc.value.label)
+const effectivePlaceholder = computed(() => props.placeholder ?? loc.value.searchPlaceholder)
+const effectiveEmptyText = computed(() => props.emptyText ?? loc.value.emptyText)
 
 const input = ref<HTMLInputElement>()
 const internalQuery = ref('')
