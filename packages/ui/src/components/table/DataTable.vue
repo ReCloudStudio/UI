@@ -4,7 +4,7 @@
     <div class="overflow-x-auto">
       <table class="w-full border-collapse text-left text-sm">
         <thead><tr class="border-b border-slate-200 bg-slate-50/80 dark:border-slate-800 dark:bg-slate-900/60">
-          <th v-if="selectable" class="w-11 px-4 py-2.5"><input type="checkbox" :checked="allPageSelected" :indeterminate="somePageSelected" aria-label="选择当前页所有行" class="h-4 w-4 accent-[#2563EB]" @change="togglePageSelection" /></th>
+          <th v-if="selectable" class="w-11 px-4 py-2.5"><input type="checkbox" :checked="allPageSelected" :indeterminate="somePageSelected" :aria-label="tableLoc.selectAllAria" class="h-4 w-4 accent-[#2563EB]" @change="togglePageSelection" /></th>
           <th v-for="col in visibleColumns" :key="col.key" :style="col.width ? { width: col.width } : undefined" :class="cn('px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 whitespace-nowrap', alignClass(col.align))">
             <button v-if="col.sortable" type="button" class="inline-flex items-center gap-1 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:hover:text-slate-100" @click="toggleSort(col.key)">{{ col.label }}<span aria-hidden="true" class="text-slate-400">{{ sortIcon(col.key) }}</span></button>
             <span v-else>{{ col.label }}</span>
@@ -12,7 +12,7 @@
         </tr></thead>
         <tbody v-if="!loading && !error && pagedRows.length" :class="props.divide ? 'divide-y divide-slate-100 dark:divide-slate-800' : ''">
           <tr v-for="(row, index) in pagedRows" :key="rowKey(row, index)" :class="cn('transition-colors', hoverable ? 'hover:bg-slate-50/70 dark:hover:bg-slate-900/40' : '', isSelected(row, index) && 'bg-blue-50/70 dark:bg-blue-950/20')">
-            <td v-if="selectable" class="px-4 py-3"><input type="checkbox" :checked="isSelected(row, index)" :aria-label="`选择第 ${index + 1} 行`" class="h-4 w-4 accent-[#2563EB]" @change="toggleRow(row, index)" /></td>
+            <td v-if="selectable" class="px-4 py-3"><input type="checkbox" :checked="isSelected(row, index)" :aria-label="tableLoc.selectRowAria(index + 1)" class="h-4 w-4 accent-[#2563EB]" @change="toggleRow(row, index)" /></td>
             <td v-for="col in visibleColumns" :key="col.key" :class="cn('px-4 py-3 align-middle text-slate-700 dark:text-slate-300', alignClass(col.align))"><slot v-if="col.slot" :name="`cell-${col.key}`" :row="row" :value="row[col.key]" :index="index" /><span v-else class="whitespace-nowrap">{{ formatCell(row[col.key]) }}</span></td>
           </tr>
         </tbody>
@@ -58,6 +58,7 @@ const emit = defineEmits<{ (event: 'update:selected', value: Array<string | numb
 const emptyLoc = useComponentLocale('empty')
 const paginationLoc = useComponentLocale('pagination')
 const commonLoc = useComponentLocale('common')
+const tableLoc = useComponentLocale('table')
 const effectiveEmptyText = computed(() => props.emptyText ?? emptyLoc.value.defaultTitle)
 const visibleColumns = computed(() => props.visibleColumnKeys ? props.columns.filter((column) => props.visibleColumnKeys!.includes(column.key)) : props.columns)
 const showPagination = computed(() => props.pageSize > 0)

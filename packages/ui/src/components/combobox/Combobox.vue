@@ -16,7 +16,7 @@
       >
         <ComboboxInput
           class="min-w-0 grow bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400 disabled:cursor-not-allowed dark:text-slate-100"
-          :placeholder="placeholder"
+          :placeholder="effectivePlaceholder"
           :disabled="disabled"
           :id="field.id"
           :required="required"
@@ -27,7 +27,7 @@
         <ComboboxCancel
           v-if="!noClear"
           class="shrink-0 cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
-          aria-label="清除"
+          :aria-label="comboboxLoc.clearAria"
         >
           <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M18 6 6 18M6 6l12 12" /></svg>
         </ComboboxCancel>
@@ -64,7 +64,7 @@
               </ComboboxItem>
             </ComboboxGroup>
             <ComboboxEmpty class="px-3 py-6 text-center text-sm text-slate-400 dark:text-slate-500">
-              {{ emptyText }}
+              {{ effectiveEmptyText }}
             </ComboboxEmpty>
           </ComboboxViewport>
         </ComboboxContent>
@@ -92,22 +92,27 @@ import {
   ComboboxEmpty
 } from 'reka-ui'
 import Field from '../field/Field.vue'
+import { useComponentLocale } from '../../locale'
 import type { ComboboxOption, ComboboxProps } from './types'
 
 const props = withDefaults(defineProps<ComboboxProps>(), {
   modelValue: '',
   multiple: false,
-  placeholder: '搜索或选择...',
+  placeholder: undefined,
   id: undefined,
   label: '',
   hint: '',
   error: '',
   required: false,
-  emptyText: '无匹配项',
+  emptyText: undefined,
   noClear: false,
   disabled: false,
   class: ''
 })
+
+const comboboxLoc = useComponentLocale('combobox')
+const effectivePlaceholder = computed(() => props.placeholder ?? comboboxLoc.value.placeholder)
+const effectiveEmptyText = computed(() => props.emptyText ?? comboboxLoc.value.emptyText)
 
 defineEmits<{
   (e: 'update:modelValue', value: string | string[]): void

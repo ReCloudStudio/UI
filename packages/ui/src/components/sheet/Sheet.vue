@@ -15,7 +15,7 @@
 
         <div v-if="$slots.footer" class="shrink-0 border-t border-slate-200 px-5 py-4 dark:border-slate-800"><slot name="footer" /></div>
 
-        <DialogClose aria-label="关闭" class="absolute top-3.5 right-3.5 rounded-md p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300">
+        <DialogClose :aria-label="commonLoc.close" class="absolute top-3.5 right-3.5 rounded-md p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300">
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
         </DialogClose>
       </DialogContent>
@@ -27,6 +27,7 @@
 import { computed } from 'vue'
 import { DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogPortal, DialogRoot, DialogTitle, DialogTrigger } from 'reka-ui'
 import { cn } from '../../utils/cn'
+import { useComponentLocale } from '../../locale'
 
 export interface SheetProps {
   open?: boolean
@@ -46,6 +47,8 @@ const props = withDefaults(defineProps<SheetProps>(), {
   description: '',
   class: ''
 })
+
+const commonLoc = useComponentLocale('common')
 
 defineEmits<{
   (event: 'update:open', value: boolean): void

@@ -2,7 +2,7 @@
   <EditableRoot
     v-slot="{ isEditing }"
     :model-value="modelValue"
-    :placeholder="placeholder"
+    :placeholder="effectivePlaceholder"
     :disabled="disabled"
     :readonly="readonly"
     select-on-focus
@@ -23,13 +23,13 @@
       <template v-if="isEditing">
         <EditableSubmitTrigger
           class="inline-flex size-6 cursor-pointer items-center justify-center rounded-md text-emerald-600 transition-colors hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-500/10"
-          aria-label="保存"
+          :aria-label="commonLoc.save"
         >
           <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
         </EditableSubmitTrigger>
         <EditableCancelTrigger
           class="inline-flex size-6 cursor-pointer items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-          aria-label="取消"
+          :aria-label="commonLoc.cancel"
         >
           <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M18 6 6 18M6 6l12 12" /></svg>
         </EditableCancelTrigger>
@@ -37,7 +37,7 @@
       <EditTrigger
         v-else
         class="inline-flex size-6 cursor-pointer items-center justify-center rounded-md text-slate-400 opacity-0 transition-all group-hover:opacity-100 hover:bg-slate-100 dark:hover:bg-slate-800"
-        aria-label="编辑"
+        :aria-label="commonLoc.edit"
       >
         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
       </EditTrigger>
@@ -46,6 +46,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import {
   EditableRoot,
   EditableArea,
@@ -55,6 +56,7 @@ import {
   EditableCancelTrigger,
   EditableEditTrigger as EditTrigger
 } from 'reka-ui'
+import { useComponentLocale } from '../../locale'
 
 export interface EditableProps {
   modelValue?: string
@@ -66,7 +68,7 @@ export interface EditableProps {
 
 const props = withDefaults(defineProps<EditableProps>(), {
   modelValue: '',
-  placeholder: '点击编辑...',
+  placeholder: undefined,
   disabled: false,
   readonly: false,
   class: ''
@@ -75,4 +77,7 @@ const props = withDefaults(defineProps<EditableProps>(), {
 defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
+
+const commonLoc = useComponentLocale('common')
+const effectivePlaceholder = computed(() => props.placeholder ?? commonLoc.value.edit)
 </script>

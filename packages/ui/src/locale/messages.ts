@@ -8,6 +8,13 @@ export interface LocaleMessages {
     search: string
     loading: string
     noData: string
+    clear: string
+    save: string
+    edit: string
+    copy: string
+    copied: string
+    expandCode: string
+    collapseCode: string
   }
   pagination: {
     prev: string
@@ -42,6 +49,9 @@ export interface LocaleMessages {
     statusSuccess: string
     statusError: string
     statusCancelled: string
+    cancelAria: (name: string) => string
+    retryAria: (name: string) => string
+    removeAria: (name: string) => string
   }
   tree: {
     selectedBadge: string
@@ -49,6 +59,40 @@ export interface LocaleMessages {
     expandNode: (label: string) => string
     selectNode: (label: string) => string
     label: string
+  }
+  table: {
+    selectAllAria: string
+    selectRowAria: (index: number) => string
+  }
+  select: {
+    placeholder: string
+  }
+  combobox: {
+    placeholder: string
+    emptyText: string
+    clearAria: string
+  }
+  multiSelect: {
+    placeholder: string
+    emptyText: string
+    clearAria: string
+    removeAria: (label: string) => string
+  }
+  datePicker: {
+    placeholder: string
+    rangePlaceholder: string
+    prevMonthAria: string
+    nextMonthAria: string
+    pendingRangeEnd: string
+    weekdays: string[]
+  }
+  appShell: {
+    sidebarLabel: string
+    resizeHandleAria: string
+  }
+  alertDialog: {
+    confirm: string
+    cancel: string
   }
 }
 
@@ -69,7 +113,14 @@ export const zhCN: LocaleMessages = {
     remove: '移除',
     search: '搜索',
     loading: '加载中',
-    noData: '暂无数据'
+    noData: '暂无数据',
+    clear: '清除',
+    save: '保存',
+    edit: '编辑',
+    copy: '复制',
+    copied: '已复制',
+    expandCode: '展开代码',
+    collapseCode: '收起代码'
   },
   pagination: {
     prev: '上一页',
@@ -103,7 +154,10 @@ export const zhCN: LocaleMessages = {
     statusUploading: '上传中',
     statusSuccess: '已完成',
     statusError: '失败',
-    statusCancelled: '已取消'
+    statusCancelled: '已取消',
+    cancelAria: (name) => `取消上传 ${name}`,
+    retryAria: (name) => `重试上传 ${name}`,
+    removeAria: (name) => `移除 ${name}`
   },
   tree: {
     selectedBadge: '已选',
@@ -111,6 +165,40 @@ export const zhCN: LocaleMessages = {
     expandNode: (label) => `展开 ${label}`,
     selectNode: (label) => `选择 ${label}`,
     label: '树形目录'
+  },
+  table: {
+    selectAllAria: '选择当前页所有行',
+    selectRowAria: (index) => `选择第 ${index} 行`
+  },
+  select: {
+    placeholder: '请选择...'
+  },
+  combobox: {
+    placeholder: '搜索或选择...',
+    emptyText: '无匹配项',
+    clearAria: '清除'
+  },
+  multiSelect: {
+    placeholder: '搜索并选择...',
+    emptyText: '无匹配项',
+    clearAria: '清除所有选择',
+    removeAria: (label) => `移除 ${label}`
+  },
+  datePicker: {
+    placeholder: '选择日期',
+    rangePlaceholder: '选择日期范围',
+    prevMonthAria: '上个月',
+    nextMonthAria: '下个月',
+    pendingRangeEnd: '已选择开始日期，请选择结束日期。',
+    weekdays: ['一', '二', '三', '四', '五', '六', '日']
+  },
+  appShell: {
+    sidebarLabel: '侧边导航',
+    resizeHandleAria: '调整面板大小'
+  },
+  alertDialog: {
+    confirm: '确认',
+    cancel: '取消'
   }
 }
 
@@ -123,7 +211,14 @@ export const enUS: LocaleMessages = {
     remove: 'Remove',
     search: 'Search',
     loading: 'Loading',
-    noData: 'No data'
+    noData: 'No data',
+    clear: 'Clear',
+    save: 'Save',
+    edit: 'Edit',
+    copy: 'Copy',
+    copied: 'Copied',
+    expandCode: 'Expand code',
+    collapseCode: 'Collapse code'
   },
   pagination: {
     prev: 'Previous',
@@ -157,7 +252,10 @@ export const enUS: LocaleMessages = {
     statusUploading: 'Uploading',
     statusSuccess: 'Completed',
     statusError: 'Failed',
-    statusCancelled: 'Cancelled'
+    statusCancelled: 'Cancelled',
+    cancelAria: (name) => `Cancel upload for ${name}`,
+    retryAria: (name) => `Retry upload for ${name}`,
+    removeAria: (name) => `Remove ${name}`
   },
   tree: {
     selectedBadge: 'Selected',
@@ -165,5 +263,39 @@ export const enUS: LocaleMessages = {
     expandNode: (label) => `Expand ${label}`,
     selectNode: (label) => `Select ${label}`,
     label: 'Tree View'
+  },
+  table: {
+    selectAllAria: 'Select all rows on current page',
+    selectRowAria: (index) => `Select row ${index}`
+  },
+  select: {
+    placeholder: 'Please select...'
+  },
+  combobox: {
+    placeholder: 'Search or select...',
+    emptyText: 'No matching results',
+    clearAria: 'Clear'
+  },
+  multiSelect: {
+    placeholder: 'Search and select...',
+    emptyText: 'No matching items',
+    clearAria: 'Clear all selections',
+    removeAria: (label) => `Remove ${label}`
+  },
+  datePicker: {
+    placeholder: 'Select date',
+    rangePlaceholder: 'Select date range',
+    prevMonthAria: 'Previous month',
+    nextMonthAria: 'Next month',
+    pendingRangeEnd: 'Start date selected, please choose end date.',
+    weekdays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+  },
+  appShell: {
+    sidebarLabel: 'Sidebar navigation',
+    resizeHandleAria: 'Resize panel'
+  },
+  alertDialog: {
+    confirm: 'Confirm',
+    cancel: 'Cancel'
   }
 }
