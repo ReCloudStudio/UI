@@ -34,5 +34,13 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      cfPages: process.env.CF_PAGES || '',
+      cfPagesBranch: process.env.CF_PAGES_BRANCH || '',
+      cfPagesCommitSha: process.env.CF_PAGES_COMMIT_SHA || '',
+      cfPagesUrl: process.env.CF_PAGES_URL || ''
+    }
+  },
   compatibilityDate: '2026-10-02'
 })
