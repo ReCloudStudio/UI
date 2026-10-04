@@ -78,6 +78,7 @@ const groups: DocGroup[] = [
       { name: 'stepper', title: 'Stepper 步骤条', description: '多步流程进度。' },
       { name: 'navigation-menu', title: 'NavigationMenu 导航菜单', description: '悬停展开的顶部导航。' },
       { name: 'toolbar', title: 'Toolbar 工具条', description: '编辑器式按钮组。' },
+      { name: 'tree-view', title: 'TreeView 树形视图', description: '权限、资源与目录的层级浏览。' },
       { name: 'command-palette', title: 'CommandPalette 命令面板', description: '面向开发者工具的全局命令与导航入口。' },
       { name: 'app-shell', title: 'AppShell 应用布局', description: '控制台的侧栏、顶栏与主内容骨架。' },
       { name: 'resizable-panel', title: 'ResizablePanel 可调面板', description: '可拖拽、可键盘调整的工作区分栏。' }

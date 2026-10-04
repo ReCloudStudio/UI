@@ -56,6 +56,7 @@ export * from './components/app-shell'
 export * from './components/resizable-panel'
 export * from './components/file-upload'
 export * from './components/multi-select'
+export * from './components/tree-view'
 
 // Composables & Utilities
 export * from './composables/useTheme'
