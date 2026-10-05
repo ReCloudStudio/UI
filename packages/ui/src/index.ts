@@ -69,6 +69,9 @@ export * from "./components/code-group";
 export * from "./components/navbar";
 export * from "./components/footer";
 export * from "./components/hero";
+export * from "./components/container";
+export * from "./components/section";
+export * from "./components/theme-toggle";
 export * from "./components/icon";
 export * from "./markdown";
 
