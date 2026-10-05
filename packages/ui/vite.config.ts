@@ -16,6 +16,7 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, "src/index.ts"),
         "icons/index": resolve(__dirname, "src/icons/index.ts"),
+        "markdown/index": resolve(__dirname, "src/markdown/index.ts"),
         "nuxt/index": resolve(__dirname, "src/nuxt/index.ts"),
       },
       formats: ["es"],
@@ -30,6 +31,12 @@ export default defineConfig({
         /^shiki(\/.*)?$/,
         "tailwind-merge",
         "clsx",
+        "unified",
+        "remark-parse",
+        "remark-gfm",
+        "remark-directive",
+        "unist-util-visit",
+        "mdast-util-to-string",
       ],
       output: {
         chunkFileNames: "chunks/[name]-[hash].js",
