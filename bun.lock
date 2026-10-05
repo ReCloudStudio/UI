@@ -29,8 +29,7 @@
     },
     "packages/ui": {
       "name": "@recloudstudio/ui",
-<<<<<<< HEAD
-      "version": "0.3.0"
+      "version": "0.3.0",
       "dependencies": {
         "clsx": "^2.1.1",
         "lucide-vue-next": "^1.0.0",
