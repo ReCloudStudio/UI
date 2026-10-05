@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="NavigationMenu 导航菜单" description="基于 Reka UI 的无障碍顶部导航，支持键盘导航、焦点管理和可选内容面板。" />
+    <PageHeader title="NavigationMenu 导航菜单" description="基于 Reka UI 的无障碍顶部导航，支持键盘导航、焦点管理和可选内容面板。" />
 
-    <DocExample title="控制台顶部导航" description="带面板的项目会由 Reka UI 管理键盘导航、焦点和展开状态。" :code="rcCode0">
+    <ComponentExample title="控制台顶部导航" description="带面板的项目会由 Reka UI 管理键盘导航、焦点和展开状态。" :code="rcCode0">
       <NavigationMenu :items="[
         { label: '概览', value: 'overview' },
         { label: '节点管理', value: 'nodes' },
@@ -16,9 +16,9 @@
           <p v-else class="px-2.5 py-1.5 text-sm text-slate-500">{{ item.label }} 面板</p>
         </template>
       </NavigationMenu>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="navigation-menu" />
   </div>

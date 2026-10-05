@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="HoverCard 悬停卡片" description="悬停预览卡片：人员信息、节点详情等低承诺交互。" />
+    <PageHeader title="HoverCard 悬停卡片" description="悬停预览卡片：人员信息、节点详情等低承诺交互。" />
 
-    <DocExample title="人员卡片" description="openDelay / closeDelay 可调。" :code="rcCode0">
+    <ComponentExample title="人员卡片" description="openDelay / closeDelay 可调。" :code="rcCode0">
       <HoverCard>
         <template #trigger>
           <Button variant="outline" color="neutral">悬停查看</Button>
@@ -18,9 +18,9 @@
           <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">悬停 300ms 后自动展开，离开 200ms 后关闭。</p>
         </div>
       </HoverCard>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="hover-card" />
   </div>

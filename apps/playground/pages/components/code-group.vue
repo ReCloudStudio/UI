@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="CodeGroup 代码分组" description="专为文档与教程设计的选项卡式代码块容器，常用于多包管理器安装命令与不同语言代码对比。" />
+    <PageHeader title="CodeGroup 代码分组" description="专为文档与教程设计的选项卡式代码块容器，常用于多包管理器安装命令与不同语言代码对比。" />
 
-    <DocExample title="包管理器切换" description="结合 CodeBlock 展示不同包管理器的命令。" :code="codeBasic">
+    <ComponentExample title="包管理器切换" description="结合 CodeBlock 展示不同包管理器的命令。" :code="codeBasic">
       <div class="max-w-2xl">
         <CodeGroup v-model="activePm" :tabs="['bun', 'pnpm', 'npm', 'yarn']">
           <CodeBlock
@@ -12,9 +12,9 @@
           />
         </CodeGroup>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="code-group" />
   </div>
 </template>

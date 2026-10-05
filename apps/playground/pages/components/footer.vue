@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Footer 站点页脚" description="多列链接分组、产品定位说明、版权声明与社交媒体图标插槽。" />
+    <PageHeader title="Footer 站点页脚" description="多列链接分组、产品定位说明、版权声明与社交媒体图标插槽。" />
 
-    <DocExample title="多列站点页脚" description="包含品牌简述、4 列导航分组与底部版权条。" :code="codeBasic">
+    <ComponentExample title="多列站点页脚" description="包含品牌简述、4 列导航分组与底部版权条。" :code="codeBasic">
       <div class="overflow-hidden rounded-xl border border-slate-200/80 bg-white dark:border-slate-800 dark:bg-[#0B1220]">
         <Footer
           brand-title="ReCloud Studio"
@@ -11,9 +11,9 @@
           :socials="sampleSocials"
         />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="footer" />
   </div>
 </template>

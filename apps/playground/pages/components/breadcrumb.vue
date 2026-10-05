@@ -1,16 +1,16 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Breadcrumb 面包屑" description="层级路径导航，末项自动加粗并标记 aria-current。" />
+    <PageHeader title="Breadcrumb 面包屑" description="层级路径导航，末项自动加粗并标记 aria-current。" />
 
-    <DocExample title="控制台路径" description="传 to 渲染 NuxtLink，末项无 to 即当前页。" :code="rcCode0">
+    <ComponentExample title="控制台路径" description="传 to 渲染 NuxtLink，末项无 to 即当前页。" :code="rcCode0">
       <BreadcrumbNav :items="[
         { label: '文档首页', to: '/' },
         { label: '组件总览', to: '/components/button' },
         { label: '面包屑' }
       ]" />
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="breadcrumb" />
   </div>

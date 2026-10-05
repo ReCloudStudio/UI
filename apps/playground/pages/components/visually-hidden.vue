@@ -1,16 +1,16 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="VisuallyHidden 隐藏文本" description="视觉隐藏但屏幕阅读器可读的辅助文本。" />
+    <PageHeader title="VisuallyHidden 隐藏文本" description="视觉隐藏但屏幕阅读器可读的辅助文本。" />
 
-    <DocExample title="用法" :code="rcCode0">
+    <ComponentExample title="用法" :code="rcCode0">
       <div class="flex items-center gap-3">
         <Spinner />
         <VisuallyHidden>正在同步集群配置，请勿刷新页面</VisuallyHidden>
         <span class="text-xs text-slate-500 dark:text-slate-400">（上方文本对屏幕阅读器可见，视觉上隐藏）</span>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="visually-hidden" />
   </div>

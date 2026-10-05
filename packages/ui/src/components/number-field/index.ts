@@ -1,2 +1,2 @@
-export { default as NumberField } from './NumberField.vue'
-export type { NumberFieldProps } from './NumberField.vue'
+export { default as NumberField } from "./NumberField.vue";
+export type { NumberFieldProps } from "./NumberField.vue";

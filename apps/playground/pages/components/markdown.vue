@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="Markdown 渲染系统"
       description="基于 unified/remark 与 ReCloud UI 内容原语的受控 Markdown/GFM 渲染系统，内置锚点标题、Shiki 代码高亮、表格、任务列表以及 :::info / :::steps / :::code-group 等文档扩展指令。"
     />
 
-    <DocExample
+    <ComponentExample
       title="全功能示例文档"
       description="直接将 Markdown 字符串渲染为 ReCloud 设计系统的富文本、代码块与扩展容器，同时支持目录（TOC）联动。"
       :code="sampleMarkdown"
@@ -22,9 +22,9 @@
           </div>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="安全策略与协议过滤"
       description="默认开启严格的协议过滤与安全策略，阻止 javascript: 协议并规范化外部链接。"
       :code="unsafeSample"
@@ -32,9 +32,9 @@
       <div class="rounded-xl border border-slate-200/80 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-[#0B1220]">
         <MarkdownRenderer :content="unsafeSample" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="markdown" />
   </div>
 </template>

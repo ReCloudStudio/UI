@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="ThemeToggle 主题切换开关"
       description="开箱即用的主题明暗切换开关，已封装 Sun / Moon 图标、aria-label 状态播报，支持图标按钮、下拉选择以及系统偏好三态轮换模式，可直接嵌入 Navbar 顶栏。"
     />
 
-    <DocExample
+    <ComponentExample
       title="基础图标切换按钮"
       description="默认非受控模式，自动与全局 useTheme() 同步并持久化，支持深浅模式互切。"
       :code="rcCode0"
@@ -15,9 +15,9 @@
         <ThemeToggle size="md" />
         <ThemeToggle size="lg" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="循环系统偏好 (cycleSystem)"
       description="开启 cycleSystem 后，点击将在「浅色 -> 深色 -> 跟随系统」三态之间循环轮播。"
       :code="rcCode1"
@@ -26,9 +26,9 @@
         <ThemeToggle cycle-system size="md" />
         <span class="text-sm text-slate-500">点击查看 tooltip 或 aria-label 提示的三态轮换</span>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="下拉选择变体 (variant=dropdown)"
       description="以规范的下拉菜单形式明确选择浅色、深色或跟随系统。"
       :code="rcCode2"
@@ -37,9 +37,9 @@
         <ThemeToggle variant="dropdown" size="sm" />
         <ThemeToggle variant="dropdown" size="md" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="theme-toggle" />
   </div>
 </template>

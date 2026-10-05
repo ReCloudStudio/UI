@@ -34,13 +34,13 @@
       </p>
 
       <div class="grid gap-4 md:grid-cols-2">
-        <DocExample title="Nuxt 4 模块" description="自动导入全部组件、useTheme 与 useToast。" :code="installNuxt" expanded />
-        <DocExample title="Vue 3 显式导入" description="配合 Vite 或任意构建工具使用。" :code="installVue" expanded />
+        <ComponentExample title="Nuxt 4 模块" description="自动导入全部组件、useTheme 与 useToast。" :code="installNuxt" expanded />
+        <ComponentExample title="Vue 3 显式导入" description="配合 Vite 或任意构建工具使用。" :code="installVue" expanded />
       </div>
     </section>
 
     <!-- 组件总览 -->
-    <section class="space-y-6">
+    <section id="components" class="scroll-mt-24 space-y-6">
       <div>
         <h2 class="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">组件总览</h2>
         <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">按使用场景分组，点击进入每个组件的文档与交互示例。</p>

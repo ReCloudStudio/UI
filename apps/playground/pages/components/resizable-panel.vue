@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="ResizablePanel 可调面板" description="为日志、资源详情和编辑器工作区提供可拖拽且可键盘操作的分栏布局。" />
+    <PageHeader title="ResizablePanel 可调面板" description="为日志、资源详情和编辑器工作区提供可拖拽且可键盘操作的分栏布局。" />
 
-    <DocExample title="双栏工作区" description="拖动中间分隔线，或聚焦后通过方向键调整左侧面板；Home / End 跳到最小或最大尺寸。" :code="rcCode0">
+    <ComponentExample title="双栏工作区" description="拖动中间分隔线，或聚焦后通过方向键调整左侧面板；Home / End 跳到最小或最大尺寸。" :code="rcCode0">
       <ResizablePanel v-model="panelSize" class="h-72 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800" :min="160" :max="420">
         <template #first><div class="h-full bg-slate-50 p-4 dark:bg-slate-900/70"><p class="text-xs font-semibold uppercase tracking-wider text-slate-500">资源</p><div class="mt-3 space-y-1"><button v-for="item in resources" :key="item" class="block w-full rounded-lg px-2.5 py-2 text-left text-sm text-slate-600 hover:bg-white hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">{{ item }}</button></div></div></template>
         <template #second><div class="flex h-full flex-col bg-white p-5 dark:bg-[#0F172A]"><p class="text-xs font-semibold uppercase tracking-wider text-slate-500">部署日志</p><CodeBlock :code="deployLog" language="log" filename="deploy.log" :icon="false" max-height="11rem" class="mt-4 flex-1" /><p class="mt-3 text-xs text-slate-500">左侧宽度：{{ panelSize }}px</p></div></template>
       </ResizablePanel>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="resizable-panel" />
   </div>
 </template>

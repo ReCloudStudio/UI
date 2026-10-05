@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Card 卡片" description="控制台内容的标准容器：标题、描述、操作区与主体分割层级，内嵌环线取代厚重描边。" />
+    <PageHeader title="Card 卡片" description="控制台内容的标准容器：标题、描述、操作区与主体分割层级，内嵌环线取代厚重描边。" />
 
-    <DocExample title="结构层级" description="header 的 action 插槽与 footer 分割线自动生成。" :code="rcCode0">
+    <ComponentExample title="结构层级" description="header 的 action 插槽与 footer 分割线自动生成。" :code="rcCode0">
       <Card title="集群健康检查" description="过去 24 小时的可用性遥测" padding="md">
         <template #action><Badge color="success" variant="soft" dot>99.99%</Badge></template>
         <div class="space-y-2">
@@ -16,17 +16,17 @@
           </div>
         </template>
       </Card>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="变体与交互" description="outline / soft / subtle 三种表面与 hoverable 微交互。" :code="rcCode1">
+    <ComponentExample title="变体与交互" description="outline / soft / subtle 三种表面与 hoverable 微交互。" :code="rcCode1">
       <div class="grid gap-4 sm:grid-cols-3">
         <Card variant="outline" title="Outline" description="默认内嵌环线"><p class="text-sm text-slate-500 dark:text-slate-400">最通用的表面。</p></Card>
         <Card variant="soft" title="Soft" description="柔和底色"><p class="text-sm text-slate-500 dark:text-slate-400">用于嵌套层级。</p></Card>
         <Card variant="subtle" hoverable title="Hoverable" description="悬停抬升"><p class="text-sm text-slate-500 dark:text-slate-400">可点击的卡片入口。</p></Card>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="card" />
   </div>

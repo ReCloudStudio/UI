@@ -1,2 +1,2 @@
-export { default as EmptyState } from './EmptyState.vue'
-export type { EmptyStateProps } from './EmptyState.vue'
+export { default as EmptyState } from "./EmptyState.vue";
+export type { EmptyStateProps } from "./EmptyState.vue";

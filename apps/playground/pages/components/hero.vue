@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Hero 首屏横幅" description="面向落地页、官网门户与产品首页的首屏大横幅，支持居中排版、左右图文分栏及紧凑极简模式。" />
+    <PageHeader title="Hero 首屏横幅" description="面向落地页、官网门户与产品首页的首屏大横幅，支持居中排版、左右图文分栏及紧凑极简模式。" />
 
-    <DocExample title="居中主视觉模式 (center)" description="适合配合徽标、醒目标题、副标题、双 CTA 与下方预览画面。" :code="codeCenter">
+    <ComponentExample title="居中主视觉模式 (center)" description="适合配合徽标、醒目标题、副标题、双 CTA 与下方预览画面。" :code="codeCenter">
       <div class="overflow-hidden rounded-xl border border-slate-200/80 bg-white dark:border-slate-800 dark:bg-[#0B1220]">
         <Hero
           layout="center"
@@ -21,9 +21,9 @@
           </template>
         </Hero>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="图文分栏模式 (split)" description="左侧文本导流，右侧展示交互模型或媒体卡片。" :code="codeSplit">
+    <ComponentExample title="图文分栏模式 (split)" description="左侧文本导流，右侧展示交互模型或媒体卡片。" :code="codeSplit">
       <div class="overflow-hidden rounded-xl border border-slate-200/80 bg-white dark:border-slate-800 dark:bg-[#0B1220]">
         <Hero
           layout="split"
@@ -40,9 +40,9 @@
           </template>
         </Hero>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="hero" />
   </div>
 </template>

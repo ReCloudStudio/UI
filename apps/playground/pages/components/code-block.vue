@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="CodeBlock 代码块" description="带编程语言图标、文件标识、复制操作、行号和自动换行的深色代码展示容器。" />
+    <PageHeader title="CodeBlock 代码块" description="带编程语言图标、文件标识、复制操作、行号和自动换行的深色代码展示容器。" />
 
-    <DocExample title="编程语言图标显示" description="默认根据 language 或 filename 自动匹配内置编程语言图标；亦可显式关闭（icon: false）或自定义传入图标源。" :code="iconExampleCode">
+    <ComponentExample title="编程语言图标显示" description="默认根据 language 或 filename 自动匹配内置编程语言图标；亦可显式关闭（icon: false）或自定义传入图标源。" :code="iconExampleCode">
       <div class="space-y-4">
         <!-- 自动匹配 Vue / TypeScript / Bash / Python / SQL 图标 -->
         <CodeBlock :code="componentCode" language="vue" filename="StatusCard.vue" class="max-w-2xl" />
@@ -11,21 +11,21 @@
         <!-- 显式禁用图标（保留小圆点） -->
         <CodeBlock :code="logCode" language="log" filename="output.log" :icon="false" class="max-w-2xl" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="行号与换行" description="长内容可保留行号，并按需自动换行。" :code="lineNumberCode">
+    <ComponentExample title="行号与换行" description="长内容可保留行号，并按需自动换行。" :code="lineNumberCode">
       <CodeBlock :code="configCode" language="ts" filename="config.ts" show-line-numbers wrap class="max-w-2xl" />
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="受限高度" description="使用 max-height 为长日志保留滚动区域。" :code="scrollCode">
+    <ComponentExample title="受限高度" description="使用 max-height 为长日志保留滚动区域。" :code="scrollCode">
       <CodeBlock :code="logCode" language="log" filename="deploy.log" show-line-numbers max-height="12rem" class="max-w-2xl" />
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="可折叠" description="开启 collapsible 后可点击标题栏展开 / 收起，折叠状态可通过 v-model:collapsed 受控。收起时不会触发高亮。" :code="collapsibleCode">
+    <ComponentExample title="可折叠" description="开启 collapsible 后可点击标题栏展开 / 收起，折叠状态可通过 v-model:collapsed 受控。收起时不会触发高亮。" :code="collapsibleCode">
       <CodeBlock v-model:collapsed="collapsed" :code="componentCode" language="vue" filename="StatusCard.vue" collapsible class="max-w-2xl" />
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="code-block" />
   </div>
 </template>

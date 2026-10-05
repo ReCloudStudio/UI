@@ -1,13 +1,13 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Pagination 分页" description="页码折叠窗口 + 前后翻页 + 汇总文案，v-model 双向绑定当前页。" />
+    <PageHeader title="Pagination 分页" description="页码折叠窗口 + 前后翻页 + 汇总文案，v-model 双向绑定当前页。" />
 
-    <DocExample title="基础" description="siblingCount 控制当前页两侧暴露页码数。" :code="rcCode0">
+    <ComponentExample title="基础" description="siblingCount 控制当前页两侧暴露页码数。" :code="rcCode0">
       <Pagination v-model="page" :total="128" :page-size="10" />
       <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">第 {{ page }} / 13 页</p>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="pagination" />
   </div>

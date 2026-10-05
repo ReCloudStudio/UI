@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Separator 分隔线" description="水平与垂直方向分割线，自动适配主题。" />
+    <PageHeader title="Separator 分隔线" description="水平与垂直方向分割线，自动适配主题。" />
 
-    <DocExample title="方向" :code="rcCode0">
+    <ComponentExample title="方向" :code="rcCode0">
       <div class="space-y-4 max-w-md">
         <div class="space-y-1">
           <p class="text-sm text-slate-700 dark:text-slate-300">基础信息</p>
@@ -17,9 +17,9 @@
           <span>丢包 0%</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="separator" />
   </div>

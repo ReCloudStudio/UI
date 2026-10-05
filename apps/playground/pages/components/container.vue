@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="Container 页面容器"
       description="规范响应式最大宽度（sm、md、lg、xl、2xl、full）与水平内边距节奏的页面级排版容器，常与 Section、Navbar 或文档主体配合使用。"
     />
 
-    <DocExample
+    <ComponentExample
       title="基础容器与尺寸对比"
       description="内置 max-w 尺寸预设与响应式水平 padding（px-4 sm:px-6 lg:px-8），保持全站对齐统一。"
       :code="rcCode0"
@@ -24,9 +24,9 @@
           Container (xl · max-w-7xl · 默认推荐)
         </Container>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="自定义标签与无内边距模式"
       description="可通过 as 属性渲染为 main/article/section 等语义化标签，并支持 padded: false 实现完全贴边。"
       :code="rcCode1"
@@ -37,9 +37,9 @@
           当内部子元素已具备自身内边距时，禁用容器内边距以避免层叠 padding。
         </p>
       </Container>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="container" />
   </div>
 </template>

@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Timeline 时间线" description="以清晰的状态脉络呈现部署、审计操作和资源变更历史。" />
-    <DocExample title="部署操作日志" description="内置成功、警告、失败和信息状态；支持操作者、时间、说明及元数据。" :code="rcCode0">
+    <PageHeader title="Timeline 时间线" description="以清晰的状态脉络呈现部署、审计操作和资源变更历史。" />
+    <ComponentExample title="部署操作日志" description="内置成功、警告、失败和信息状态；支持操作者、时间、说明及元数据。" :code="rcCode0">
       <Timeline :items="deploymentEvents" class="max-w-2xl" />
-    </DocExample>
-    <DocExample title="自定义标记" description="通过 marker 插槽将时间线节点替换为版本号、头像或业务图标。" :code="rcCode1">
+    </ComponentExample>
+    <ComponentExample title="自定义标记" description="通过 marker 插槽将时间线节点替换为版本号、头像或业务图标。" :code="rcCode1">
       <Timeline :items="releaseEvents" class="max-w-2xl">
         <template #marker="{ index }"><span class="text-[10px] font-bold">{{ index + 1 }}</span></template>
       </Timeline>
-    </DocExample>
-    <DocApiTable :rows="apiRows" />
+    </ComponentExample>
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="timeline" />
   </div>
 </template>

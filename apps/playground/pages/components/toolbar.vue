@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Toolbar 工具条" description="编辑器式按钮组：role=toolbar、方向键循环焦点与分隔线。" />
+    <PageHeader title="Toolbar 工具条" description="编辑器式按钮组：role=toolbar、方向键循环焦点与分隔线。" />
 
-    <DocExample title="格式工具栏" description="ToolbarButton 包裹原生 button，ToolbarSeparator 自动方向感知。" :code="rcCode0">
+    <ComponentExample title="格式工具栏" description="ToolbarButton 包裹原生 button，ToolbarSeparator 自动方向感知。" :code="rcCode0">
       <div class="flex items-center gap-4">
         <Toolbar>
           <ToolbarButton aria-label="撤销">
@@ -19,9 +19,9 @@
         </Toolbar>
         <VisuallyHidden>仅供屏幕阅读器的工具条说明</VisuallyHidden>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="toolbar" />
   </div>

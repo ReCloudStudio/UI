@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="Section 门户区块"
       description="具备标准化垂直间距节奏（sm、md、lg、xl）、背景变体（default、muted、card、brand）以及内置标题/副标题的营销与控制台区块容器。"
     />
 
-    <DocExample
+    <ComponentExample
       title="基础区块与垂直节奏"
       description="内置 Container 包裹与自适应标题区域，快速搭建规格统一的落地页区块。"
       :code="rcCode0"
@@ -34,9 +34,9 @@
           </div>
         </Section>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="背景变体与左对齐排版"
       description="支持 brand 渐变与 card 边框模式，支持左对齐 header。"
       :code="rcCode1"
@@ -55,9 +55,9 @@
           </p>
         </Section>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="section" />
   </div>
 </template>

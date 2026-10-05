@@ -1,24 +1,23 @@
 <template>
-  <section class="space-y-3">
+  <section :class="cn('space-y-3', props.class)">
     <div v-if="props.title || $slots.header" class="flex items-baseline justify-between gap-4">
-      <h3 class="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+      <h3 class="text-base font-semibold tracking-tight text-[color:var(--foreground)]">
         <slot name="header">{{ props.title }}</slot>
       </h3>
-      <span v-if="props.badge" class="text-[11px] font-mono text-slate-500 dark:text-slate-400">{{ props.badge }}</span>
+      <span v-if="props.badge" class="font-mono text-[11px] text-[color:var(--muted-foreground)]">{{ props.badge }}</span>
     </div>
-    <p v-if="props.description" class="text-sm leading-6 text-slate-600 dark:text-slate-400 -mt-1 max-w-2xl">
+    <p v-if="props.description" class="-mt-1 max-w-2xl text-sm leading-6 text-[color:var(--muted-foreground)]">
       {{ props.description }}
     </p>
 
-    <div v-if="$slots.default" class="rounded-xl ring-1 ring-inset ring-slate-200/80 dark:ring-slate-800/80 bg-white dark:bg-[#0B1220]">
-      <div class="p-6 sm:p-8 bg-grid-pattern/40">
-        <div class="preview-area">
+    <Card v-if="$slots.default" variant="outline" padding="none">
+      <div class="bg-grid-pattern/40 p-6 sm:p-8">
+        <div class="rc-component-example-preview">
           <slot />
         </div>
       </div>
-    </div>
+    </Card>
 
-    <!-- Code panels use the stock CodeBlock look (border, shadow, rounded, collapsible). -->
     <CodeBlock
       v-if="props.code"
       v-model:collapsed="codeCollapsed"
@@ -31,41 +30,36 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { cn } from '../../utils/cn'
+import Card from '../card/Card.vue'
+import CodeBlock from '../code-block/CodeBlock.vue'
+import type { ComponentExampleProps } from './types'
 
-export interface DocExampleProps {
-  title?: string
-  description?: string
-  code?: string
-  badge?: string
-  /** Show the code expanded on first render (default). */
-  expanded?: boolean
-}
-
-const props = withDefaults(defineProps<DocExampleProps>(), {
+const props = withDefaults(defineProps<ComponentExampleProps>(), {
   title: '',
   description: '',
   code: '',
   badge: '',
-  expanded: true
+  expanded: true,
+  class: ''
 })
 
 const codeCollapsed = ref(!props.expanded)
 
-/** Infer the snippet language; CodeBlock resolves aliases such as `ts` and `bash`. */
 const codeLanguage = computed(() => {
   const code = props.code
   const first = code.trimStart().slice(0, 40)
+
   if (/^(# |npm |bun |pnpm |yarn |npx )/.test(first)) return 'bash'
   if (/^\/\//.test(first) && /defineNuxtConfig|export default/.test(code)) return 'ts'
   if (/^(import |export |const |let |function |interface |type |async )/.test(first)) return 'ts'
   if (/^[{[]/.test(first)) return 'json'
   return 'vue'
 })
-
 </script>
 
 <style scoped>
-.preview-area :deep(.demo-grid) {
+.rc-component-example-preview :deep(.demo-grid) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;

@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Dialog 对话框" description="模态弹层：遮罩模糊、焦点圈闭与 Esc 关闭，支持 header/footer 结构插槽。" />
+    <PageHeader title="Dialog 对话框" description="模态弹层：遮罩模糊、焦点圈闭与 Esc 关闭，支持 header/footer 结构插槽。" />
 
-    <DocExample title="表单弹层" description="trigger 插槽或受控 open 均可。" :code="rcCode0">
+    <ComponentExample title="表单弹层" description="trigger 插槽或受控 open 均可。" :code="rcCode0">
       <Button variant="solid" color="primary" @click="open = true">打开对话框</Button>
       <Dialog v-model:open="open" title="配置虚拟网络网段" description="更新当前 VPC 的 CIDR 规则，此操作将同步至边界安全网关。">
         <div class="space-y-3 py-1">
@@ -14,9 +14,9 @@
           <Button variant="solid" color="primary" @click="open = false">确认应用</Button>
         </template>
       </Dialog>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="dialog" />
   </div>

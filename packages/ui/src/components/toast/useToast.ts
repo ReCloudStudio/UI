@@ -1,44 +1,44 @@
-import { ref } from 'vue'
+import { ref } from "vue";
 
 export interface ToastOptions {
-  id?: string
-  title?: string
-  description?: string
-  variant?: 'info' | 'success' | 'warning' | 'destructive'
-  duration?: number
+  id?: string;
+  title?: string;
+  description?: string;
+  variant?: "info" | "success" | "warning" | "destructive";
+  duration?: number;
 }
 
-const toasts = ref<ToastOptions[]>([])
+const toasts = ref<ToastOptions[]>([]);
 
 export function useToast() {
   function toast(options: ToastOptions) {
-    const id = options.id || Math.random().toString(36).substring(2, 9)
-    const duration = options.duration ?? 4000
+    const id = options.id || Math.random().toString(36).substring(2, 9);
+    const duration = options.duration ?? 4000;
 
     const newToast: ToastOptions = {
       ...options,
       id,
-      variant: options.variant || 'info'
-    }
+      variant: options.variant || "info",
+    };
 
-    toasts.value.push(newToast)
+    toasts.value.push(newToast);
 
     if (duration > 0) {
       setTimeout(() => {
-        dismiss(id)
-      }, duration)
+        dismiss(id);
+      }, duration);
     }
 
-    return id
+    return id;
   }
 
   function dismiss(id: string) {
-    toasts.value = toasts.value.filter(t => t.id !== id)
+    toasts.value = toasts.value.filter((t) => t.id !== id);
   }
 
   return {
     toasts,
     toast,
-    dismiss
-  }
+    dismiss,
+  };
 }

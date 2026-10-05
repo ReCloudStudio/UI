@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Select 选择器" description="基于 Reka UI 的无障碍下拉：键盘导航、类型高亮与品牌色选中标记。" />
+    <PageHeader title="Select 选择器" description="基于 Reka UI 的无障碍下拉：键盘导航、类型高亮与品牌色选中标记。" />
 
-    <DocExample title="基础" description="options 支持 disabled 项。" :code="rcCode0">
+    <ComponentExample title="基础" description="options 支持 disabled 项。" :code="rcCode0">
       <div class="grid gap-5 sm:grid-cols-2">
         <Select v-model="region" label="目标地域" :options="[
           { label: '中国香港 (HKG)', value: 'hkg' },
@@ -12,9 +12,9 @@
         ]" />
         <Select v-model="region" label="禁用示例" :options="[{ label: '不可选', value: 'x' }]" disabled />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="select" />
   </div>

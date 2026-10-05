@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Button 按钮" description="六种清晰的视觉层级，配合主色、中性与语义色，覆盖核心操作、次要操作与低干扰链接。" />
+    <PageHeader title="Button 按钮" description="六种清晰的视觉层级，配合主色、中性与语义色，覆盖核心操作、次要操作与低干扰链接。" />
 
-    <DocExample title="变体" description="solid / outline / soft / subtle / ghost / link 六种层级。" :code="variantCode">
+    <ComponentExample title="变体" description="solid / outline / soft / subtle / ghost / link 六种层级。" :code="variantCode">
       <div class="demo-grid">
         <Button variant="solid" color="primary">Solid</Button>
         <Button variant="outline" color="primary">Outline</Button>
@@ -11,9 +11,9 @@
         <Button variant="ghost" color="primary">Ghost</Button>
         <Button variant="link" color="primary">Link</Button>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="色彩" description="主色、中性与语义错误 / 警告 / 成功色。" :code="colorCode">
+    <ComponentExample title="色彩" description="主色、中性与语义错误 / 警告 / 成功色。" :code="colorCode">
       <div class="demo-grid">
         <Button variant="solid" color="primary">Primary</Button>
         <Button variant="solid" color="neutral">Neutral</Button>
@@ -23,9 +23,9 @@
         <Button variant="soft" color="success">Success</Button>
         <Button variant="soft" color="warning">Warning</Button>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="尺寸与状态" description="从 xs 到 lg 四档高度，内置 loading 与 disabled 态。" :code="sizeCode">
+    <ComponentExample title="尺寸与状态" description="从 xs 到 lg 四档高度，内置 loading 与 disabled 态。" :code="sizeCode">
       <div class="demo-grid">
         <Button variant="solid" size="xs">Extra Small</Button>
         <Button variant="solid" size="sm">Small</Button>
@@ -34,9 +34,9 @@
         <Button variant="solid" loading>Loading</Button>
         <Button variant="solid" disabled>Disabled</Button>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="带图标" description="使用 leading / trailing 图标插槽。" :code="iconCode">
+    <ComponentExample title="带图标" description="使用 leading / trailing 图标插槽。" :code="iconCode">
       <div class="demo-grid">
         <Button variant="solid" color="primary">
           <template #leading><Cloud class="h-4 w-4" /></template>
@@ -50,9 +50,9 @@
           <Settings class="h-4 w-4" />
         </Button>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="button" />
   </div>

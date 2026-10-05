@@ -1,17 +1,17 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader group="Design Tokens" title="色彩与渐变" description="ReCloud Studio 品牌色度刻度与 180° 垂直天蓝渐变，配合克制的中性语义色层级，构成整个组件库的视觉基底。" />
+    <PageHeader group="Design Tokens" title="色彩与渐变" description="ReCloud Studio 品牌色度刻度与 180° 垂直天蓝渐变，配合克制的中性语义色层级，构成整个组件库的视觉基底。" />
 
-    <DocExample title="品牌色刻度" description="从天蓝到深品牌蓝的连续刻度，用于渐变节点与强调背景。">
+    <ComponentExample title="品牌色刻度" description="从天蓝到深品牌蓝的连续刻度，用于渐变节点与强调背景。">
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
         <div v-for="c in swatches" :key="c.name" class="p-3 rounded-lg ring-1 ring-inset ring-black/5" :style="{ backgroundColor: c.hex, color: c.text }">
           <span class="block text-xs font-mono font-semibold">{{ c.name }}</span>
           <span class="text-[11px] font-mono">{{ c.hex }}</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="垂直渐变" description="规范定义的 180° 渐变，用于品牌区、卡片头与英雄背景。" :code="gradientCode">
+    <ComponentExample title="垂直渐变" description="规范定义的 180° 渐变，用于品牌区、卡片头与英雄背景。" :code="gradientCode">
       <div class="space-y-3">
         <div class="p-4 rounded-xl bg-gradient-to-b from-[#C8E0FD] via-[#70ACFE] to-[#3069C9] text-[#0E1726] flex items-center justify-between shadow-xs">
           <div>
@@ -26,9 +26,9 @@
           卡片头渐变 --brand-gradient-card：0% #70ACFE → 100% #3069C9
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="tokenRows" />
+    <ApiTable :rows="tokenRows" />
 
     <DocPageNav name="colors" />
   </div>

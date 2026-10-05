@@ -1,2 +1,2 @@
-export { default as TagInput } from './TagInput.vue'
-export type { TagInputProps } from './TagInput.vue'
+export { default as TagInput } from "./TagInput.vue";
+export type { TagInputProps } from "./TagInput.vue";

@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Field / Form 表单布局" description="Field 将标签、说明与错误信息关联到控件；Form 提供一致的字段垂直间距。" />
+    <PageHeader title="Field / Form 表单布局" description="Field 将标签、说明与错误信息关联到控件；Form 提供一致的字段垂直间距。" />
 
-    <DocExample title="关联输入框" description="传入 id 后，Field 的 label 与说明文本会自动关联到插槽内控件。" :code="rcCode0">
+    <ComponentExample title="关联输入框" description="传入 id 后，Field 的 label 与说明文本会自动关联到插槽内控件。" :code="rcCode0">
       <Form class="max-w-md">
         <Field id="cluster-name" label="集群名称" hint="仅可使用小写字母、数字和连字符" required>
           <template #default="field">
@@ -17,9 +17,9 @@
         </Field>
         <Input v-model="endpoint" label="API 端点" error="该端点未通过 TLS 证书校验" required />
       </Form>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="field" />
   </div>
 </template>

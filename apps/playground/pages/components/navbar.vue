@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Navbar 导航顶栏" description="面向站点与文档门户的全局导航顶栏，支持品牌 Logo、桌面链接、快捷 CTA 与移动端折叠抽屉。" />
+    <PageHeader title="Navbar 导航顶栏" description="面向站点与文档门户的全局导航顶栏，支持品牌 Logo、桌面链接、快捷 CTA 与移动端折叠抽屉。" />
 
-    <DocExample title="基础顶栏" description="集成品牌、徽标链接、操作按钮及移动端抽屉。" :code="codeBasic">
+    <ComponentExample title="基础顶栏" description="集成品牌、徽标链接、操作按钮及移动端抽屉。" :code="codeBasic">
       <div class="overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/30">
         <Navbar
           brand-title="ReCloud"
@@ -15,9 +15,9 @@
           </template>
         </Navbar>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="navbar" />
   </div>
 </template>

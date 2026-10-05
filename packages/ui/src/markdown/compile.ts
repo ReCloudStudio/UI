@@ -123,7 +123,9 @@ const parseCodeMeta = (
     for (const part of parts) {
       const trimmed = part.trim();
       if (trimmed.includes("-")) {
-        const [start, end] = trimmed.split("-").map((v) => Number.parseInt(v, 10));
+        const [start = Number.NaN, end = Number.NaN] = trimmed
+          .split("-")
+          .map((v) => Number.parseInt(v, 10));
         if (!Number.isNaN(start) && !Number.isNaN(end)) {
           for (let i = Math.min(start, end); i <= Math.max(start, end); i += 1) {
             lines.add(i);

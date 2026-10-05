@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Skeleton 骨架屏" description="内容加载占位，脉冲动画节奏统一。" />
+    <PageHeader title="Skeleton 骨架屏" description="内容加载占位，脉冲动画节奏统一。" />
 
-    <DocExample title="占位组合" description="width/height 接受任意 CSS 长度。" :code="rcCode0">
+    <ComponentExample title="占位组合" description="width/height 接受任意 CSS 长度。" :code="rcCode0">
       <div class="grid grid-cols-3 gap-3 max-w-md">
         <Skeleton height="4.5rem" />
         <Skeleton height="4.5rem" />
@@ -13,9 +13,9 @@
         <Skeleton width="100%" height="0.75rem" />
         <Skeleton width="80%" height="0.75rem" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="skeleton" />
   </div>

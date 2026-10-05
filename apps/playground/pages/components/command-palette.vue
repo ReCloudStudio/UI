@@ -1,14 +1,14 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="CommandPalette 命令面板" description="面向开发者工具的全局导航与操作入口；支持分组、模糊检索、键盘导航与可选快捷键。" />
+    <PageHeader title="CommandPalette 命令面板" description="面向开发者工具的全局导航与操作入口；支持分组、模糊检索、键盘导航与可选快捷键。" />
 
-    <DocExample title="命令与导航" description="按下 Ctrl/⌘ K 或点击按钮，使用方向键和 Enter 选择命令。" :code="rcCode0">
+    <ComponentExample title="命令与导航" description="按下 Ctrl/⌘ K 或点击按钮，使用方向键和 Enter 选择命令。" :code="rcCode0">
       <Button @click="open = true">打开命令面板 <Kbd class="ml-2">⌘ K</Kbd></Button>
       <CommandPalette v-model:open="open" :groups="groups" shortcut="mod+k" @select="selectCommand" />
       <p v-if="selected" class="mt-3 text-xs text-slate-500 dark:text-slate-400">最近选择：{{ selected }}</p>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="command-palette" />
   </div>
 </template>

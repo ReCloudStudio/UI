@@ -1,17 +1,17 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Toast 吐司提示" description="全局操作反馈队列：四类语义样式、自动堆叠与滑出动画。" />
+    <PageHeader title="Toast 吐司提示" description="全局操作反馈队列：四类语义样式、自动堆叠与滑出动画。" />
 
-    <DocExample title="触发反馈" description="toast(options) 由 useToast 提供，需在应用根部挂载 ToastProvider。" :code="rcCode0">
+    <ComponentExample title="触发反馈" description="toast(options) 由 useToast 提供，需在应用根部挂载 ToastProvider。" :code="rcCode0">
       <div class="demo-grid">
         <Button variant="soft" color="neutral" @click="fire('信息提示', 'info')">Info</Button>
         <Button variant="soft" color="success" @click="fire('操作已成功执行', 'success')">Success</Button>
         <Button variant="soft" color="warning" @click="fire('检测到配置预警', 'warning')">Warning</Button>
         <Button variant="soft" color="error" @click="fire('实例终止失败', 'destructive')">Destructive</Button>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="toast" />
   </div>

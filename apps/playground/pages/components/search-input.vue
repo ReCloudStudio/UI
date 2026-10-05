@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="SearchInput 搜索框"
       description="通用纯前端搜索框组件（同时提供 SearchBox 别名导出），内置搜索图标、一键清除、Loading 状态、快捷键徽标（如 ⌘K 或 /）、防抖触发与可选的联想词/结果浮层，后端可任意对接 Elasticsearch、Meilisearch、SQL 或本地内存检索。"
     />
 
-    <DocExample
+    <ComponentExample
       title="基础搜索输入框"
       description="支持 v-model 双向绑定，内置 300ms 防抖并暴露 @search 与 @submit 事件。"
       :code="rcCode0"
@@ -23,9 +23,9 @@
           <span>提交 (@submit): <strong class="text-primary-600 dark:text-primary-400">{{ lastSubmit || '（无）' }}</strong></span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="视觉变体与尺寸规格"
       description="提供 default（线框卡片）、filled（静音填充）与 pill（胶囊圆角）三种变体，并支持 sm、md、lg 尺寸。"
       :code="rcCode1"
@@ -44,9 +44,9 @@
           <SearchInput size="lg" variant="default" placeholder="在全网知识库中搜索..." />
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="快捷键与异步 Loading 状态"
       description="支持展示 shortcut 快捷键（支持全局聚焦监听），支持 loading 模拟后端异步请求状态。"
       :code="rcCode2"
@@ -70,9 +70,9 @@
           切换 Loading 状态: {{ isLoading ? '开启' : '关闭' }}
         </button>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample
+    <ComponentExample
       title="联想结果与后端对接展示"
       description="传入 suggestions 列表即可展开下拉结果面板，支持键盘上下箭头高亮、Enter 选中或点击选择。"
       :code="rcCode3"
@@ -89,9 +89,9 @@
           <span class="ml-2 text-slate-500">({{ selectedItem.category }})</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="search-input" />
   </div>
 </template>

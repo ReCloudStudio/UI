@@ -1,16 +1,16 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Checkbox 复选框" description="布尔复选项，勾选动画与焦点环线跟随品牌色。" />
+    <PageHeader title="Checkbox 复选框" description="布尔复选项，勾选动画与焦点环线跟随品牌色。" />
 
-    <DocExample title="状态" :code="rcCode0">
+    <ComponentExample title="状态" :code="rcCode0">
       <div class="flex flex-wrap items-center gap-6">
         <Checkbox v-model="checked" label="跨可用区冗余" />
         <Checkbox :model-value="true" disabled label="已锁定策略" />
         <Checkbox v-model="checked" disabled label="禁用未选" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="checkbox" />
   </div>
