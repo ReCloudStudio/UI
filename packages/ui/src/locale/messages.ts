@@ -94,6 +94,9 @@ export interface LocaleMessages {
     confirm: string
     cancel: string
   }
+  codeBlock: {
+    region: string
+  }
   docs: {
     toc: string
     prev: string
@@ -208,6 +211,9 @@ export const zhCN: LocaleMessages = {
     confirm: '确认',
     cancel: '取消'
   },
+  codeBlock: {
+    region: '代码区域'
+  },
   docs: {
     toc: '本页目录',
     prev: '上一篇',
@@ -313,6 +319,9 @@ export const enUS: LocaleMessages = {
   alertDialog: {
     confirm: 'Confirm',
     cancel: 'Cancel'
+  },
+  codeBlock: {
+    region: 'Code region'
   },
   docs: {
     toc: 'On this page',

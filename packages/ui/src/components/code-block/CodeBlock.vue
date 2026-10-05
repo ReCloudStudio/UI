@@ -11,7 +11,7 @@
         <Icon v-if="effectiveIcon" :icon="effectiveIcon" size="1rem" class="shrink-0" />
         <span v-else-if="!collapsible" class="h-2 w-2 shrink-0 rounded-full bg-[var(--code-accent)] shadow-[0_0_0_3px_rgb(59_130_246_/_0.12)]" aria-hidden="true" />
         <span v-if="filename" class="truncate font-mono text-xs font-medium text-[var(--code-foreground)]">{{ filename }}</span>
-        <span v-if="language" class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--code-muted)]">{{ language }}</span>
+        <span v-if="language" class="shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--code-muted)]">{{ language }}</span>
         <span v-if="collapsible" class="shrink-0 text-xs font-medium text-[var(--code-muted)]">{{ isCollapsed ? commonLoc.expandCode : commonLoc.collapseCode }}</span>
       </component>
       <button
@@ -25,24 +25,35 @@
         <svg v-else class="h-3.5 w-3.5 text-[var(--success)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7" /></svg>
         {{ copied ? commonLoc.copied : commonLoc.copy }}
       </button>
+      <span v-if="copyable" class="sr-only" role="status" aria-live="polite">
+        {{ copied ? commonLoc.copied : '' }}
+      </span>
     </header>
 
-    <div
-      v-show="!isCollapsed"
-      :id="bodyId"
-      :class="contentClasses"
-      :style="maxHeight ? { maxHeight } : undefined"
-      v-html="renderedHtml"
-    />
+    <div :class="bodyWrapperClasses">
+      <div
+        :id="bodyId"
+        ref="contentElement"
+        :class="contentClasses"
+        :style="contentStyle"
+        :tabindex="isCollapsed ? -1 : 0"
+        role="region"
+        :aria-label="regionLabel"
+        :aria-hidden="isCollapsed || undefined"
+        @scroll.passive="syncBottomFade"
+        v-html="renderedHtml"
+      />
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue'
-import { Icon } from '../icon'
-import { resolveCodeBlockIcon } from './languageIcons'
-import { cn } from '../../utils/cn'
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue'
 import { useComponentLocale } from '../../locale'
+import { cn } from '../../utils/cn'
+import { Icon } from '../icon'
+import { getCodeBlockHighlighter } from './highlighter'
+import { resolveCodeBlockGrammar, resolveCodeBlockIcon } from './languages'
 import type { CodeBlockProps } from './types'
 
 const props = withDefaults(defineProps<CodeBlockProps>(), {
@@ -61,27 +72,18 @@ const props = withDefaults(defineProps<CodeBlockProps>(), {
 /** Collapsed state; only takes effect when `collapsible` is set. Works uncontrolled without v-model. */
 const collapsed = defineModel<boolean>('collapsed', { default: false })
 const commonLoc = useComponentLocale('common')
+const codeBlockLoc = useComponentLocale('codeBlock')
 
 const bodyId = useId()
 const copied = shallowRef(false)
+const contentElement = shallowRef<HTMLElement | null>(null)
+const showBottomFade = shallowRef(false)
 /** Highlight result tagged with the source it was produced for, so stale output is never shown. */
 const highlighted = shallowRef<{ key: string; html: string } | null>(null)
 const colorTheme = shallowRef<'github-dark' | 'github-light'>(getColorTheme())
 let copyTimer: ReturnType<typeof setTimeout> | undefined
-let highlighterPromise: Promise<Awaited<ReturnType<typeof createHighlighter>>> | undefined
 let themeObserver: MutationObserver | undefined
 let highlightVersion = 0
-
-const languageAliases: Record<string, string> = {
-  bash: 'shellscript',
-  js: 'javascript',
-  sh: 'shellscript',
-  shell: 'shellscript',
-  ts: 'typescript'
-}
-const supportedLanguages = new Set(['css', 'html', 'javascript', 'json', 'log', 'shellscript', 'typescript', 'vue', 'vue-html'])
-/** A Vue SFC has at least one top-level block; anything else is a template fragment. */
-const SFC_BLOCK_RE = /^<(template|script|style)[\s>]/m
 /**
  * Component-owned class for the rendered <pre>. Shiki's default `shiki` class is replaced so
  * host-app global rules (e.g. `pre.shiki { background: ... !important }`) cannot override it.
@@ -92,11 +94,20 @@ const isCollapsed = computed(() => props.collapsible && collapsed.value)
 const effectiveIcon = computed(() => resolveCodeBlockIcon(props.icon, props.language, props.filename))
 const hasHeader = computed(() => Boolean(props.filename || props.language || props.copyable || props.collapsible || effectiveIcon.value))
 const sourceKey = computed(() => `${colorTheme.value}\u0000${props.language}\u0000${props.code}`)
+const regionLabel = computed(() => props.filename || props.language || codeBlockLoc.value.region)
 
 const headerClasses = computed(() => {
   return cn(
-    'flex min-h-10 items-center justify-between gap-3 px-3.5',
-    !isCollapsed.value && 'border-b border-[var(--code-border)]'
+    'flex min-h-10 items-center justify-between gap-3 border-b px-3.5',
+    isCollapsed.value ? 'border-transparent' : 'border-[var(--code-border)]'
+  )
+})
+
+const bodyWrapperClasses = computed(() => {
+  if (!props.collapsible) return undefined
+  return cn(
+    'grid overflow-hidden transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none',
+    isCollapsed.value ? 'grid-rows-[0fr]' : 'grid-rows-[1fr]'
   )
 })
 
@@ -130,8 +141,20 @@ const contentClasses = computed(() => {
       ? '[&>pre]:whitespace-pre-wrap [&>pre]:[overflow-wrap:anywhere]'
       : '[&>pre]:min-w-max [&>pre]:whitespace-pre',
     props.showLineNumbers &&
-      '[&>pre]:[counter-reset:line] [&_.line]:before:inline-block [&_.line]:before:w-6 [&_.line]:before:mr-5 [&_.line]:before:text-right [&_.line]:before:text-[var(--code-muted)] [&_.line]:before:select-none [&_.line]:before:[counter-increment:line] [&_.line]:before:content-[counter(line)]'
+      '[&>pre]:[counter-reset:line] [&>pre]:[padding-left:calc(2rem+var(--rc-ln-w))] [&_.line]:relative [&_.line]:before:absolute [&_.line]:before:left-[calc(-1*(var(--rc-ln-w)+1rem))] [&_.line]:before:w-[var(--rc-ln-w)] [&_.line]:before:text-right [&_.line]:before:text-[var(--code-muted)] [&_.line]:before:select-none [&_.line]:before:[counter-increment:line] [&_.line]:before:content-[counter(line)]',
+    showBottomFade.value &&
+      '[mask-image:linear-gradient(to_bottom,#000_calc(100%_-_2.5rem),transparent)]'
   )
+})
+
+const contentStyle = computed(() => {
+  const style: Record<string, string> = {}
+  if (props.maxHeight) style.maxHeight = props.maxHeight
+  if (props.showLineNumbers) {
+    const digits = String(props.code.split('\n').length).length
+    style['--rc-ln-w'] = `max(1.5rem, ${digits}ch)`
+  }
+  return Object.keys(style).length ? style : undefined
 })
 
 /** Show raw escaped code (same line structure as Shiki) while the highlighter loads or on error. */
@@ -149,6 +172,25 @@ function toggleCollapsed() {
   if (props.collapsible) collapsed.value = !collapsed.value
 }
 
+function syncBottomFade() {
+  const element = contentElement.value
+  showBottomFade.value = Boolean(
+    props.maxHeight &&
+      !isCollapsed.value &&
+      element &&
+      element.scrollHeight - element.scrollTop - element.clientHeight > 4
+  )
+}
+
+watch(
+  [renderedHtml, isCollapsed, () => props.maxHeight],
+  async () => {
+    await nextTick()
+    syncBottomFade()
+  },
+  { flush: 'post' }
+)
+
 onMounted(() => {
   const root = document.documentElement
   const updateColorTheme = () => {
@@ -156,6 +198,7 @@ onMounted(() => {
   }
 
   updateColorTheme()
+  syncBottomFade()
   themeObserver = new MutationObserver(updateColorTheme)
   themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] })
 })
@@ -180,50 +223,6 @@ async function copyCode() {
   }
 }
 
-async function createHighlighter() {
-  const [
-    { createHighlighterCore },
-    { createJavaScriptRegexEngine },
-    { default: darkTheme },
-    { default: lightTheme },
-    ...languages
-  ] = await Promise.all([
-    import('shiki/core'),
-    import('shiki/engine/javascript'),
-    import('shiki/dist/themes/github-dark.mjs'),
-    import('shiki/dist/themes/github-light.mjs'),
-    import('shiki/dist/langs/css.mjs'),
-    import('shiki/dist/langs/html.mjs'),
-    import('shiki/dist/langs/javascript.mjs'),
-    import('shiki/dist/langs/json.mjs'),
-    import('shiki/dist/langs/log.mjs'),
-    import('shiki/dist/langs/shellscript.mjs'),
-    import('shiki/dist/langs/typescript.mjs'),
-    import('shiki/dist/langs/vue.mjs'),
-    import('shiki/dist/langs/vue-html.mjs')
-  ])
-
-  return createHighlighterCore({
-    themes: [darkTheme, lightTheme],
-    langs: languages.map(({ default: lang }) => lang),
-    engine: createJavaScriptRegexEngine()
-  })
-}
-
-function getHighlighter() {
-  highlighterPromise ??= createHighlighter()
-  return highlighterPromise
-}
-
-function resolveLanguage(language: string, code: string) {
-  const normalized = languageAliases[language.toLowerCase()] ?? language.toLowerCase()
-  if (!supportedLanguages.has(normalized)) return 'log'
-  // The `vue` grammar only tokenizes inside SFC blocks; bare template snippets
-  // (e.g. `<div><Button v-model="x" /></div>`) need the template grammar instead.
-  if (normalized === 'vue' && !SFC_BLOCK_RE.test(code)) return 'vue-html'
-  return normalized
-}
-
 watch(
   [sourceKey, isCollapsed],
   async ([key, hidden]) => {
@@ -231,16 +230,18 @@ watch(
     if (hidden || highlighted.value?.key === key) return
     const version = ++highlightVersion
     try {
-      const highlighter = await getHighlighter()
+      const grammar = resolveCodeBlockGrammar(props.language, props.code)
+      const highlighter = await getCodeBlockHighlighter(grammar)
       // Guard against stale async results when props changed during await.
       if (version !== highlightVersion) return
       const html = highlighter.codeToHtml(props.code, {
-        lang: resolveLanguage(props.language, props.code),
+        lang: grammar,
         theme: colorTheme.value,
         transformers: [
           {
             pre(node) {
               node.properties.class = PRE_CLASS
+              delete node.properties.tabindex
             }
           }
         ]
