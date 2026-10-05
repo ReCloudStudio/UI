@@ -1,13 +1,26 @@
+import { fileURLToPath } from 'node:url'
 import { defineNuxtConfig } from 'nuxt/config'
 import tailwindcss from '@tailwindcss/vite'
 import { createThemeInitScript } from '../../packages/ui/src/utils/themeScript'
+
+// Dev 直连源码：模块、组件、组合式函数与图标都指向 packages/ui/src，
+// 源码改动即时 HMR，无需先构建 dist。生产构建仍消费 dist（与发布产物一致）。
+const isDev = process.env.NODE_ENV === 'development'
+const uiSrc = (path: string) =>
+  fileURLToPath(new URL(`../../packages/ui/src/${path}`, import.meta.url))
 
 export default defineNuxtConfig({
   // 固定 buildDir：Nuxt 4 生产构建会在 .nuxt 已存在时自动切到 node_modules/.cache，
   // 导致 tsconfig extends 在干净环境（CI/Pages）与本地行为不一致
   buildDir: '.nuxt',
   css: ['~/src/style.css'],
-  modules: [['@recloudstudio/ui/nuxt', { prefix: '', injectTheme: false }]],
+  modules: [
+    [
+      // Dev 加载 Nuxt 模块源码，组件自动注册随之指向 packages/ui/src。
+      isDev ? uiSrc('nuxt/index.ts') : '@recloudstudio/ui/nuxt',
+      { prefix: '', injectTheme: false }
+    ]
+  ],
   app: {
     head: {
       title: 'ReCloud UI · ReCloud Studio 设计系统',
@@ -31,7 +44,20 @@ export default defineNuxtConfig({
     }
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ...(isDev
+      ? {
+          resolve: {
+            // 子路径必须排在包名之前：字符串别名按前缀匹配，顺序即优先级。
+            alias: {
+              '@recloudstudio/ui/icons': uiSrc('icons/index.ts'),
+              '@recloudstudio/ui': uiSrc('index.ts')
+            }
+          },
+          // Dev 下 SSR 同样走源码，避免服务端 external 到 dist 造成双实例。
+          ssr: { noExternal: [/^@recloudstudio\/ui(\/.*)?$/] }
+        }
+      : {})
   },
   devtools: { enabled: true },
   runtimeConfig: {

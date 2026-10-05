@@ -10,7 +10,7 @@
   "scripts": {
     "build": "bunx turbo run build",
     "generate": "bunx turbo run generate --filter=playground",
-    "dev": "bunx turbo run dev",
+    "dev": "bunx turbo run dev --filter=playground",
     "typecheck": "bunx turbo run typecheck",
     "test": "bunx turbo run test",
     "lint": "biome lint apps packages .github .changeset package.json turbo.json biome.json tsconfig.json",
