@@ -129,7 +129,7 @@
       :code="integrationCode"
     >
       <div class="max-w-xs rounded-lg border border-slate-200 dark:border-slate-800 p-2 bg-white dark:bg-slate-950">
-        <NavTree :groups="sampleNavGroups" active-href="/pods" />
+        <NavTree :groups="sampleNavGroups" active-href="/components/button" />
       </div>
     </DocExample>
   </div>
@@ -154,11 +154,11 @@ const svgSnippet = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 
 const sampleNavGroups = [
   {
-    title: '集群资源',
+    title: '示例导航',
     items: [
-      { title: 'Pods 实例', href: '/pods', icon: 'lucide:box' },
-      { title: '数据库服务', href: '/db', icon: 'cloud:database' },
-      { title: '路由网关', href: '/gateway', icon: 'lucide:network' }
+      { title: 'Button 按钮', href: '/components/button', icon: 'lucide:box' },
+      { title: 'Card 卡片', href: '/components/card', icon: 'cloud:database' },
+      { title: 'Dialog 对话框', href: '/components/dialog', icon: 'lucide:network' }
     ]
   }
 ]
@@ -224,12 +224,12 @@ const integrationCode = `<template>
   <!-- NavTree、TreeView、CommandPalette 等原生无缝接收统一 IconSource -->
   <NavTree :groups="[
     {
-      title: '集群资源',
+      title: '组件导航',
       items: [
-        { title: 'Pods 实例', href: '/pods', icon: 'lucide:box' },
-        { title: '数据库服务', href: '/db', icon: 'cloud:database' }
+        { title: 'Button 按钮', href: '/components/button', icon: 'lucide:box' },
+        { title: 'Card 卡片', href: '/components/card', icon: 'cloud:database' }
       ]
     }
-  ]" />
+  ]" active-href="/components/button" />
 </template>`
 </script>
