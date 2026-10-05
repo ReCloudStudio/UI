@@ -1,5 +1,20 @@
 # @recloudstudio/ui
 
+## 0.4.0
+
+### Minor Changes
+
+- 4bf303a: Add reusable ComponentExample, ApiTable, and PageHeader primitives for documentation interfaces.
+- 643e59f: Add Container, Section, and ThemeToggle components for unified responsive page layouts and ready-to-use theme toggles.
+- f413b99: Add Markdown rendering system with GFM, TOC heading extraction, Shiki code blocks, and documentation directive extensions.
+- ab2a510: Add SearchInput and SearchBox components with debounced querying, clearable input, loading state, shortcuts, and suggestions flyout.
+- da825d2: Expand CodeBlock language support with on-demand syntax loading, resilient retries, accessible scrolling, adaptive line numbers, and smoother collapsed and height-limited states.
+
+### Patch Changes
+
+- b0f351d: Reuse one process-wide Shiki highlighting pipeline during Nuxt SSR and prerendering while retaining on-demand grammar loading.
+- 8f0b46b: Wrap long InlineCode values into independently decorated line fragments in narrow containers instead of overflowing or leaving trailing background space.
+
 ## 0.3.0
 
 ### Minor Changes
