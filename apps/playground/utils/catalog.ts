@@ -225,6 +225,21 @@ const groups: DocGroup[] = [
         title: "Hero 首屏横幅",
         description: "落地页与产品首页主视觉横幅，支持居中、图文左右分栏及极简模式。",
       },
+      {
+        name: "container",
+        title: "Container 页面容器",
+        description: "规范响应式最大宽度与内边距的页面级排版容器。",
+      },
+      {
+        name: "section",
+        title: "Section 门户区块",
+        description: "具备标准垂直间距节奏、背景底色与内置标题插槽的营销区块容器。",
+      },
+      {
+        name: "theme-toggle",
+        title: "ThemeToggle 主题切换开关",
+        description: "可直接嵌入 Navbar 顶栏的主题明暗切换按钮与下拉组件。",
+      },
     ],
   },
   {
