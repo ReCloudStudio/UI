@@ -72,6 +72,7 @@ export * from "./components/hero";
 export * from "./components/container";
 export * from "./components/section";
 export * from "./components/theme-toggle";
+export * from "./components/search-input";
 export * from "./components/icon";
 export * from "./markdown";
 
