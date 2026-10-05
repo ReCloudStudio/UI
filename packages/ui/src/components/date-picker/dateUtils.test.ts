@@ -3,7 +3,11 @@ import { addMonths, monthDays, parseDateKey, toDateKey } from './dateUtils'
 
 describe('dateUtils', () => {
   it('parses only valid ISO date keys', () => {
-    expect(toDateKey(parseDateKey('2026-02-28')!)).toBe('2026-02-28')
+    const parsed = parseDateKey('2026-02-28')
+    expect(parsed).toBeDefined()
+    if (parsed) {
+      expect(toDateKey(parsed)).toBe('2026-02-28')
+    }
     expect(parseDateKey('2026-02-30')).toBeUndefined()
   })
 

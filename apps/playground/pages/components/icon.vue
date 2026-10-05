@@ -136,7 +136,7 @@
 </template>
 
 <script setup lang="ts">
-import { Settings } from 'lucide-vue-next'
+import { Settings } from '@recloudstudio/ui/icons'
 import { registerIconResolver } from '@recloudstudio/ui'
 
 // 注册示范用前缀解析器
