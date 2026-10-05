@@ -74,6 +74,11 @@ const groups: DocGroup[] = [
       { name: "editable", title: "Editable 行内编辑", description: "点击即改的文本。" },
       { name: "toggle", title: "Toggle / ToggleGroup", description: "按压态工具按钮与分组。" },
       { name: "label", title: "Label 标签", description: "表单控件关联标签。" },
+      {
+        name: "search-input",
+        title: "SearchInput 搜索框",
+        description: "带图标、清空、加载、快捷键与联想结果下拉的通用前端搜索框。",
+      },
       { name: "date-picker", title: "DatePicker 日期选择", description: "单日期与日期范围筛选。" },
     ],
   },
