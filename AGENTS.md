@@ -41,11 +41,25 @@ Read only the standard required for the current work; do not preload all three t
 
 ## Verification
 
-- For a library-only change, run `bun run --cwd packages/ui typecheck`, `bun run --cwd packages/ui test`, and `bun run --cwd packages/ui build`.
-- For component, export, Nuxt-module, or documentation changes, also run `bun run --cwd apps/playground build`.
+### Mandatory pre-commit gate
+
+**Before every `git commit` or push, run the complete verification sequence from the repository root. Do not skip a command because a subset was run earlier, and do not commit or push when any command fails.**
+
+1. Run `bun run format`. This command writes formatting changes; inspect and intentionally include or revert every resulting diff before continuing.
+2. Run `git diff --check`.
+3. Run `bun run lint`.
+4. Run `bun run typecheck`.
+5. Run `bun run test`.
+6. Run `bun run build`.
+7. Run `bun run ci` as the final aggregate gate, even though it repeats lint, typecheck, test, and build.
+
+For changes that affect component rendering, exports, the Nuxt module, Playground configuration, documentation pages, or static routes, also run `bun run --cwd apps/playground generate` after the mandatory gate. Stop any Playground dev server first because it holds `apps/playground/.nuxt`.
+
+Record the commands and their passing results in the handoff, PR, or final status report. If a formatter, build, test, or validation command changes files, repeat every affected verification command before committing.
+
+- `bun run ci` is the full workspace gate: `lint`, `typecheck`, `test`, then `build`. It does not replace the explicit commands above; the redundancy is intentional.
+- Biome intentionally excludes `.vue` files, so do not treat a passing root lint as Vue validation. The Playground build/generate gate provides the required Vue and Nuxt coverage.
 - Put `--cwd` after `run`. Bun 1.4.2 treats `bun --cwd <dir> run <script>` as `bun run` with no script: it prints usage and exits 0, so the check silently passes without running anything.
-- The Playground build refuses to run while a Nuxt dev server holds `apps/playground/.nuxt`; stop the dev server first.
-- `bun run ci` is the full workspace gate. Biome intentionally excludes `.vue` files, so do not treat a passing root lint as Vue validation.
 
 ## Component Delivery
 
