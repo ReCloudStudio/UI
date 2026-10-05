@@ -5,18 +5,11 @@
     <DocExample title="包管理器切换" description="结合 CodeBlock 展示不同包管理器的命令。" :code="codeBasic">
       <div class="max-w-2xl">
         <CodeGroup v-model="activePm" :tabs="['bun', 'pnpm', 'npm', 'yarn']">
-          <div v-if="activePm === 'bun'" class="p-4 font-mono text-xs bg-slate-950 text-slate-100 rounded-b-xl">
-            bun add @recloudstudio/ui
-          </div>
-          <div v-else-if="activePm === 'pnpm'" class="p-4 font-mono text-xs bg-slate-950 text-slate-100 rounded-b-xl">
-            pnpm add @recloudstudio/ui
-          </div>
-          <div v-else-if="activePm === 'npm'" class="p-4 font-mono text-xs bg-slate-950 text-slate-100 rounded-b-xl">
-            npm install @recloudstudio/ui
-          </div>
-          <div v-else class="p-4 font-mono text-xs bg-slate-950 text-slate-100 rounded-b-xl">
-            yarn add @recloudstudio/ui
-          </div>
+          <CodeBlock
+            :code="pmCommands[activePm] ?? ''"
+            language="bash"
+            class="rounded-none border-x-0 border-b-0 shadow-none"
+          />
         </CodeGroup>
       </div>
     </DocExample>
@@ -31,10 +24,15 @@ import { ref } from 'vue'
 
 const activePm = ref('bun')
 
+const pmCommands: Record<string, string> = {
+  bun: 'bun add @recloudstudio/ui',
+  pnpm: 'pnpm add @recloudstudio/ui',
+  npm: 'npm install @recloudstudio/ui',
+  yarn: 'yarn add @recloudstudio/ui'
+}
+
 const codeBasic = `<CodeGroup v-model="activePm" :tabs="['bun', 'pnpm', 'npm', 'yarn']">
-  <div v-if="activePm === 'bun'">bun add @recloudstudio/ui</div>
-  <div v-else-if="activePm === 'pnpm'">pnpm add @recloudstudio/ui</div>
-  ...
+<CodeBlock :code="pmCommands[activePm]" language="bash" />
 </CodeGroup>`
 
 const apiRows = [

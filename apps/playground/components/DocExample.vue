@@ -16,25 +16,15 @@
           <slot />
         </div>
       </div>
-
-      <CodeBlock
-        v-if="props.code"
-        v-model:collapsed="codeCollapsed"
-        collapsible
-        :code="props.code"
-        :language="codeLanguage"
-        class="rounded-t-none rounded-b-xl border-x-0 border-b-0 shadow-none"
-      />
     </div>
 
-    <!-- Code-only examples skip the empty preview area. -->
+    <!-- Code panels use the stock CodeBlock look (border, shadow, rounded, collapsible). -->
     <CodeBlock
-      v-else-if="props.code"
+      v-if="props.code"
       v-model:collapsed="codeCollapsed"
       collapsible
       :code="props.code"
       :language="codeLanguage"
-      class="shadow-none"
     />
   </section>
 </template>
@@ -47,7 +37,7 @@ export interface DocExampleProps {
   description?: string
   code?: string
   badge?: string
-  /** Show the code expanded on first render. */
+  /** Show the code expanded on first render (default). */
   expanded?: boolean
 }
 
@@ -56,7 +46,7 @@ const props = withDefaults(defineProps<DocExampleProps>(), {
   description: '',
   code: '',
   badge: '',
-  expanded: false
+  expanded: true
 })
 
 const codeCollapsed = ref(!props.expanded)
@@ -67,6 +57,7 @@ const codeLanguage = computed(() => {
   const first = code.trimStart().slice(0, 40)
   if (/^(# |npm |bun |pnpm |yarn |npx )/.test(first)) return 'bash'
   if (/^\/\//.test(first) && /defineNuxtConfig|export default/.test(code)) return 'ts'
+  if (/^(import |export |const |let |function |interface |type |async )/.test(first)) return 'ts'
   if (/^[{[]/.test(first)) return 'json'
   return 'vue'
 })
