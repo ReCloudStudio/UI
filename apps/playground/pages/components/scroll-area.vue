@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="ScrollArea 滚动区" description="自定义纤细滚动条的受限视口，深浅色自动适配。" />
+    <PageHeader title="ScrollArea 滚动区" description="自定义纤细滚动条的受限视口，深浅色自动适配。" />
 
-    <DocExample title="节点列表" description="max-height 接受任意 CSS 长度。" :code="rcCode0">
+    <ComponentExample title="节点列表" description="max-height 接受任意 CSS 长度。" :code="rcCode0">
       <ScrollArea max-height="12rem" class="max-w-sm">
         <div class="space-y-1 pr-3">
           <div v-for="(node, i) in nodes" :key="node" class="flex items-center justify-between rounded-lg px-3 py-2 text-sm ring-1 ring-inset ring-slate-200/70 dark:ring-slate-800/70">
@@ -11,9 +11,9 @@
           </div>
         </div>
       </ScrollArea>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="scroll-area" />
   </div>

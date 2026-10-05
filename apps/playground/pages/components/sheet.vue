@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Sheet 抽屉面板" description="用于资源详情、配置编辑和辅助操作的可访问模态侧栏，支持四个展开方向。" />
+    <PageHeader title="Sheet 抽屉面板" description="用于资源详情、配置编辑和辅助操作的可访问模态侧栏，支持四个展开方向。" />
 
-    <DocExample title="实例详情" description="默认从右侧展开；使用 header、默认和 footer 插槽构建详情工作流。" :code="rcCode0">
+    <ComponentExample title="实例详情" description="默认从右侧展开；使用 header、默认和 footer 插槽构建详情工作流。" :code="rcCode0">
       <Button @click="open = true">查看实例详情</Button>
       <Sheet v-model:open="open" title="hkg-edge-07" description="运行中的边缘节点 · 香港" size="30rem">
         <div class="space-y-5">
@@ -19,9 +19,9 @@
           </div>
         </template>
       </Sheet>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="sheet" />
   </div>
 </template>

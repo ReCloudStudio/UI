@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Rating 评分" description="星级评分，支持只读展示与语义色。" />
+    <PageHeader title="Rating 评分" description="星级评分，支持只读展示与语义色。" />
 
-    <DocExample title="交互与只读" description="点击任一星级会连续填充此前所有星标，支持方向键调整。" :code="rcCode0">
+    <ComponentExample title="交互与只读" description="点击任一星级会连续填充此前所有星标，支持方向键调整。" :code="rcCode0">
       <div class="flex items-center gap-6">
         <div class="space-y-1">
           <Rating v-model="val" />
@@ -13,9 +13,9 @@
           <p class="text-xs text-slate-500 dark:text-slate-400">客户满意度（只读）</p>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="rating" />
   </div>

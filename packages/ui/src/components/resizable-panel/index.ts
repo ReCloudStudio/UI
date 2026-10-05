@@ -1,1 +1,1 @@
-export { default as ResizablePanel } from './ResizablePanel.vue'
+export { default as ResizablePanel } from "./ResizablePanel.vue";

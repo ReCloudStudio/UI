@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Popover 浮层" description="轻量内容弹层：标题、关闭按钮与表单友好焦点管理。" />
+    <PageHeader title="Popover 浮层" description="轻量内容弹层：标题、关闭按钮与表单友好焦点管理。" />
 
-    <DocExample title="限流设置" description="受控时 v-model:open。" :code="rcCode0">
+    <ComponentExample title="限流设置" description="受控时 v-model:open。" :code="rcCode0">
       <Popover title="速率限制设置" show-close align="center">
         <template #trigger>
           <Button variant="outline" color="neutral">气泡面板</Button>
@@ -13,9 +13,9 @@
           <Badge variant="subtle" color="neutral">Burst 20,000</Badge>
         </div>
       </Popover>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="popover" />
   </div>

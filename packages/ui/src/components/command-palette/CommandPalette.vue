@@ -157,8 +157,10 @@ function moveActive(direction: 1 | -1) {
   if (!items.length) return
   const currentIndex = items.findIndex((item) => item.id === activeId.value)
   const nextIndex = (currentIndex + direction + items.length) % items.length
-  activeId.value = items[nextIndex].id
-  document.getElementById(itemDomId(items[nextIndex]))?.scrollIntoView({ block: 'nearest' })
+  const nextItem = items[nextIndex]
+  if (!nextItem) return
+  activeId.value = nextItem.id
+  document.getElementById(itemDomId(nextItem))?.scrollIntoView({ block: 'nearest' })
 }
 
 function selectActive() {

@@ -1,2 +1,2 @@
-export { default as Avatar } from './Avatar.vue'
-export type { AvatarProps } from './Avatar.vue'
+export { default as Avatar } from "./Avatar.vue";
+export type { AvatarProps } from "./Avatar.vue";

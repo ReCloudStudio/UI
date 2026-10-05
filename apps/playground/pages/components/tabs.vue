@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Tabs 标签页" description="视图切换标签，pill 风格容器与内容面板插槽，基于 Reka UI 键盘导航。" />
+    <PageHeader title="Tabs 标签页" description="视图切换标签，pill 风格容器与内容面板插槽，基于 Reka UI 键盘导航。" />
 
-    <DocExample title="基础与内容面板" description="items 定义标签，TabsContent 按 value 匹配面板。" :code="rcCode0">
+    <ComponentExample title="基础与内容面板" description="items 定义标签，TabsContent 按 value 匹配面板。" :code="rcCode0">
       <Tabs v-model="tab" :items="[
         { label: '拓扑概览', value: 'overview' },
         { label: '性能监控', value: 'monitoring' },
@@ -19,9 +19,9 @@
           </div>
         </TabsContent>
       </Tabs>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="tabs" />
   </div>

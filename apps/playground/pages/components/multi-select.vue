@@ -1,17 +1,17 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="MultiSelect 多选" description="为告警渠道、区域、标签与成员分配提供可搜索、多标签的选择体验。" />
+    <PageHeader title="MultiSelect 多选" description="为告警渠道、区域、标签与成员分配提供可搜索、多标签的选择体验。" />
 
-    <DocExample title="按区域筛选节点" description="已选项显示为可移除标签；可输入过滤、从分组选项中多选，或一键清除。" :code="rcCode0">
+    <ComponentExample title="按区域筛选节点" description="已选项显示为可移除标签；可输入过滤、从分组选项中多选，或一键清除。" :code="rcCode0">
       <MultiSelect v-model="regions" :options="options" label="部署区域" hint="至少选择一个可用区域" placeholder="搜索区域…" />
       <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">已选择：{{ regions.length ? regions.join('、') : '无' }}</p>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="禁用与校验状态" description="继承 Field 的标签、提示、必填和错误信息能力。" :code="rcCode1">
+    <ComponentExample title="禁用与校验状态" description="继承 Field 的标签、提示、必填和错误信息能力。" :code="rcCode1">
       <MultiSelect v-model="reviewers" :options="reviewerOptions" label="变更审批人" error="至少指定一位审批人" required />
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="multi-select" />
   </div>
 </template>

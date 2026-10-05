@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="AppShell 应用布局"
       description="为开发者控制台提供桌面侧栏、移动端抽屉入口与受约束的内容区骨架。"
     />
 
-    <DocExample
+    <ComponentExample
       title="响应式控制台骨架"
       description="桌面端可收起侧栏；小于 lg 时使用 mobile-menu-trigger 插槽将同一导航放入 Sheet。"
       :code="responsiveCode"
@@ -105,7 +105,7 @@
           </div>
         </AppShell>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <section class="space-y-4">
       <h2 class="text-xl font-semibold tracking-tight text-[var(--foreground)]">导航职责边界</h2>
@@ -122,7 +122,7 @@
       </div>
     </section>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="app-shell" />
   </div>
 </template>

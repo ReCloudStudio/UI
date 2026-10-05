@@ -51,7 +51,8 @@
               :is="item.to ? 'RouterLink' : 'a'"
               v-bind="item.to ? { to: item.to } : { href: item.href || '#' }"
               :class="[
-                'group flex items-center justify-between rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB]',
+                'group flex items-center justify-between rounded-lg px-2.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB]',
+                props.size === 'comfortable' ? 'py-2 text-sm' : 'py-1.5 text-xs',
                 isItemActive(item)
                   ? 'bg-[#2563EB]/10 font-semibold text-[#1D4ED8] dark:bg-[#2563EB]/20 dark:text-[#70ACFE]'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-slate-200'
@@ -86,6 +87,7 @@ const props = withDefaults(defineProps<NavTreeProps>(), {
   activeHref: '',
   searchable: false,
   searchPlaceholder: undefined,
+  size: 'compact',
   class: ''
 })
 

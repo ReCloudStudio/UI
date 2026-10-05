@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="PinInput 验证码" description="分段验证码 / OTP 输入，自动跳格与退格回退。" />
+    <PageHeader title="PinInput 验证码" description="分段验证码 / OTP 输入，自动跳格与退格回退。" />
 
-    <DocExample title="OTP 与掩码" description="otp 模式 6 位，mask 隐藏输入。" :code="rcCode0">
+    <ComponentExample title="OTP 与掩码" description="otp 模式 6 位，mask 隐藏输入。" :code="rcCode0">
       <div class="flex flex-wrap items-end gap-8">
         <div class="space-y-2">
           <Label>短信验证码 (OTP)</Label>
@@ -14,9 +14,9 @@
         </div>
       </div>
       <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">OTP 值：{{ otp.join('') || '—' }}</p>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="pin-input" />
   </div>

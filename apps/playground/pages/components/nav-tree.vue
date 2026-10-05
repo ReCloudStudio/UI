@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="NavTree 文档树侧栏" description="用于文档站点与多层级内容目录的侧边栏组件，支持分组折叠、徽标与实时搜索过滤。" />
+    <PageHeader title="NavTree 文档树侧栏" description="用于文档站点与多层级内容目录的侧边栏组件，支持分组折叠、徽标与实时搜索过滤。" />
 
-    <DocExample title="文档分组与过滤" description="支持多级分组、折叠展开与搜索实时过滤文档条目。" :code="codeBasic">
+    <ComponentExample title="文档分组与过滤" description="支持多级分组、折叠展开与搜索实时过滤文档条目。" :code="codeBasic">
       <div class="max-w-xs rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-[#0B1220]">
         <NavTree
           :groups="sampleGroups"
@@ -10,9 +10,9 @@
           :searchable="true"
         />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="nav-tree" />
   </div>
 </template>

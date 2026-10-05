@@ -10,10 +10,10 @@
           <Badge variant="outline" color="neutral" size="xs">Nuxt 4 · Vue 3 · Tailwind v4</Badge>
         </div>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-950 dark:text-white max-w-xl leading-[1.1]">
-          为 ReCloud Studio 控制台而生的组件库
+          为 ReCloud Studio 控制台与文档门户而生的组件库
         </h1>
         <p class="text-base text-slate-600 dark:text-slate-300 leading-7 max-w-xl">
-          47 个工业级 Vue 3 组件，基于 Reka UI 无障碍底层，严格遵循 ReCloud Studio 品牌垂直天蓝渐变规范与 Nuxt UI 的精致内嵌环线设计语言。
+          {{ componentCount }} 个工业级 Vue 3 组件，覆盖控制台、文档站与营销门户场景；基于 Reka UI 无障碍底层，严格遵循 ReCloud Studio 品牌设计规范。
         </p>
         <div class="flex flex-wrap items-center gap-3 pt-1">
           <NuxtLink to="/components/button">
@@ -34,13 +34,13 @@
       </p>
 
       <div class="grid gap-4 md:grid-cols-2">
-        <DocExample title="Nuxt 4 模块" description="自动导入全部组件、useTheme 与 useToast。" :code="installNuxt" expanded />
-        <DocExample title="Vue 3 显式导入" description="配合 Vite 或任意构建工具使用。" :code="installVue" expanded />
+        <ComponentExample title="Nuxt 4 模块" description="自动导入全部组件、useTheme 与 useToast。" :code="installNuxt" expanded />
+        <ComponentExample title="Vue 3 显式导入" description="配合 Vite 或任意构建工具使用。" :code="installVue" expanded />
       </div>
     </section>
 
     <!-- 组件总览 -->
-    <section class="space-y-6">
+    <section id="components" class="scroll-mt-24 space-y-6">
       <div>
         <h2 class="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">组件总览</h2>
         <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">按使用场景分组，点击进入每个组件的文档与交互示例。</p>
@@ -67,6 +67,11 @@
 <script setup lang="ts">
 import { BrandLogo } from '@recloudstudio/ui/icons'
 import { docGroups, docPath } from '~/utils/catalog'
+
+const componentCount = docGroups
+  .filter(group => group.label !== '指南' && group.label !== 'Design Tokens')
+  .flatMap(group => group.items)
+  .filter(item => item.name !== 'locale').length
 
 const installNuxt = `// nuxt.config.ts
 export default defineNuxtConfig({

@@ -1,17 +1,17 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Progress 进度条" description="任务进度、百分比与完成数量，带标签行与语义色。" />
+    <PageHeader title="Progress 进度条" description="任务进度、百分比与完成数量，带标签行与语义色。" />
 
-    <DocExample title="数值显示、色彩与尺寸" description="可单独显示百分比、完成数量，或同时显示两者。" :code="rcCode0">
+    <ComponentExample title="数值显示、色彩与尺寸" description="可单独显示百分比、完成数量，或同时显示两者。" :code="rcCode0">
       <div class="space-y-4 max-w-md">
         <Progress :value="72" label="节点同步进度" value-display="percentage" color="primary" />
         <Progress :value="8" :max="12" label="健康检查" value-display="fraction" color="success" size="sm" />
         <Progress :value="34" :max="50" label="存储用量" value-display="both" color="warning" size="sm" />
         <Progress :value="12" label="异常实例" color="error" size="sm" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="progress" />
   </div>

@@ -1,12 +1,12 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader
+    <PageHeader
       title="TreeView 树形视图"
       description="面向云资源拓扑、文件树及细粒度权限的多层级树控件，支持异步懒加载、多选、图标插槽、拖拽重排与清晰的选中高亮提示。"
     />
 
     <!-- Example 1: Async loading + Icon slots + v-model:expanded + Highlighting -->
-    <DocExample
+    <ComponentExample
       title="资源拓扑与选中高亮"
       description="使用 highlight-variant 配置选中的视觉高亮风格（subtle / solid / bar），配合状态徽标提供即时反馈。"
       :code="asyncCode"
@@ -71,10 +71,10 @@
           展开节点：<span class="font-mono text-[var(--foreground)]">{{ expandedResources.join(', ') || '无' }}</span>
         </p>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- Example 2: Multi-select mode -->
-    <DocExample
+    <ComponentExample
       title="多选模式 (Multiple)"
       description="开启 multiple 支持复选节点集合，通过 v-model:selected-ids 受控管理已选节点集合。"
       :code="multiSelectCode"
@@ -94,10 +94,10 @@
           <span class="font-mono">{{ selectedPods.join(', ') || '未选择' }}</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- Example 3: Drag & Drop ordering -->
-    <DocExample
+    <ComponentExample
       title="拖拽排序与重排 (Draggable)"
       description="开启 draggable 允许在树内移动节点层级或顺序；触发 @drop 事件返回拖拽源、目标与插入位置。"
       :code="dragCode"
@@ -115,10 +115,10 @@
           {{ lastDropInfo }}
         </p>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- Example 4: Permissions Cascade Checkbox -->
-    <DocExample
+    <ComponentExample
       title="权限级联复选"
       description="checkable 模式适用于细粒度访问策略分配，勾选状态自动向后代节点级联。"
       :code="rcCode1"
@@ -132,9 +132,9 @@
         class="max-w-md"
       />
       <p class="mt-3 text-xs text-[var(--muted-foreground)]">已授权项数量：{{ grants.length }}</p>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="tree-view" />
   </div>
 </template>

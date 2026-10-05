@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="TagInput 标签输入" description="将逗号分隔的文本转为可编辑、可删除的标签集合。" />
+    <PageHeader title="TagInput 标签输入" description="将逗号分隔的文本转为可编辑、可删除的标签集合。" />
 
-    <DocExample title="筛选值" description="输入后按 Enter、逗号或失焦即可添加；支持粘贴多个值。" :code="basicCode">
+    <ComponentExample title="筛选值" description="输入后按 Enter、逗号或失焦即可添加；支持粘贴多个值。" :code="basicCode">
       <div class="max-w-xl space-y-3">
         <TagInput v-model="tags" label="筛选标签" placeholder="输入服务、地区或角色..." hint="支持 Enter、逗号与粘贴多个值。" />
         <p class="text-sm text-slate-500 dark:text-slate-400">当前值：{{ tags.join(', ') || '—' }}</p>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="自定义分隔符与数量限制" description="用多个分隔符接收批量角色 ID，并限制最多五项。" :code="advancedCode">
+    <ComponentExample title="自定义分隔符与数量限制" description="用多个分隔符接收批量角色 ID，并限制最多五项。" :code="advancedCode">
       <TagInput
         v-model="roleIds"
         label="Discord Role IDs"
@@ -17,9 +17,9 @@
         :separator="[',', ';', '\n']"
         :max="5"
       />
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="tag-input" />
   </div>
 </template>

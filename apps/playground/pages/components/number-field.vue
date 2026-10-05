@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="NumberField 数字输入" description="带步进按钮的数字输入，支持边界与只读模式。" />
+    <PageHeader title="NumberField 数字输入" description="带步进按钮的数字输入，支持边界与只读模式。" />
 
-    <DocExample title="基础与尺寸" description="左右步进按钮，超界自动夹取。" :code="rcCode0">
+    <ComponentExample title="基础与尺寸" description="左右步进按钮，超界自动夹取。" :code="rcCode0">
       <div class="grid gap-5 sm:grid-cols-2 max-w-lg">
         <NumberField v-model="n1" label="节点数量" :min="1" :max="99" />
         <NumberField v-model="n2" label="批量步长" :min="0" :max="1000" :step="10" size="lg" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="number-field" />
   </div>

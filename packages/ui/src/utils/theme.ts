@@ -24,7 +24,8 @@ export const DARK_COLORS = {
 } as const;
 
 export const BRAND_GRADIENTS = {
-  vertical: "linear-gradient(180deg, #C8E0FD 0%, #9BC5FE 25%, #70ACFE 50%, #417BDF 75%, #3069C9 100%)",
+  vertical:
+    "linear-gradient(180deg, #C8E0FD 0%, #9BC5FE 25%, #70ACFE 50%, #417BDF 75%, #3069C9 100%)",
   compact: "linear-gradient(180deg, #C8E0FD 0%, #3069C9 100%)",
   card: "linear-gradient(180deg, #70ACFE 0%, #3069C9 100%)",
 } as const;

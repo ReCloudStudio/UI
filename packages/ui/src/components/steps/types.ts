@@ -1,19 +1,19 @@
-import type { InjectionKey } from 'vue'
+import type { InjectionKey } from "vue";
 
 export interface StepsProps {
-  startIndex?: number
-  class?: string
+  startIndex?: number;
+  class?: string;
 }
 
 export interface StepItemProps {
-  title?: string
-  description?: string
-  step?: number | string
-  class?: string
+  title?: string;
+  description?: string;
+  step?: number | string;
+  class?: string;
 }
 
 export interface StepsContext {
-  registerStep: () => number
+  registerStep: () => number;
 }
 
-export const stepsInjectionKey: InjectionKey<StepsContext> = Symbol('re-steps')
+export const stepsInjectionKey: InjectionKey<StepsContext> = Symbol("re-steps");

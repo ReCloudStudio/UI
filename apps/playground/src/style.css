@@ -5,8 +5,12 @@
 
 /* 字体：全站统一使用 Maple Mono NF CN，由 nuxt.config.ts 中的 CDN 样式表加载；其余为加载失败时的回退 */
 @theme {
-  --font-sans: 'Maple Mono NF CN', 'Maple Mono CN', 'Noto Sans Mono CJK SC', ui-monospace, 'PingFang SC', 'Microsoft YaHei', monospace;
-  --font-mono: 'Maple Mono NF CN', 'Maple Mono CN', 'Noto Sans Mono CJK SC', ui-monospace, 'DejaVu Sans Mono', monospace;
+  --font-sans:
+    "Maple Mono NF CN", "Maple Mono CN", "Noto Sans Mono CJK SC", ui-monospace, "PingFang SC",
+    "Microsoft YaHei", monospace;
+  --font-mono:
+    "Maple Mono NF CN", "Maple Mono CN", "Noto Sans Mono CJK SC", ui-monospace, "DejaVu Sans Mono",
+    monospace;
 }
 
 html {
@@ -28,7 +32,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   text-wrap: balance;
   letter-spacing: normal;
 }
@@ -37,7 +44,10 @@ p {
   text-wrap: pretty;
 }
 
-code, pre, kbd, samp {
+code,
+pre,
+kbd,
+samp {
   font-family: var(--font-mono);
   font-variant-ligatures: none;
   letter-spacing: 0;
@@ -69,4 +79,3 @@ code, pre, kbd, samp {
 .no-scrollbar {
   scrollbar-width: none;
 }
-

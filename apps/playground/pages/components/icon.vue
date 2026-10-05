@@ -12,7 +12,7 @@
     </header>
 
     <!-- 1. 多类型图标源解析展示 -->
-    <DocExample
+    <ComponentExample
       title="多种图标源类型"
       description="无缝解析 Vue 组件对象、内置前缀名称、纯图标名、内联 SVG 片段以及图片/矢量资源路径。"
       :code="sourcesCode"
@@ -39,10 +39,10 @@
           <span class="text-xs text-slate-500">图片/SVG 文件路径</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- 2. 尺寸控制 -->
-    <DocExample
+    <ComponentExample
       title="尺寸与文字排版继承"
       description="size 默认继承 '1em'，随周围文字字体大小自动缩放；亦可显式指定数值（px）或任意 CSS 尺寸单位。"
       :code="sizesCode"
@@ -82,10 +82,10 @@
           </div>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- 3. 自定义图标库注册与前缀解析器 -->
-    <DocExample
+    <ComponentExample
       title="自定义图标库与前缀解析器"
       description="使用 registerIconResolver 注册外部图标体系，例如 mdi、remixicon、FontAwesome 或公司私有资产池。"
       :code="customResolverCode"
@@ -100,10 +100,10 @@
           <span class="text-sm font-medium text-slate-700 dark:text-slate-300">cloud:kubernetes</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- 4. 无障碍可访问性与回退插槽 -->
-    <DocExample
+    <ComponentExample
       title="无障碍描述与回退插槽"
       description="未提供 label 时自动应用 aria-hidden='true' 充当装饰图标；提供 label 时自动设置 role='img' 与 aria-label；当图标源未能解析时回退显示默认插槽内容。"
       :code="a11yCode"
@@ -120,10 +120,10 @@
           <span class="text-xs text-slate-500">解析失败触发 fallback 插槽</span>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <!-- 5. 在其他组件中的复用体验 -->
-    <DocExample
+    <ComponentExample
       title="在控制台树与下拉菜单中无缝组合"
       description="现有 TreeView、NavTree、CommandPalette 等组件的 icon 属性已全面拓宽支持 IconSource，既可以直接使用字符串前缀，也可使用组件。"
       :code="integrationCode"
@@ -131,7 +131,7 @@
       <div class="max-w-xs rounded-lg border border-slate-200 dark:border-slate-800 p-2 bg-white dark:bg-slate-950">
         <NavTree :groups="sampleNavGroups" active-href="/components/button" />
       </div>
-    </DocExample>
+    </ComponentExample>
   </div>
 </template>
 

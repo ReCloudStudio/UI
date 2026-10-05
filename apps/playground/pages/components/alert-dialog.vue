@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="AlertDialog 警示对话框" description="破坏性操作的强确认流：无法点击遮罩关闭，取消 / 确认双按钮。" />
+    <PageHeader title="AlertDialog 警示对话框" description="破坏性操作的强确认流：无法点击遮罩关闭，取消 / 确认双按钮。" />
 
-    <DocExample title="终止实例" description="destructive 将确认按钮转为红色。" :code="rcCode0">
+    <ComponentExample title="终止实例" description="destructive 将确认按钮转为红色。" :code="rcCode0">
       <AlertDialog
         title="终止实例 hkg-edge-07？"
         description="该操作不可撤销，实例上的所有活跃连接将立即断开。"
@@ -14,9 +14,9 @@
           <Button variant="soft" color="error">危险确认 (Alert Dialog)</Button>
         </template>
       </AlertDialog>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="alert-dialog" />
   </div>

@@ -1,16 +1,16 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="DatePicker 日期选择" description="适用于备份、事件和任务记录的单日期与日期范围筛选，采用稳定的 YYYY-MM-DD 值。" />
+    <PageHeader title="DatePicker 日期选择" description="适用于备份、事件和任务记录的单日期与日期范围筛选，采用稳定的 YYYY-MM-DD 值。" />
 
-    <DocExample title="日期范围筛选" description="范围选择器内置快捷范围；日期禁用和边界由调用方以本地日期键控制。" :code="rcCode0">
+    <ComponentExample title="日期范围筛选" description="范围选择器内置快捷范围；日期禁用和边界由调用方以本地日期键控制。" :code="rcCode0">
       <div class="grid gap-4 sm:grid-cols-2">
         <DatePicker v-model="date" label="执行日期" min="2026-01-01" />
         <DateRangePicker v-model="range" label="事件时间范围" :presets="presets" />
       </div>
       <p class="mt-3 font-mono text-xs text-slate-500 dark:text-slate-400">日期：{{ date }} · 范围：{{ range?.start }} → {{ range?.end }}</p>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="date-picker" />
   </div>
 </template>

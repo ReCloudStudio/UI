@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Toc 页内目录" description="从当前页面或指定容器中收集多级标题并生成导航，支持平滑滚动与滚动监听。" />
+    <PageHeader title="Toc 页内目录" description="从当前页面或指定容器中收集多级标题并生成导航，支持平滑滚动与滚动监听。" />
 
-    <DocExample title="基础目录导航" description="通过数据传入或自动提取页面中的 h2/h3 标题。" :code="codeBasic">
+    <ComponentExample title="基础目录导航" description="通过数据传入或自动提取页面中的 h2/h3 标题。" :code="codeBasic">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl">
         <div class="md:col-span-2 space-y-6 rounded-xl border border-slate-200/80 p-6 dark:border-slate-800" id="toc-demo-content">
           <AnchorHeading as="h2" id="demo-intro">1. 系统介绍</AnchorHeading>
@@ -24,9 +24,9 @@
           </div>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="toc" />
   </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Steps 文档步骤" description="面向快速上手、环境部署与排错排查文档的垂直向导步骤列表。" />
+    <PageHeader title="Steps 文档步骤" description="面向快速上手、环境部署与排错排查文档的垂直向导步骤列表。" />
 
-    <DocExample title="自动编号步骤" description="Steps 自动管理子项的序号索引与连接线。" :code="codeBasic">
+    <ComponentExample title="自动编号步骤" description="Steps 自动管理子项的序号索引与连接线。" :code="codeBasic">
       <Steps class="max-w-2xl">
         <StepItem title="安装组件库依赖" description="通过 Bun 或 npm 将 ReCloud UI 引入项目。">
           <p>在工程根目录运行：</p>
@@ -16,9 +16,9 @@
           <p>例如：引入 <InlineCode code="<Button>点击操作</Button>" />。</p>
         </StepItem>
       </Steps>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
     <DocPageNav name="steps" />
   </div>
 </template>

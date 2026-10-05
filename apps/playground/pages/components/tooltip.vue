@@ -1,17 +1,17 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Tooltip 文字提示" description="悬停即时提示，自动避开视口边缘。" />
+    <PageHeader title="Tooltip 文字提示" description="悬停即时提示，自动避开视口边缘。" />
 
-    <DocExample title="四方向" :code="rcCode0">
+    <ComponentExample title="四方向" :code="rcCode0">
       <div class="demo-grid">
         <Tooltip content="上方提示" side="top"><Button variant="outline" color="neutral">Top</Button></Tooltip>
         <Tooltip content="右侧提示" side="right"><Button variant="outline" color="neutral">Right</Button></Tooltip>
         <Tooltip content="下方提示，延迟 400ms 出现" side="bottom" :delay-duration="400"><Button variant="outline" color="neutral">Bottom</Button></Tooltip>
         <Tooltip content="左侧提示" side="left"><Button variant="outline" color="neutral">Left</Button></Tooltip>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="tooltip" />
   </div>

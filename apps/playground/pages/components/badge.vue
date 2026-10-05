@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Badge 徽章" description="轻量状态标签，适合版本、运行状态和不打断阅读的辅助信息。支持微光状态圆点与四档尺寸。" />
+    <PageHeader title="Badge 徽章" description="轻量状态标签，适合版本、运行状态和不打断阅读的辅助信息。支持微光状态圆点与四档尺寸。" />
 
-    <DocExample title="变体与色彩" description="主色、中性与语义状态色，dot 属性渲染呼吸圆点。" :code="rcCode0">
+    <ComponentExample title="变体与色彩" description="主色、中性与语义状态色，dot 属性渲染呼吸圆点。" :code="rcCode0">
       <div class="demo-grid">
         <Badge variant="solid" color="primary">Solid</Badge>
         <Badge variant="outline" color="primary">Outline</Badge>
@@ -16,9 +16,9 @@
         <Badge variant="soft" color="warning" dot>Degraded</Badge>
         <Badge variant="soft" color="error" dot>Outage</Badge>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="badge" />
   </div>

@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Input 输入框" description="带标签、提示文案与错误态的文本输入；标签、说明和错误状态会自动关联至原生控件。" />
+    <PageHeader title="Input 输入框" description="带标签、提示文案与错误态的文本输入；标签、说明和错误状态会自动关联至原生控件。" />
 
-    <DocExample title="基础用法" description="hint 与 error 互斥，error 时环线转为红色。" :code="rcCode0">
+    <ComponentExample title="基础用法" description="hint 与 error 互斥，error 时环线转为红色。" :code="rcCode0">
       <div class="grid gap-5 sm:grid-cols-2">
         <Input v-model="text" label="集群标识符" placeholder="请输入节点名称…" hint="由小写字母、数字及横线组成" />
         <Input v-model="err" label="API 端点" error="该端点未通过 TLS 证书校验" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="尺寸与前后缀" description="leading / trailing 插槽嵌入更醒目的预设前后缀、图标与单位。" :code="rcCode1">
+    <ComponentExample title="尺寸与前后缀" description="leading / trailing 插槽嵌入更醒目的预设前后缀、图标与单位。" :code="rcCode1">
       <div class="grid gap-5 sm:grid-cols-2">
         <Input v-model="s1" size="sm" placeholder="Small" />
         <Input v-model="s2" size="lg" placeholder="Large" />
@@ -18,9 +18,9 @@
         </Input>
         <Input v-model="s4" placeholder="搜索节点…" disabled />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="input" />
   </div>

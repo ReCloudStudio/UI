@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="ContextMenu 右键菜单" description="在指定区域右键唤起的上下文操作菜单，与 DropdownMenu 共享 item 协议。" />
+    <PageHeader title="ContextMenu 右键菜单" description="在指定区域右键唤起的上下文操作菜单，与 DropdownMenu 共享 item 协议。" />
 
-    <DocExample title="拓扑区域右键" description="默认插槽即右键触发区。" :code="rcCode0">
+    <ComponentExample title="拓扑区域右键" description="默认插槽即右键触发区。" :code="rcCode0">
       <ContextMenu :items="[
         { label: '刷新拓扑', onSelect: () => toast({ title: '拓扑数据已刷新', variant: 'success' }) },
         { label: '导出配置', onSelect: () => toast({ title: '配置导出中…' }) },
@@ -13,9 +13,9 @@
           在此区域点击右键
         </div>
       </ContextMenu>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="context-menu" />
   </div>

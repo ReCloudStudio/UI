@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Avatar 头像" description="图像、降级文本与在线状态四态圆点，覆盖团队成员与操作人头像场景。" />
+    <PageHeader title="Avatar 头像" description="图像、降级文本与在线状态四态圆点，覆盖团队成员与操作人头像场景。" />
 
-    <DocExample title="尺寸与状态" description="xs 到 xl 五档，状态点位于右上角，浮出头像边界并带描边。" :code="rcCode0">
+    <ComponentExample title="尺寸与状态" description="xs 到 xl 五档，状态点位于右上角，浮出头像边界并带描边。" :code="rcCode0">
       <div class="demo-grid">
         <Avatar fallback="RC" size="xs" />
         <Avatar fallback="RC" size="sm" status="online" />
@@ -10,9 +10,9 @@
         <Avatar fallback="OP" size="lg" status="away" />
         <Avatar fallback="GU" size="xl" status="offline" class="bg-slate-100 text-slate-500 dark:bg-slate-800" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocExample title="团队行场景" description="与 Badge 组合的标准运维人员行。" :code="rcCode1">
+    <ComponentExample title="团队行场景" description="与 Badge 组合的标准运维人员行。" :code="rcCode1">
       <div class="flex items-center justify-between gap-4 max-w-sm">
         <div class="flex items-center gap-3">
           <Avatar fallback="RS" size="lg" status="online" class="bg-blue-100 text-[#1E63CE] dark:bg-blue-950/60 dark:text-[#70ACFE]" />
@@ -23,9 +23,9 @@
         </div>
         <Badge color="success" variant="soft" dot>健康</Badge>
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="avatar" />
   </div>

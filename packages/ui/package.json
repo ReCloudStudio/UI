@@ -21,6 +21,10 @@
       "types": "./dist/icons/index.d.ts",
       "import": "./dist/icons/index.js"
     },
+    "./markdown": {
+      "types": "./dist/markdown/index.d.ts",
+      "import": "./dist/markdown/index.js"
+    },
     "./nuxt": {
       "types": "./dist/nuxt/index.d.ts",
       "import": "./dist/nuxt/index.js"
@@ -44,9 +48,15 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "lucide-vue-next": "^1.0.0",
+    "mdast-util-to-string": "^4.0.0",
     "reka-ui": "^2.10.5",
+    "remark-directive": "^3.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
     "shiki": "^4.5.0",
-    "tailwind-merge": "^3.0.2"
+    "tailwind-merge": "^3.0.2",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.0.0",
@@ -64,9 +74,11 @@
   "devDependencies": {
     "@nuxt/kit": "^4.0.0",
     "@nuxt/schema": "^4.0.0",
-    "@types/node": "^22.13.9",
-    "@vitejs/plugin-vue": "^6.0.9",
     "@tailwindcss/cli": "^4.1.17",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^22.13.9",
+    "@types/unist": "^3.0.3",
+    "@vitejs/plugin-vue": "^6.0.9",
     "tailwindcss": "^4.0.9",
     "typescript": "^5.7.3",
     "vite": "^8.0.0",

@@ -1,7 +1,7 @@
 <template>
   <span
     :class="[
-      'inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-[0.875em] transition-colors',
+      'inline rounded-md px-1.5 py-0.5 font-mono text-[0.875em] [overflow-wrap:anywhere] [box-decoration-break:clone] [-webkit-box-decoration-break:clone] transition-colors',
       variantClasses,
       copyable ? 'cursor-pointer select-none hover:bg-slate-200/80 dark:hover:bg-slate-700/80' : '',
       props.class

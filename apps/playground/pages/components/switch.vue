@@ -1,17 +1,17 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Switch 开关" description="即时生效的切换开关，适合配置项的启停控制。" />
+    <PageHeader title="Switch 开关" description="即时生效的切换开关，适合配置项的启停控制。" />
 
-    <DocExample title="尺寸与状态" :code="rcCode0">
+    <ComponentExample title="尺寸与状态" :code="rcCode0">
       <div class="flex flex-wrap items-center gap-6">
         <Switch v-model="on" size="sm" label="紧凑开关" />
         <Switch v-model="on" label="标准开关" />
         <Switch v-model="on" size="lg" label="宽松开关" />
         <Switch :model-value="true" disabled label="强制开启" />
       </div>
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="switch" />
   </div>

@@ -7,7 +7,7 @@
       </p>
     </div>
 
-    <DocExample title="动态切换语言与组件即时生效">
+    <ComponentExample title="动态切换语言与组件即时生效">
       <template #description>
         点击切换语言环境，观察 Pagination、EmptyState、DataTable、FileUpload 与 TreeView 的文案即时响应。
       </template>
@@ -98,7 +98,7 @@
           </div>
         </div>
       </div>
-    </DocExample>
+    </ComponentExample>
 
     <div class="space-y-4">
       <h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">使用方式</h2>

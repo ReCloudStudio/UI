@@ -1,16 +1,16 @@
 <template>
   <div class="space-y-10">
-    <DocPageHeader title="Accordion 手风琴" description="单开 / 多开折叠问答，chevron 旋转与展开动画。" />
+    <PageHeader title="Accordion 手风琴" description="单开 / 多开折叠问答，chevron 旋转与展开动画。" />
 
-    <DocExample title="单开模式" description="type=multiple 允许多项同时展开。" :code="rcCode0">
+    <ComponentExample title="单开模式" description="type=multiple 允许多项同时展开。" :code="rcCode0">
       <Accordion v-model="value" :items="[
         { value: 'quota', title: '配额与限额', content: '每个账户默认包含 256 个边缘节点、50 Gbps 突发带宽与 3 个可用区冗余组。' },
         { value: 'billing', title: '计费口径', content: '按小时粒度结算，入站流量免费，出站 Anycast 流量按阶梯单价计费。' },
         { value: 'compliance', title: '合规与审计', content: '全量操作审计日志保留 180 天，支持导出至对象存储归档。' }
       ]" />
-    </DocExample>
+    </ComponentExample>
 
-    <DocApiTable :rows="apiRows" />
+    <ApiTable :rows="apiRows" />
 
     <DocPageNav name="accordion" />
   </div>

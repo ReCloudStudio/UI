@@ -163,7 +163,7 @@ function onInput(event: Event) {
   }
   const parts = value.split(pattern)
   const completed = parts.slice(0, -1)
-  draft.value = parts[parts.length - 1]
+  draft.value = parts[parts.length - 1] ?? ""
   target.value = draft.value
   commitMany(completed)
 }
