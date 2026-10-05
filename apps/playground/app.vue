@@ -72,7 +72,7 @@
         </nav>
       </div>
 
-      <main class="flex-1 min-w-0 max-w-3xl">
+      <main class="flex-1 min-w-0">
         <NuxtPage />
       </main>
     </div>
