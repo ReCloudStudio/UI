@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import tailwindcss from '@tailwindcss/vite'
+import { createThemeInitScript } from '../../packages/ui/src/utils/themeScript'
 
 export default defineNuxtConfig({
   // 固定 buildDir：Nuxt 4 生产构建会在 .nuxt 已存在时自动切到 node_modules/.cache，
@@ -12,8 +13,8 @@ export default defineNuxtConfig({
       title: 'ReCloud UI · ReCloud Studio 设计系统',
       script: [
         {
-          // 首屏主题引导：在渲染前应用已保存主题，避免深浅色闪烁
-          innerHTML: `(function(){try{var m=localStorage.getItem('recloud-theme')||'auto';var d=m==='dark'||(m==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);var e=document.documentElement;e.classList.toggle('dark',d);e.dataset.theme=d?'dark':'light';}catch(e){}})();`
+          // 首屏应用完整的主题偏好，避免 Vue hydration 前的颜色、密度与圆角闪烁。
+          innerHTML: createThemeInitScript()
         }
       ],
       link: [
@@ -33,5 +34,13 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      cfPages: process.env.CF_PAGES || '',
+      cfPagesBranch: process.env.CF_PAGES_BRANCH || '',
+      cfPagesCommitSha: process.env.CF_PAGES_COMMIT_SHA || '',
+      cfPagesUrl: process.env.CF_PAGES_URL || ''
+    }
+  },
   compatibilityDate: '2026-10-02'
 })

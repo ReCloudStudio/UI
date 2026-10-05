@@ -7,22 +7,23 @@
         :class="titleClasses"
         @click="toggleCollapsed"
       >
-        <svg v-if="collapsible" :class="cn('h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform duration-200', !isCollapsed && 'rotate-90')" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-        <span v-else class="h-2 w-2 shrink-0 rounded-full bg-blue-400 shadow-[0_0_0_3px_rgba(96,165,250,0.12)]" aria-hidden="true" />
-        <span v-if="filename" class="truncate font-mono text-xs font-medium text-slate-200">{{ filename }}</span>
-        <span v-if="language" class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-400">{{ language }}</span>
-        <span v-if="collapsible" class="shrink-0 text-xs font-medium text-slate-400">{{ isCollapsed ? '展开代码' : '收起代码' }}</span>
+        <svg v-if="collapsible" :class="cn('h-3.5 w-3.5 shrink-0 text-[var(--code-muted)] transition-transform duration-200', !isCollapsed && 'rotate-90')" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+        <Icon v-if="effectiveIcon" :icon="effectiveIcon" size="1rem" class="shrink-0" />
+        <span v-else-if="!collapsible" class="h-2 w-2 shrink-0 rounded-full bg-[var(--code-accent)] shadow-[0_0_0_3px_rgb(59_130_246_/_0.12)]" aria-hidden="true" />
+        <span v-if="filename" class="truncate font-mono text-xs font-medium text-[var(--code-foreground)]">{{ filename }}</span>
+        <span v-if="language" class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--code-muted)]">{{ language }}</span>
+        <span v-if="collapsible" class="shrink-0 text-xs font-medium text-[var(--code-muted)]">{{ isCollapsed ? commonLoc.expandCode : commonLoc.collapseCode }}</span>
       </component>
       <button
         v-if="copyable"
         type="button"
-        class="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
-        :aria-label="copied ? '代码已复制' : '复制代码'"
+        class="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-[var(--code-muted)] transition-colors hover:bg-[var(--code-hover)] hover:text-[var(--code-foreground)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
+        :aria-label="copied ? commonLoc.copied : commonLoc.copy"
         @click="copyCode"
       >
         <svg v-if="!copied" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-        <svg v-else class="h-3.5 w-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7" /></svg>
-        {{ copied ? '已复制' : '复制' }}
+        <svg v-else class="h-3.5 w-3.5 text-[var(--success)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7" /></svg>
+        {{ copied ? commonLoc.copied : commonLoc.copy }}
       </button>
     </header>
 
@@ -37,26 +38,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, shallowRef, useId, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue'
+import { Icon } from '../icon'
+import { resolveCodeBlockIcon } from './languageIcons'
 import { cn } from '../../utils/cn'
-
-export interface CodeBlockProps {
-  code?: string
-  language?: string
-  filename?: string
-  copyable?: boolean
-  showLineNumbers?: boolean
-  wrap?: boolean
-  maxHeight?: string
-  /** Show a toggle in the header that collapses the code body. Use `v-model:collapsed` to control it. */
-  collapsible?: boolean
-  class?: string
-}
+import { useComponentLocale } from '../../locale'
+import type { CodeBlockProps } from './types'
 
 const props = withDefaults(defineProps<CodeBlockProps>(), {
   code: '',
   language: '',
   filename: '',
+  icon: undefined,
   copyable: true,
   showLineNumbers: false,
   wrap: false,
@@ -67,13 +60,16 @@ const props = withDefaults(defineProps<CodeBlockProps>(), {
 
 /** Collapsed state; only takes effect when `collapsible` is set. Works uncontrolled without v-model. */
 const collapsed = defineModel<boolean>('collapsed', { default: false })
+const commonLoc = useComponentLocale('common')
 
 const bodyId = useId()
 const copied = shallowRef(false)
 /** Highlight result tagged with the source it was produced for, so stale output is never shown. */
 const highlighted = shallowRef<{ key: string; html: string } | null>(null)
+const colorTheme = shallowRef<'github-dark' | 'github-light'>(getColorTheme())
 let copyTimer: ReturnType<typeof setTimeout> | undefined
 let highlighterPromise: Promise<Awaited<ReturnType<typeof createHighlighter>>> | undefined
+let themeObserver: MutationObserver | undefined
 let highlightVersion = 0
 
 const languageAliases: Record<string, string> = {
@@ -93,13 +89,14 @@ const SFC_BLOCK_RE = /^<(template|script|style)[\s>]/m
 const PRE_CLASS = 'rc-code-block-pre'
 
 const isCollapsed = computed(() => props.collapsible && collapsed.value)
-const hasHeader = computed(() => Boolean(props.filename || props.language || props.copyable || props.collapsible))
-const sourceKey = computed(() => `${props.language}\u0000${props.code}`)
+const effectiveIcon = computed(() => resolveCodeBlockIcon(props.icon, props.language, props.filename))
+const hasHeader = computed(() => Boolean(props.filename || props.language || props.copyable || props.collapsible || effectiveIcon.value))
+const sourceKey = computed(() => `${colorTheme.value}\u0000${props.language}\u0000${props.code}`)
 
 const headerClasses = computed(() => {
   return cn(
     'flex min-h-10 items-center justify-between gap-3 px-3.5',
-    !isCollapsed.value && 'border-b border-slate-800/80'
+    !isCollapsed.value && 'border-b border-[var(--code-border)]'
   )
 })
 
@@ -107,13 +104,13 @@ const titleClasses = computed(() => {
   return cn(
     'flex min-w-0 items-center gap-2',
     props.collapsible &&
-      '-ml-1.5 rounded-md px-1.5 py-1 text-left transition-colors hover:bg-slate-800/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400'
+      '-ml-1.5 rounded-md px-1.5 py-1 text-left transition-colors hover:bg-[var(--code-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]'
   )
 })
 
 const codeBlockClasses = computed(() => {
   return cn(
-    'overflow-hidden rounded-xl border border-slate-800 bg-[#0b1220] shadow-sm dark:border-slate-700 dark:bg-[#080d16]',
+    'overflow-hidden rounded-xl border border-[var(--code-border)] bg-[var(--code-background)] text-[var(--code-foreground)] shadow-sm',
     props.class
   )
 })
@@ -126,14 +123,14 @@ const codeBlockClasses = computed(() => {
 const contentClasses = computed(() => {
   return cn(
     'overflow-auto',
-    '[&>pre]:m-0 [&>pre]:rounded-none [&>pre]:p-4 [&>pre]:bg-transparent! [&>pre]:text-[#e1e4e8] [&>pre]:shadow-none!',
+    '[&>pre]:m-0 [&>pre]:rounded-none [&>pre]:p-4 [&>pre]:bg-transparent! [&>pre]:text-[var(--code-foreground)] [&>pre]:shadow-none!',
     '[&>pre]:font-mono [&>pre]:text-[13px] [&>pre]:leading-6',
     '[&_code]:block [&_code]:bg-transparent [&_code]:p-0 [&_code]:[font:inherit]',
     props.wrap
       ? '[&>pre]:whitespace-pre-wrap [&>pre]:[overflow-wrap:anywhere]'
       : '[&>pre]:min-w-max [&>pre]:whitespace-pre',
     props.showLineNumbers &&
-      '[&>pre]:[counter-reset:line] [&_.line]:before:inline-block [&_.line]:before:w-6 [&_.line]:before:mr-5 [&_.line]:before:text-right [&_.line]:before:text-slate-500 [&_.line]:before:select-none [&_.line]:before:[counter-increment:line] [&_.line]:before:content-[counter(line)]'
+      '[&>pre]:[counter-reset:line] [&_.line]:before:inline-block [&_.line]:before:w-6 [&_.line]:before:mr-5 [&_.line]:before:text-right [&_.line]:before:text-[var(--code-muted)] [&_.line]:before:select-none [&_.line]:before:[counter-increment:line] [&_.line]:before:content-[counter(line)]'
   )
 })
 
@@ -152,10 +149,22 @@ function toggleCollapsed() {
   if (props.collapsible) collapsed.value = !collapsed.value
 }
 
+onMounted(() => {
+  const root = document.documentElement
+  const updateColorTheme = () => {
+    colorTheme.value = getColorTheme()
+  }
+
+  updateColorTheme()
+  themeObserver = new MutationObserver(updateColorTheme)
+  themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] })
+})
+
 onBeforeUnmount(() => {
   if (copyTimer !== undefined) {
     clearTimeout(copyTimer)
   }
+  themeObserver?.disconnect()
   // Invalidate any in-flight highlight so it won't write to an unmounted ref.
   highlightVersion++
 })
@@ -175,12 +184,14 @@ async function createHighlighter() {
   const [
     { createHighlighterCore },
     { createJavaScriptRegexEngine },
-    { default: theme },
+    { default: darkTheme },
+    { default: lightTheme },
     ...languages
   ] = await Promise.all([
     import('shiki/core'),
     import('shiki/engine/javascript'),
     import('shiki/dist/themes/github-dark.mjs'),
+    import('shiki/dist/themes/github-light.mjs'),
     import('shiki/dist/langs/css.mjs'),
     import('shiki/dist/langs/html.mjs'),
     import('shiki/dist/langs/javascript.mjs'),
@@ -193,7 +204,7 @@ async function createHighlighter() {
   ])
 
   return createHighlighterCore({
-    themes: [theme],
+    themes: [darkTheme, lightTheme],
     langs: languages.map(({ default: lang }) => lang),
     engine: createJavaScriptRegexEngine()
   })
@@ -225,7 +236,7 @@ watch(
       if (version !== highlightVersion) return
       const html = highlighter.codeToHtml(props.code, {
         lang: resolveLanguage(props.language, props.code),
-        theme: 'github-dark',
+        theme: colorTheme.value,
         transformers: [
           {
             pre(node) {
@@ -241,6 +252,11 @@ watch(
   },
   { immediate: true }
 )
+
+function getColorTheme() {
+  if (typeof document === 'undefined') return 'github-light'
+  return document.documentElement.dataset.theme === 'dark' ? 'github-dark' : 'github-light'
+}
 
 function escapeHtml(value: string) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')

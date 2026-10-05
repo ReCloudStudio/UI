@@ -1,6 +1,8 @@
 <template>
-  <DialogRoot :open="open" @update:open="$emit('update:open', $event)">
-    <slot name="trigger" />
+  <DialogRoot :open="props.open" @update:open="$emit('update:open', $event)">
+    <DialogTrigger as-child v-if="$slots.trigger">
+      <slot name="trigger" />
+    </DialogTrigger>
     <DialogPortal>
       <DialogOverlay class="fixed inset-0 z-50 bg-slate-950/40 backdrop-blur-xs data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
       <DialogContent :class="contentClasses">
@@ -23,7 +25,7 @@
           <slot name="footer" />
         </div>
 
-        <DialogClose aria-label="关闭" class="absolute right-3.5 top-3.5 rounded-md p-1 text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:text-slate-500 dark:hover:text-slate-300 dark:hover:bg-slate-800 transition-colors">
+        <DialogClose :aria-label="commonLoc.close" class="absolute right-3.5 top-3.5 rounded-md p-1 text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:text-slate-500 dark:hover:text-slate-300 dark:hover:bg-slate-800 transition-colors">
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -42,9 +44,11 @@ import {
   DialogContent,
   DialogTitle,
   DialogDescription,
-  DialogClose
+  DialogClose,
+  DialogTrigger
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
+import { useComponentLocale } from '../../locale'
 
 export interface DialogProps {
   open?: boolean
@@ -54,11 +58,13 @@ export interface DialogProps {
 }
 
 const props = withDefaults(defineProps<DialogProps>(), {
-  open: false,
+  open: undefined,
   title: '',
   description: '',
   class: ''
 })
+
+const commonLoc = useComponentLocale('common')
 
 defineEmits<{
   (e: 'update:open', value: boolean): void

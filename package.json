@@ -17,7 +17,7 @@
     "format": "biome format --write apps packages .github .changeset package.json turbo.json biome.json tsconfig.json README.md",
     "ci": "bun run lint && bun run typecheck && bun run test && bun run build",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version && bun install"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",

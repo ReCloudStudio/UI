@@ -22,7 +22,7 @@
             <button
               type="button"
               class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full text-blue-400 hover:bg-blue-100 hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:text-blue-500 dark:hover:bg-blue-900 dark:hover:text-blue-300"
-              :aria-label="`移除 ${tag}`"
+              :aria-label="multiLoc.removeAria(tag)"
               :disabled="disabled"
               @click="removeTag(index)"
             >
@@ -34,13 +34,13 @@
           <input
             ref="inputRef"
             :value="draft"
-            :placeholder="modelValue.length === 0 ? placeholder : ''"
+            :placeholder="modelValue.length === 0 ? effectivePlaceholder : ''"
             :disabled="disabled"
             :required="required && modelValue.length === 0"
             :id="field.id"
             :aria-describedby="field.describedby"
             :aria-invalid="field.invalid || undefined"
-            :aria-label="label || placeholder"
+            :aria-label="label || effectivePlaceholder"
             class="min-w-20 grow bg-transparent px-1.5 py-1 text-slate-900 outline-none placeholder:text-slate-400 disabled:cursor-not-allowed dark:text-slate-100"
             @input="onInput"
             @keydown="onKeydown"
@@ -57,6 +57,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import Field from '../field/Field.vue'
+import { useComponentLocale } from '../../locale'
 
 export interface TagInputProps {
   modelValue?: string[]
@@ -77,7 +78,7 @@ export interface TagInputProps {
 
 const props = withDefaults(defineProps<TagInputProps>(), {
   modelValue: () => [],
-  placeholder: '输入标签...',
+  placeholder: undefined,
   separator: ',',
   id: undefined,
   label: '',
@@ -91,6 +92,9 @@ const props = withDefaults(defineProps<TagInputProps>(), {
   addOnPaste: true,
   class: ''
 })
+
+const multiLoc = useComponentLocale('multiSelect')
+const effectivePlaceholder = computed(() => props.placeholder ?? multiLoc.value.placeholder)
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string[]): void
@@ -165,6 +169,7 @@ function onInput(event: Event) {
 }
 
 function onKeydown(event: KeyboardEvent) {
+  if (event.isComposing || event.keyCode === 229) return
   if (event.key === 'Enter') {
     event.preventDefault()
     commitMany([draft.value])

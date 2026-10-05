@@ -13,7 +13,7 @@
         :aria-required="required || undefined"
         :class="triggerClasses"
       >
-        <SelectValue :placeholder="placeholder" />
+        <SelectValue :placeholder="effectivePlaceholder" />
         <SelectIcon class="text-slate-400 dark:text-slate-500">
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -66,6 +66,7 @@ import {
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
 import Field from '../field/Field.vue'
+import { useComponentLocale } from '../../locale'
 
 export interface SelectOption {
   label: string
@@ -88,7 +89,7 @@ export interface SelectProps {
 
 const props = withDefaults(defineProps<SelectProps>(), {
   modelValue: '',
-  placeholder: '请选择...',
+  placeholder: undefined,
   id: undefined,
   label: '',
   hint: '',
@@ -97,6 +98,9 @@ const props = withDefaults(defineProps<SelectProps>(), {
   disabled: false,
   class: ''
 })
+
+const selectLoc = useComponentLocale('select')
+const effectivePlaceholder = computed(() => props.placeholder ?? selectLoc.value.placeholder)
 
 defineEmits<{
   (e: 'update:modelValue', value: string): void

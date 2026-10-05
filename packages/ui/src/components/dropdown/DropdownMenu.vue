@@ -25,7 +25,7 @@
             ]"
             @select="item.onSelect && item.onSelect()"
           >
-            <component :is="item.icon" v-if="item.icon" class="mr-2 h-3.5 w-3.5" />
+            <Icon :icon="item.icon" v-if="item.icon" size="0.875rem" class="mr-2" />
             <span>{{ item.label }}</span>
           </DropdownMenuItem>
         </template>
@@ -45,11 +45,12 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator
 } from 'reka-ui'
+import { Icon, type IconSource } from '../icon'
 import { cn } from '../../utils/cn'
 
 export interface DropdownMenuItemType {
   label?: string
-  icon?: any
+  icon?: IconSource
   disabled?: boolean
   destructive?: boolean
   separator?: boolean

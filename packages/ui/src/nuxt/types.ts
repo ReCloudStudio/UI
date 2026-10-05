@@ -1,7 +1,7 @@
 export interface ModuleOptions {
   /**
-   * Prefix for components (e.g. 'Rc' -> <RcButton />)
-   * @default 'Rc'
+   * Prefix for components (e.g. 'Re' -> <ReButton />)
+   * @default 'Re'
    */
   prefix?: string
 
@@ -10,9 +10,17 @@ export interface ModuleOptions {
    * @default true
    */
   injectTheme?: boolean
+
+  /** Storage key shared by the SSR initialization script and `useTheme`. */
+  themeStorageKey?: string
+
+  /** Apply saved theme attributes before Vue hydrates to prevent a color-mode flash. */
+  injectThemeScript?: boolean
 }
 
 export const defaultOptions: ModuleOptions = {
-  prefix: 'Rc',
-  injectTheme: true
+  prefix: 'Re',
+  injectTheme: true,
+  themeStorageKey: 'recloud-theme',
+  injectThemeScript: true
 }

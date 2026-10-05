@@ -1,5 +1,6 @@
 <template>
   <ToastProvider />
+  <PreviewBanner />
   <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-[#090E17] text-slate-700 dark:text-slate-200 transition-colors">
     <!-- 顶部导航栏 -->
     <header class="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-[#090E17]/90 backdrop-blur-md">

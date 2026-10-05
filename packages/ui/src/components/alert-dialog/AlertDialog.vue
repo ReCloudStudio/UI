@@ -19,12 +19,12 @@
         <div class="flex justify-end gap-2.5">
           <AlertDialogCancel as-child>
             <button class="inline-flex h-10 items-center justify-center rounded-lg px-4 text-sm font-medium text-slate-700 ring-1 ring-inset ring-slate-300 dark:text-slate-200 dark:ring-slate-700 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]">
-              {{ props.cancelText }}
+              {{ effectiveCancelText }}
             </button>
           </AlertDialogCancel>
           <AlertDialogAction as-child>
             <button :class="actionClasses">
-              {{ props.actionText }}
+              {{ effectiveActionText }}
             </button>
           </AlertDialogAction>
         </div>
@@ -40,6 +40,7 @@ import {
   AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction
 } from 'reka-ui'
 import { cn } from '../../utils/cn'
+import { useComponentLocale } from '../../locale'
 
 export interface AlertDialogProps {
   title?: string
@@ -53,11 +54,15 @@ export interface AlertDialogProps {
 const props = withDefaults(defineProps<AlertDialogProps>(), {
   title: '',
   description: '',
-  actionText: '确认',
-  cancelText: '取消',
+  actionText: undefined,
+  cancelText: undefined,
   destructive: false,
   class: ''
 })
+
+const alertLoc = useComponentLocale('alertDialog')
+const effectiveActionText = computed(() => props.actionText ?? alertLoc.value.confirm)
+const effectiveCancelText = computed(() => props.cancelText ?? alertLoc.value.cancel)
 
 const open = defineModel<boolean>('open', { default: false })
 

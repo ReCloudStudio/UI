@@ -15,7 +15,7 @@
       :title="opt.label"
       class="relative inline-flex h-10 flex-1 select-none items-center justify-center gap-1.5 rounded-md px-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] disabled:cursor-not-allowed disabled:opacity-50 data-[state=on]:bg-white data-[state=on]:text-slate-900 data-[state=on]:shadow-xs dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 dark:data-[state=on]:bg-slate-800 dark:data-[state=on]:text-white"
     >
-      <component :is="opt.icon" v-if="opt.icon" class="h-4 w-4" />
+      <Icon :icon="opt.icon" v-if="opt.icon" size="1rem" />
       <span>{{ opt.label }}</span>
     </ToggleGroupItem>
   </ToggleGroupRoot>
@@ -24,12 +24,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ToggleGroupRoot, ToggleGroupItem } from 'reka-ui'
+import { Icon, type IconSource } from '../icon'
 import { cn } from '../../utils/cn'
 
 export interface ToggleGroupOption {
   label: string
   value: string
-  icon?: any
+  icon?: IconSource
   disabled?: boolean
 }
 
