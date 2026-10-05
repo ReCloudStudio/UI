@@ -32,7 +32,8 @@ const groups: DocGroup[] = [
       { name: 'avatar', title: 'Avatar 头像', description: '图像、降级文本与在线状态。' },
       { name: 'kbd', title: 'Kbd 按键提示', description: '快捷键视觉化展示。' },
       { name: 'code-block', title: 'CodeBlock 代码块', description: '带复制、行号和文件标识的代码展示。' },
-      { name: 'spinner', title: 'Spinner 加载', description: '环形加载指示器。' }
+      { name: 'spinner', title: 'Spinner 加载', description: '环形加载指示器。' },
+      { name: 'icon', title: 'Icon 图标', description: '支持组件、图标库前缀、内联 SVG 与图片的多源图标渲染体系。' }
     ]
   },
   {

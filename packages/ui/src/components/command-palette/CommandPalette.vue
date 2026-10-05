@@ -45,7 +45,7 @@
               @mouseenter="setActive(item.id)"
               @click="selectItem(item)"
             >
-              <component :is="item.icon" v-if="item.icon" class="h-4 w-4 shrink-0 text-slate-500 dark:text-slate-400" aria-hidden="true" />
+              <Icon :icon="item.icon" v-if="item.icon" size="1rem" class="shrink-0 text-slate-500 dark:text-slate-400" />
               <slot name="item" :item="item" :active="activeItem?.id === item.id">
                 <span class="min-w-0 grow">
                   <span class="block truncate text-sm font-medium text-slate-800 dark:text-slate-100">{{ item.label }}</span>
@@ -69,6 +69,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
+import { Icon } from '../icon'
 import { filterCommands } from './commandMatcher'
 import { useComponentLocale } from '../../locale'
 import type { CommandFilter, CommandGroup, CommandItem } from './types'

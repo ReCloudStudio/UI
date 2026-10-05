@@ -1,11 +1,11 @@
-import type { Component } from 'vue'
+import type { IconSource } from '../icon'
 
 export interface NavTreeItem {
   title: string
   href?: string
   to?: string
   badge?: string
-  icon?: Component
+  icon?: IconSource
   disabled?: boolean
 }
 

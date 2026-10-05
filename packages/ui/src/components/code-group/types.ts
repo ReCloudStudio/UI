@@ -1,7 +1,9 @@
+import type { IconSource } from '../icon'
+
 export interface CodeGroupTab {
   label: string
   key?: string
-  icon?: string
+  icon?: IconSource
 }
 
 export interface CodeGroupProps {

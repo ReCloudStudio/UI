@@ -1,4 +1,4 @@
-import type { Component } from 'vue'
+import type { IconSource } from '../icon'
 
 export interface CommandItem {
   /** Stable identifier returned with the select event. */
@@ -7,7 +7,7 @@ export interface CommandItem {
   description?: string
   keywords?: string[]
   shortcut?: string[]
-  icon?: Component
+  icon?: IconSource
   disabled?: boolean
   /** Keep the palette open after this item is selected. */
   keepOpen?: boolean

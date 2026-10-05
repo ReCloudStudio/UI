@@ -1,4 +1,4 @@
-import type { Component } from 'vue'
+import type { IconSource } from '../icon'
 
 export interface TreeNode {
   id: string
@@ -7,8 +7,8 @@ export interface TreeNode {
   children?: TreeNode[]
   /** True when node has dynamic children that haven't been fetched yet. */
   isLeaf?: boolean
-  /** Optional icon component or icon name rendered before node label. */
-  icon?: Component
+  /** Optional icon component, icon name or SVG source rendered before node label. */
+  icon?: IconSource
 }
 
 export interface TreeDropEvent {

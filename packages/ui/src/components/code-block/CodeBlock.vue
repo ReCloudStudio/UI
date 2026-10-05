@@ -8,7 +8,8 @@
         @click="toggleCollapsed"
       >
         <svg v-if="collapsible" :class="cn('h-3.5 w-3.5 shrink-0 text-[var(--code-muted)] transition-transform duration-200', !isCollapsed && 'rotate-90')" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-        <span v-else class="h-2 w-2 shrink-0 rounded-full bg-[var(--code-accent)] shadow-[0_0_0_3px_rgb(59_130_246_/_0.12)]" aria-hidden="true" />
+        <Icon v-if="effectiveIcon" :icon="effectiveIcon" size="1rem" class="shrink-0" />
+        <span v-else-if="!collapsible" class="h-2 w-2 shrink-0 rounded-full bg-[var(--code-accent)] shadow-[0_0_0_3px_rgb(59_130_246_/_0.12)]" aria-hidden="true" />
         <span v-if="filename" class="truncate font-mono text-xs font-medium text-[var(--code-foreground)]">{{ filename }}</span>
         <span v-if="language" class="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--code-muted)]">{{ language }}</span>
         <span v-if="collapsible" class="shrink-0 text-xs font-medium text-[var(--code-muted)]">{{ isCollapsed ? commonLoc.expandCode : commonLoc.collapseCode }}</span>
@@ -38,26 +39,17 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue'
+import { Icon } from '../icon'
+import { resolveCodeBlockIcon } from './languageIcons'
 import { cn } from '../../utils/cn'
 import { useComponentLocale } from '../../locale'
-
-export interface CodeBlockProps {
-  code?: string
-  language?: string
-  filename?: string
-  copyable?: boolean
-  showLineNumbers?: boolean
-  wrap?: boolean
-  maxHeight?: string
-  /** Show a toggle in the header that collapses the code body. Use `v-model:collapsed` to control it. */
-  collapsible?: boolean
-  class?: string
-}
+import type { CodeBlockProps } from './types'
 
 const props = withDefaults(defineProps<CodeBlockProps>(), {
   code: '',
   language: '',
   filename: '',
+  icon: undefined,
   copyable: true,
   showLineNumbers: false,
   wrap: false,
@@ -97,7 +89,8 @@ const SFC_BLOCK_RE = /^<(template|script|style)[\s>]/m
 const PRE_CLASS = 'rc-code-block-pre'
 
 const isCollapsed = computed(() => props.collapsible && collapsed.value)
-const hasHeader = computed(() => Boolean(props.filename || props.language || props.copyable || props.collapsible))
+const effectiveIcon = computed(() => resolveCodeBlockIcon(props.icon, props.language, props.filename))
+const hasHeader = computed(() => Boolean(props.filename || props.language || props.copyable || props.collapsible || effectiveIcon.value))
 const sourceKey = computed(() => `${colorTheme.value}\u0000${props.language}\u0000${props.code}`)
 
 const headerClasses = computed(() => {

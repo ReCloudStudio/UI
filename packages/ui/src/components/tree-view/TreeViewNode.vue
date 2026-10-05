@@ -75,7 +75,7 @@
       <!-- Icon slot / default icon -->
       <div v-if="$slots.icon || node.icon" class="flex shrink-0 items-center text-[var(--muted-foreground)]">
         <slot name="icon" :node="node" :expanded="expanded" :selected="selected">
-          <component :is="node.icon" class="size-4" />
+          <Icon :icon="node.icon" size="1rem" />
         </slot>
       </div>
 
@@ -140,6 +140,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { Icon } from '../icon'
 import { cn } from '../../utils/cn'
 import { useComponentLocale } from '../../locale'
 import type { TreeHighlightVariant, TreeNode } from './types'

@@ -58,7 +58,7 @@
               ]"
             >
               <div class="flex items-center gap-2 truncate">
-                <component :is="item.icon" v-if="item.icon" class="h-3.5 w-3.5 shrink-0" />
+                <Icon :icon="item.icon" v-if="item.icon" size="0.875rem" />
                 <span class="truncate">{{ item.title }}</span>
               </div>
               <span
@@ -77,6 +77,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { Icon } from '../icon'
 import { useComponentLocale } from '../../locale'
 import type { NavTreeGroup, NavTreeItem, NavTreeProps } from './types'
 

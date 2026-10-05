@@ -69,6 +69,7 @@ export * from './components/code-group'
 export * from './components/navbar'
 export * from './components/footer'
 export * from './components/hero'
+export * from './components/icon'
 
 // Composables & Utilities
 export * from './composables/useTheme'

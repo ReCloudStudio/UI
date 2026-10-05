@@ -14,6 +14,7 @@
         ]"
         @click="selectTab(tab.key)"
       >
+        <Icon v-if="tab.icon" :icon="tab.icon" size="0.875rem" class="shrink-0" />
         <span>{{ tab.label }}</span>
       </button>
     </div>
@@ -29,6 +30,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { Icon, type IconSource } from '../icon'
 import type { CodeGroupProps, CodeGroupTab } from './types'
 
 const props = withDefaults(defineProps<CodeGroupProps>(), {
@@ -45,7 +47,7 @@ const emit = defineEmits<{
 interface InternalTab {
   label: string
   key: string
-  icon?: string
+  icon?: IconSource
 }
 
 const normalizedTabs = computed<InternalTab[]>(() => {
