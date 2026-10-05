@@ -7,7 +7,7 @@
       <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
         <NuxtLink to="/" class="flex items-center gap-3">
           <BrandWordmark :height="28" />
-          <Badge variant="subtle" color="primary" size="xs">v0.1.0-alpha</Badge>
+          <Badge variant="subtle" color="primary" size="xs">v0.3.0</Badge>
         </NuxtLink>
 
         <div class="flex items-center gap-2">

@@ -26,7 +26,7 @@
 const navLinks = [
   { label: '功能特性', href: '#features' },
   { label: '组件文档', to: '/components/button' },
-  { label: '更新日志', to: '/components/timeline', badge: 'v0.2.0' },
+  { label: '更新日志', to: '/components/timeline', badge: 'v0.3.0' },
   { label: '定价', href: '#pricing' }
 ]
 
@@ -35,7 +35,7 @@ const codeBasic = `<Navbar
   :links="[
     { label: '功能特性', href: '#features' },
     { label: '组件文档', to: '/components/button' },
-    { label: '更新日志', to: '/components/timeline', badge: 'v0.2.0' }
+    { label: '更新日志', to: '/components/timeline', badge: 'v0.3.0' }
   ]"
 >
   <template #actions>

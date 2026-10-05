@@ -7,7 +7,7 @@
             <BrandWordmark :height="26" />
           </NuxtLink>
           <p class="text-sm leading-6 text-slate-500 dark:text-slate-400">
-            为 ReCloud Studio 控制台而生的 <span class="whitespace-nowrap">Vue 3 / Nuxt 4</span> 组件库，遵循官方品牌设计规范。
+            为 ReCloud Studio 控制台与文档门户而生的 <span class="whitespace-nowrap">Vue 3 / Nuxt 4</span> 组件库，遵循官方品牌设计规范。
           </p>
           <div class="flex items-center gap-2 pt-1">
             <a href="https://github.com/ReCloudStudio" target="_blank" rel="noopener" aria-label="GitHub">
@@ -58,7 +58,7 @@
           © 2026 ReCloud Studio · 代码以 AGPL-3.0 协议开源
         </p>
         <div class="flex items-center gap-2">
-          <Badge variant="subtle" color="primary" size="xs">v0.1.0-alpha</Badge>
+          <Badge variant="subtle" color="primary" size="xs">v0.3.0</Badge>
           <span class="text-xs text-slate-500 dark:text-slate-400">Vue 3 · Nuxt 4 · Reka UI · Tailwind v4</span>
         </div>
       </div>

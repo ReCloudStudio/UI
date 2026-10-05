@@ -6,7 +6,7 @@
       <div class="overflow-hidden rounded-xl border border-slate-200/80 bg-white dark:border-slate-800 dark:bg-[#0B1220]">
         <Hero
           layout="center"
-          badge="v0.2.0 已正式发布"
+          badge="v0.3.0 已正式发布"
           title="专为运维控制台打造的 UI 系统"
           description="基于 Vue 3、Nuxt 4 与 Reka UI 构建，提供无障碍基础底座与分层设计令牌，助力高效交付开发者工具。"
           primary-action-text="快速上手"
@@ -50,7 +50,7 @@
 <script setup lang="ts">
 const codeCenter = `<Hero
   layout="center"
-  badge="v0.2.0 已正式发布"
+  badge="v0.3.0 已正式发布"
   title="专为运维控制台打造的 UI 系统"
   description="基于 Vue 3、Nuxt 4 构建，提供无障碍底座与分层设计令牌。"
   primary-action-text="快速上手"
