@@ -43,7 +43,7 @@ watch(() => props.src, () => {
 })
 
 const avatarClasses = computed(() => cn(
-  'relative inline-flex shrink-0',
+  'relative inline-flex shrink-0 rounded-full',
   {
     xs: 'h-5 w-5 text-[9px]',
     sm: 'h-7 w-7 text-[10px]',
