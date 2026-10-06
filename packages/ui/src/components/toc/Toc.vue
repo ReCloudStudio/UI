@@ -8,7 +8,7 @@
   >
     <!-- Header / Title -->
     <div class="flex items-center gap-2 font-medium text-slate-900 dark:text-slate-100">
-      <svg class="h-4 w-4 text-[#2563EB] dark:text-[#70ACFE]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg class="h-4 w-4 text-[color:var(--primary)] dark:text-[color:var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
       </svg>
       <slot name="title">
@@ -34,14 +34,14 @@
         <!-- Active indicator line -->
         <span
           v-if="activeId === item.id"
-          class="absolute -left-px top-1 bottom-1 w-0.5 rounded-full bg-[#2563EB] dark:bg-[#70ACFE]"
+          class="absolute -left-px top-1 bottom-1 w-0.5 rounded-full bg-[color:var(--primary)] dark:bg-[color:var(--primary)]"
         />
         <a
           :href="`#${item.id}`"
           :class="[
-            'block truncate transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB]',
+            'block truncate transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--ring)]',
             activeId === item.id
-              ? 'font-medium text-[#2563EB] dark:text-[#70ACFE]'
+              ? 'font-medium text-[color:var(--primary)] dark:text-[color:var(--primary)]'
               : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200'
           ]"
           @click.prevent="scrollTo(item.id)"

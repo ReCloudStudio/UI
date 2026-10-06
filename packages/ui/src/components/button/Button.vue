@@ -1,7 +1,11 @@
 <template>
-  <button
-    :type="type"
-    :disabled="disabled || loading"
+  <component
+    :is="rootElement"
+    v-bind="$attrs"
+    :href="href"
+    :type="rootElement === 'button' ? type : undefined"
+    :disabled="rootElement === 'button' ? disabled || loading : undefined"
+    :aria-disabled="rootElement !== 'button' && (disabled || loading) ? 'true' : undefined"
     :class="buttonClasses"
     @click="$emit('click', $event)"
   >
@@ -18,7 +22,7 @@
     <slot name="leading" />
     <slot />
     <slot name="trailing" />
-  </button>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -34,6 +38,10 @@ export interface ButtonProps {
   block?: boolean
   type?: 'button' | 'submit' | 'reset'
   class?: string
+  /** Render as a custom element or component, such as `RouterLink`. */
+  as?: string
+  /** Render as an anchor when provided. */
+  href?: string
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -64,7 +72,9 @@ const effectiveColor = computed(() => {
   return props.color
 })
 
-const baseClasses = 'inline-flex items-center justify-center rounded-lg font-semibold tracking-[-0.01em] transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#090E17] disabled:opacity-50 disabled:pointer-events-none select-none active:scale-[0.98] cursor-pointer'
+const rootElement = computed(() => props.as || (props.href ? 'a' : 'button'))
+
+const baseClasses = 'inline-flex items-center justify-center rounded-lg font-semibold tracking-[-0.01em] transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#090E17] disabled:opacity-50 disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:pointer-events-none select-none active:scale-[0.98] cursor-pointer'
 
 const variantColorClasses = computed(() => {
   const v = normalizedVariant.value

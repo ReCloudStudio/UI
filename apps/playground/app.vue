@@ -21,9 +21,16 @@
         </Button>
       </template>
       <template #actions>
-        <a href="https://github.com/ReCloudStudio" target="_blank" rel="noopener">
-          <Button variant="outline" color="neutral" size="sm">GitHub</Button>
-        </a>
+        <Button
+          href="https://github.com/ReCloudStudio"
+          target="_blank"
+          rel="noopener"
+          variant="outline"
+          color="neutral"
+          size="sm"
+        >
+          GitHub
+        </Button>
       </template>
     </Navbar>
 
