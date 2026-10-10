@@ -43,10 +43,10 @@ const emit = defineEmits<{
 
 const rootClasses = computed(() => {
   return cn(
-    'peer h-4 w-4 shrink-0 rounded ring-1 ring-inset focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#090E17] disabled:cursor-not-allowed disabled:opacity-50 transition-colors',
+    'peer h-4 w-4 shrink-0 rounded ring-1 ring-inset focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 transition-colors',
     props.modelValue
-      ? 'bg-[#2563EB] ring-[#2563EB] text-white'
-      : 'bg-white dark:bg-[#0F172A] ring-slate-300 dark:ring-slate-700',
+      ? 'bg-primary ring-primary text-primary-foreground'
+      : 'bg-card ring-border',
     props.class
   )
 })
