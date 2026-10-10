@@ -76,6 +76,7 @@ export * from "./components/container";
 export * from "./components/section";
 export * from "./components/theme-toggle";
 export * from "./components/search-input";
+export * from "./components/status-badge";
 export * from "./components/icon";
 export * from "./markdown";
 
