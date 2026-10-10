@@ -79,16 +79,16 @@ const sizeClasses: Record<NonNullable<InputProps['size']>, string> = {
 
 const inputClasses = computed(() => {
   return cn(
-    'flex w-full items-center gap-2 rounded-lg bg-white text-slate-900 shadow-xs ring-1 ring-inset transition-all duration-150 focus-within:ring-2 dark:bg-[#0F172A] dark:text-slate-100 disabled:opacity-50 disabled:bg-slate-50 dark:disabled:bg-slate-900/60',
+    'flex w-full items-center gap-2 rounded-lg bg-card text-card-foreground shadow-xs ring-1 ring-inset transition-all duration-150 focus-within:ring-2 disabled:opacity-50 disabled:bg-muted',
     sizeClasses[props.size],
     props.error
-      ? 'ring-red-500 focus-within:ring-red-500'
-      : 'ring-slate-300 focus-within:ring-[#2563EB] dark:ring-slate-700 dark:focus-within:ring-[#70ACFE]',
+      ? 'ring-destructive focus-within:ring-destructive'
+      : 'ring-border focus-within:ring-ring',
     props.class
   )
 })
 
 const controlClasses = computed(() => cn(
-  'min-w-0 flex-1 bg-transparent outline-none placeholder:text-slate-400 disabled:cursor-not-allowed dark:placeholder:text-slate-500'
+  'min-w-0 flex-1 bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed'
 ))
 </script>
