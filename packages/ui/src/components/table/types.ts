@@ -1,3 +1,5 @@
+export type DataTableDensity = "compact" | "default" | "relaxed";
+
 export interface DataTableColumn {
   key: string;
   label: string;

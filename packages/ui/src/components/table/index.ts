@@ -1,2 +1,2 @@
 export { default as DataTable } from "./DataTable.vue";
-export type { DataTableColumn, DataTableSort } from "./types";
+export type { DataTableColumn, DataTableDensity, DataTableSort } from "./types";
