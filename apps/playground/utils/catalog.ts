@@ -38,6 +38,11 @@ const groups: DocGroup[] = [
         title: "CodeBlock 代码块",
         description: "带复制、行号和文件标识的代码展示。",
       },
+      {
+        name: "copy-snippet",
+        title: "CopySnippet 命令行代码块",
+        description: "支持多包管理器/环境切换与一键复制的命令行复合块。",
+      },
       { name: "spinner", title: "Spinner 加载", description: "环形加载指示器。" },
       {
         name: "icon",

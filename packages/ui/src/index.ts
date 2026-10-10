@@ -79,6 +79,7 @@ export * from "./components/search-input";
 export * from "./components/status-badge";
 export * from "./components/metric-card";
 export * from "./components/log-viewer";
+export * from "./components/copy-snippet";
 export * from "./components/icon";
 export * from "./markdown";
 
