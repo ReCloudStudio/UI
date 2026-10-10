@@ -86,6 +86,11 @@ const groups: DocGroup[] = [
     label: "数据展示",
     items: [
       { name: "data-table", title: "DataTable 数据表", description: "列插槽富单元格渲染。" },
+      {
+        name: "metric-card",
+        title: "MetricCard 统计卡片",
+        description: "展示监控指标数值、环比波动、单位与趋势态的控制台卡片。",
+      },
       { name: "progress", title: "Progress 进度条", description: "任务进度与百分比。" },
       { name: "skeleton", title: "Skeleton 骨架屏", description: "加载占位。" },
       { name: "empty-state", title: "EmptyState 空状态", description: "空数据页面引导。" },
