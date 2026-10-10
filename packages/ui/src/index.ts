@@ -78,6 +78,7 @@ export * from "./components/theme-toggle";
 export * from "./components/search-input";
 export * from "./components/status-badge";
 export * from "./components/metric-card";
+export * from "./components/log-viewer";
 export * from "./components/icon";
 export * from "./markdown";
 

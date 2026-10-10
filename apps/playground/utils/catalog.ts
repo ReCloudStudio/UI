@@ -91,6 +91,11 @@ const groups: DocGroup[] = [
         title: "MetricCard 统计卡片",
         description: "展示监控指标数值、环比波动、单位与趋势态的控制台卡片。",
       },
+      {
+        name: "log-viewer",
+        title: "LogViewer 日志查看器",
+        description: "面向容器、任务与执行流的运维等宽控制台日志流组件。",
+      },
       { name: "progress", title: "Progress 进度条", description: "任务进度与百分比。" },
       { name: "skeleton", title: "Skeleton 骨架屏", description: "加载占位。" },
       { name: "empty-state", title: "EmptyState 空状态", description: "空数据页面引导。" },
